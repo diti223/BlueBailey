@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import xcodeproj
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -14,7 +15,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        let path = Path("/path/to/my/Project.xcodeproj") // Your project path
+        let xcodeproj = XcodeProj(path: path)
+        let pbxproj = xcodeproj.pbxproj // Returns a PBXProj
+        pbxproj.nativeTargets.each { target in
+            print(target.name)
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

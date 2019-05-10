@@ -14,7 +14,6 @@
 		B9FA12892285B1CD00A4D5C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9FA12872285B1CD00A4D5C4 /* Main.storyboard */; };
 		B9FA12952285B1CD00A4D5C4 /* BlueBaileyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FA12942285B1CD00A4D5C4 /* BlueBaileyTests.swift */; };
 		B9FA12A02285B1CD00A4D5C4 /* BlueBaileyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FA129F2285B1CD00A4D5C4 /* BlueBaileyUITests.swift */; };
-		B9FA12B72285B39D00A4D5C4 /* xcodeproj.h in Headers */ = {isa = PBXBuildFile; fileRef = B9FA12B52285B39D00A4D5C4 /* xcodeproj.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B9FA12BA2285B39D00A4D5C4 /* xcodeproj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FA12B32285B39D00A4D5C4 /* xcodeproj.framework */; };
 		B9FA12BB2285B39D00A4D5C4 /* xcodeproj.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9FA12B32285B39D00A4D5C4 /* xcodeproj.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -74,8 +73,6 @@
 		B9FA12A12285B1CD00A4D5C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9FA12AD2285B30A00A4D5C4 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		B9FA12B32285B39D00A4D5C4 /* xcodeproj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = xcodeproj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9FA12B52285B39D00A4D5C4 /* xcodeproj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xcodeproj.h; sourceTree = "<group>"; };
-		B9FA12B62285B39D00A4D5C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +115,6 @@
 				B9FA127D2285B1CC00A4D5C4 /* BlueBailey */,
 				B9FA12932285B1CD00A4D5C4 /* BlueBaileyTests */,
 				B9FA129E2285B1CD00A4D5C4 /* BlueBaileyUITests */,
-				B9FA12B42285B39D00A4D5C4 /* xcodeproj */,
 				B9FA127C2285B1CC00A4D5C4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -166,15 +162,6 @@
 			path = BlueBaileyUITests;
 			sourceTree = "<group>";
 		};
-		B9FA12B42285B39D00A4D5C4 /* xcodeproj */ = {
-			isa = PBXGroup;
-			children = (
-				B9FA12B52285B39D00A4D5C4 /* xcodeproj.h */,
-				B9FA12B62285B39D00A4D5C4 /* Info.plist */,
-			);
-			path = xcodeproj;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -182,7 +169,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9FA12B72285B39D00A4D5C4 /* xcodeproj.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
