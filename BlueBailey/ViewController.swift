@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  BlueBailey
 //
-//  Created by Adrian Bilescu on 10/05/2019.
+//  Created by Adrian-Dieter Bilescu on 5/12/19.
 //  Copyright © 2019 Bilescu. All rights reserved.
 //
 
@@ -12,16 +12,7 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // Do view setup here.
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
-
+    
 }
-
