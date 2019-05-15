@@ -7,21 +7,21 @@
 //
 
 import Foundation
-import XcodeProj
+import PathKit
 
 class NavigatorConnector {
-    private let project: XcodeProj
+    private let projectPath: Path
     private let useCaseFactory: UseCaseFactory
     private weak var viewController: NavigatorViewController?
     
-    init(useCaseFactory: UseCaseFactory, project: XcodeProj) {
-        self.project = project
+    init(useCaseFactory: UseCaseFactory, projectPath: Path) {
+        self.projectPath = projectPath
         self.useCaseFactory = useCaseFactory
     }
     
-    func assemble(viewController: NavigatorViewController) {
+    func assemble(viewController: NavigatorViewController) throws {
         self.viewController = viewController
-        let presenter = NavigatorPresenter(view: viewController, navigation: self, useCaseFactory: useCaseFactory, project: project)
+        let presenter = try NavigatorPresenter(view: viewController, navigation: self, useCaseFactory: useCaseFactory, path: projectPath)
         viewController.presenter = presenter
     }
     

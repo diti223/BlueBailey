@@ -28,19 +28,16 @@ class ViewController: NSViewController, DropViewDelegate {
         
         var path = path
         path.removeFirst(7)
-        let projectPath = Path(path)
-        guard let project = try? XcodeProj(path: projectPath) else {
-            return
-        }
         
         guard let navigatorViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "NavigatorViewController") as? NavigatorViewController else {
             return
         }
-        let connector = NavigatorConnector(useCaseFactory: UseCaseFactory(), project: project)
-        connector.assemble(viewController: navigatorViewController)
+        let connector = NavigatorConnector(useCaseFactory: UseCaseFactory(), projectPath: Path(path))
+        try? connector.assemble(viewController: navigatorViewController)
 //        self.presentAsModalWindow(navigatorViewController)
-        self.view.window?.contentView = navigatorViewController.view
-        self.view.removeFromSuperview()
+//        self.view.window?.contentView = navigatorViewController.view
+        self.view.window?.contentViewController = navigatorViewController
+//        self.view.removeFromSuperview()
 //        dismiss(self)
     }
     

@@ -694,7 +694,7 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="0ZQ-Zi-lEz"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -706,30 +706,43 @@
             <objects>
                 <viewController storyboardIdentifier="NavigatorViewController" id="XPc-iF-VCC" customClass="NavigatorViewController" customModule="BlueBailey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="pDw-Yu-FiT">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="433"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <browser verticalHuggingPriority="750" misplaced="YES" allowsExpansionToolTips="YES" enabled="YES" hasHorizontalScroller="YES" allowsMultipleSelection="YES" allowsEmptySelection="YES" allowsBranchSelection="YES" defaultColumnWidth="100" minColumnWidth="100" titled="YES" separatesColumns="YES" allowsTypeSelect="YES" sendsActionOnArrowKeys="YES" columnResizingType="auto" translatesAutoresizingMaskIntoConstraints="NO" id="Eg1-Uj-G10">
-                                <rect key="frame" x="2" y="0.0" width="450" height="322"/>
+                            <browser verticalHuggingPriority="750" allowsExpansionToolTips="YES" enabled="YES" hasHorizontalScroller="YES" allowsMultipleSelection="YES" allowsEmptySelection="YES" defaultColumnWidth="170" minColumnWidth="100" titled="YES" separatesColumns="YES" allowsTypeSelect="YES" sendsActionOnArrowKeys="YES" columnResizingType="auto" translatesAutoresizingMaskIntoConstraints="NO" id="25s-J2-ytw">
+                                <rect key="frame" x="20" y="45" width="410" height="390"/>
                                 <connections>
-                                    <outlet property="delegate" destination="XPc-iF-VCC" id="cLw-io-WiV"/>
+                                    <outlet property="delegate" destination="XPc-iF-VCC" id="cGU-cW-Jvu"/>
                                 </connections>
                             </browser>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rhw-NC-CW6">
+                                <rect key="frame" x="14" y="9" width="422" height="32"/>
+                                <buttonCell key="cell" type="push" title="Add New File" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="6Cr-8h-G0l">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addNewFileWithSender:" target="XPc-iF-VCC" id="Zj1-Am-szu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Eg1-Uj-G10" secondAttribute="trailing" id="ELz-sX-auI"/>
-                            <constraint firstAttribute="bottom" secondItem="Eg1-Uj-G10" secondAttribute="bottom" id="S4M-6q-fG3"/>
-                            <constraint firstItem="Eg1-Uj-G10" firstAttribute="top" secondItem="pDw-Yu-FiT" secondAttribute="top" id="met-7U-6rw"/>
-                            <constraint firstItem="Eg1-Uj-G10" firstAttribute="leading" secondItem="pDw-Yu-FiT" secondAttribute="leading" id="y21-k0-Q7C"/>
+                            <constraint firstItem="25s-J2-ytw" firstAttribute="leading" secondItem="pDw-Yu-FiT" secondAttribute="leading" constant="20" id="3Xi-Yq-QgR"/>
+                            <constraint firstItem="Rhw-NC-CW6" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="25s-J2-ytw" secondAttribute="trailing" id="7vB-si-uSP"/>
+                            <constraint firstItem="Rhw-NC-CW6" firstAttribute="top" secondItem="25s-J2-ytw" secondAttribute="bottom" constant="8" id="HFl-v3-POe"/>
+                            <constraint firstItem="Rhw-NC-CW6" firstAttribute="leading" secondItem="25s-J2-ytw" secondAttribute="leading" id="WIW-v7-ryv"/>
+                            <constraint firstItem="25s-J2-ytw" firstAttribute="top" secondItem="pDw-Yu-FiT" secondAttribute="top" constant="20" id="qmZ-Ya-KcQ"/>
+                            <constraint firstAttribute="trailing" secondItem="25s-J2-ytw" secondAttribute="trailing" constant="20" id="s44-6g-oQ0"/>
+                            <constraint firstAttribute="bottom" secondItem="Rhw-NC-CW6" secondAttribute="bottom" constant="16" id="vvK-QQ-eKH"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="browser" destination="Eg1-Uj-G10" id="137-Yr-VxQ"/>
+                        <outlet property="browser" destination="25s-J2-ytw" id="AyS-eG-KlN"/>
                     </connections>
                 </viewController>
                 <customObject id="gm9-th-F6X" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="676" y="655"/>
+            <point key="canvasLocation" x="676" y="721.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -766,7 +779,6 @@
                     </view>
                     <connections>
                         <outlet property="dropView" destination="7IW-sF-hMb" id="vHt-Ma-2UB"/>
-                        <segue destination="XPc-iF-VCC" kind="show" id="bII-Rc-tl3"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
