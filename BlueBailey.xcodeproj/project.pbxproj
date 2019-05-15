@@ -19,6 +19,12 @@
 		2E60E8222286E6FF005DF0F5 /* XcodeProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E60E8182286E6F9005DF0F5 /* XcodeProj.framework */; };
 		2E60E8232286E6FF005DF0F5 /* XcodeProj.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E60E8182286E6F9005DF0F5 /* XcodeProj.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2E60E8262288665E005DF0F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E60E8252288665E005DF0F5 /* ViewController.swift */; };
+		2EFB23B4228AD5C100CBFB30 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23B3228AD5C100CBFB30 /* NavigatorViewController.swift */; };
+		2EFB23B6228AD5D300CBFB30 /* NavigatorConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23B5228AD5D300CBFB30 /* NavigatorConnector.swift */; };
+		2EFB23B8228AD61800CBFB30 /* NavigatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23B7228AD61800CBFB30 /* NavigatorPresenter.swift */; };
+		2EFB23BA228AD64D00CBFB30 /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23B9228AD64D00CBFB30 /* NavigatorView.swift */; };
+		2EFB23BF228AD76A00CBFB30 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23BE228AD76A00CBFB30 /* UseCaseFactory.swift */; };
+		2EFB23C1228AD7D000CBFB30 /* NavigatorNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23C0228AD7D000CBFB30 /* NavigatorNavigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,12 @@
 		2E60E81A2286E6FA005DF0F5 /* PathKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PathKit.framework; sourceTree = "<group>"; };
 		2E60E81B2286E6FA005DF0F5 /* AEXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AEXML.framework; sourceTree = "<group>"; };
 		2E60E8252288665E005DF0F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2EFB23B3228AD5C100CBFB30 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
+		2EFB23B5228AD5D300CBFB30 /* NavigatorConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorConnector.swift; sourceTree = "<group>"; };
+		2EFB23B7228AD61800CBFB30 /* NavigatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorPresenter.swift; sourceTree = "<group>"; };
+		2EFB23B9228AD64D00CBFB30 /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
+		2EFB23BE228AD76A00CBFB30 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
+		2EFB23C0228AD7D000CBFB30 /* NavigatorNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,12 +139,13 @@
 		2E60E7EB2286E6D8005DF0F5 /* BlueBailey */ = {
 			isa = PBXGroup;
 			children = (
-				2E60E7EC2286E6D8005DF0F5 /* AppDelegate.swift */,
-				2E60E8252288665E005DF0F5 /* ViewController.swift */,
+				2EFB23BC228AD6C600CBFB30 /* Platform */,
+				2EFB23BB228AD65000CBFB30 /* Presentation */,
+				2EFB23BD228AD75B00CBFB30 /* Domain */,
 				2E60E7F02286E6D9005DF0F5 /* Assets.xcassets */,
 				2E60E7F22286E6D9005DF0F5 /* Main.storyboard */,
-				2E60E7F52286E6D9005DF0F5 /* Info.plist */,
 				2E60E7F62286E6D9005DF0F5 /* BlueBailey.entitlements */,
+				2E60E7F52286E6D9005DF0F5 /* Info.plist */,
 			);
 			path = BlueBailey;
 			sourceTree = "<group>";
@@ -153,6 +166,35 @@
 				2E60E80C2286E6D9005DF0F5 /* Info.plist */,
 			);
 			path = BlueBaileyUITests;
+			sourceTree = "<group>";
+		};
+		2EFB23BB228AD65000CBFB30 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				2EFB23B7228AD61800CBFB30 /* NavigatorPresenter.swift */,
+				2EFB23B9228AD64D00CBFB30 /* NavigatorView.swift */,
+				2EFB23C0228AD7D000CBFB30 /* NavigatorNavigation.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		2EFB23BC228AD6C600CBFB30 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				2E60E7EC2286E6D8005DF0F5 /* AppDelegate.swift */,
+				2E60E8252288665E005DF0F5 /* ViewController.swift */,
+				2EFB23B3228AD5C100CBFB30 /* NavigatorViewController.swift */,
+				2EFB23B5228AD5D300CBFB30 /* NavigatorConnector.swift */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		2EFB23BD228AD75B00CBFB30 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				2EFB23BE228AD76A00CBFB30 /* UseCaseFactory.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,8 +333,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EFB23B4228AD5C100CBFB30 /* NavigatorViewController.swift in Sources */,
+				2EFB23B6228AD5D300CBFB30 /* NavigatorConnector.swift in Sources */,
 				2E60E8262288665E005DF0F5 /* ViewController.swift in Sources */,
+				2EFB23B8228AD61800CBFB30 /* NavigatorPresenter.swift in Sources */,
+				2EFB23BA228AD64D00CBFB30 /* NavigatorView.swift in Sources */,
+				2EFB23BF228AD76A00CBFB30 /* UseCaseFactory.swift in Sources */,
 				2E60E7ED2286E6D8005DF0F5 /* AppDelegate.swift in Sources */,
+				2EFB23C1228AD7D000CBFB30 /* NavigatorNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
