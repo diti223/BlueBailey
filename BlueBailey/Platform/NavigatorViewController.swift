@@ -10,6 +10,7 @@ import Cocoa
 
 class NavigatorViewController: NSViewController {
     @IBOutlet weak var browser: NSBrowser!
+    @IBOutlet var cellMenu: NSMenu!
     
     var presenter: NavigatorPresenter!
     let manager = FileManager.default
@@ -17,7 +18,6 @@ class NavigatorViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
-//        browser.takesTitleFromPreviousColumn = true
         browser.allowsMultipleSelection = true
     }
     
@@ -26,33 +26,15 @@ class NavigatorViewController: NSViewController {
         let row = browser.selectedRow(inColumn: column)
         guard let item = browser.item(atRow: row, inColumn: column) as? ProjectItem else { return }
         presenter.addNewFile(at: item)
+        browser.editItem(at: IndexPath(item: 0, section: 0), with: nil, select: true)
     }
+    
+    
 }
 
 extension NavigatorViewController: NavigatorView {
     func displayProject(named: String) {
-//        browser.delegate = self
         view.window?.title = named
-    }
-}
-
-extension URL {
-    
-    func isDirectory() -> Bool {
-        return (try? resourceValues(
-            forKeys: [.isDirectoryKey]
-            ))?.isDirectory ?? false
-    }
-    
-    func fileExists() -> Bool {
-        let fileman = FileManager.default
-        return fileman.fileExists(atPath: self.path)
-    }
-    
-    var fileIcon : NSImage {
-        return (try? resourceValues(
-            forKeys: [.effectiveIconKey]
-            ))?.effectiveIcon as? NSImage ?? NSImage()
     }
 }
 
@@ -66,7 +48,6 @@ extension NavigatorViewController: NSBrowserDelegate {
         guard let item = item as? ProjectItem, let children = item.children else { return 0 }
         return children.count
     }
-
 
     func browser(_ browser: NSBrowser, child index: Int, ofItem item: Any?) -> Any {
         guard let item = item as? ProjectItem, let children = item.children else { return ProjectItem.empty }
@@ -85,33 +66,13 @@ extension NavigatorViewController: NSBrowserDelegate {
         return item.name
     }
     
-    
-}
-
-class FileCell: NSBrowserCell {
-    override init(imageCell i: NSImage?) {
-        super.init(imageCell: i)
-    }
-    
-    override init(textCell s: String) {
-        super.init(textCell: s)
-    }
-    
-    required init(coder c: NSCoder) {
-        super.init(coder: c)
+    func browser(_ sender: NSBrowser, willDisplayCell cell: Any, atRow row: Int, column: Int) {
+        let cell = cell as? NSCell
+        //TODO: check if item is leaf and update items
+        cell?.menu = cellMenu
     }
 }
 
-extension URL {
-    
-    //.. other extension properties and functions
-    
-    var smallFileIcon: NSImage{
-        let icon : NSImage = fileIcon
-        icon.size = NSMakeSize(16.0, 16.0)
-        return icon
-    }
-}
 
 extension ProjectItem {
     static var empty: ProjectItem {

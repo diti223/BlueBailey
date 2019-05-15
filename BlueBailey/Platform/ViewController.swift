@@ -26,21 +26,15 @@ class ViewController: NSViewController, DropViewDelegate {
     
     func didDropFile(atPath path: String) {
         
-        var path = path
-        path.removeFirst(7)
+        let projectPath = Path(URL(string: path)?.path ?? "")
         
         guard let navigatorViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "NavigatorViewController") as? NavigatorViewController else {
             return
         }
-        let connector = NavigatorConnector(useCaseFactory: UseCaseFactory(), projectPath: Path(path))
+        let connector = NavigatorConnector(useCaseFactory: UseCaseFactory(), projectPath: projectPath)
         try? connector.assemble(viewController: navigatorViewController)
-//        self.presentAsModalWindow(navigatorViewController)
-//        self.view.window?.contentView = navigatorViewController.view
         self.view.window?.contentViewController = navigatorViewController
-//        self.view.removeFromSuperview()
-//        dismiss(self)
     }
-    
     
 }
 
@@ -52,29 +46,10 @@ class DropView: NSView {
     
     weak var delegate: DropViewDelegate?
     
-    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        debugPrint(#function)
-        return super.draggingEntered(sender)
-    }
-    
-//    override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
-//        debugPrint(#function)
-//        return super.draggingUpdated(sender)
-//    }
-//
-    
     override func draggingEnded(_ sender: NSDraggingInfo) {
         debugPrint(#function)
         guard let filePath = sender.draggingPasteboard.propertyList(forType: .fileURL) as? String else { return }
-//        guard let url = URL(string: filePath) else { return }
-//        let contents = try? FileManager.default.contents(atPath: url.path)
-//        guard let content = try? Data(contentsOf: url) else { return }
-//        guard let string = String(data: content, encoding: .utf8) else { return }
         delegate?.didDropFile(atPath: filePath)
-        
-        
-//        super.draggingEnded(sender)
     }
-    
-    
+        
 }
