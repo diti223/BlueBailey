@@ -21,12 +21,20 @@ class NavigatorViewController: NSViewController {
         browser.allowsMultipleSelection = true
     }
     
-    @IBAction func addNewFile(sender: NSButton) {
+    @IBAction func addNewFile(sender: Any) {
         let column = browser.selectedColumn
         let row = browser.selectedRow(inColumn: column)
         guard let item = browser.item(atRow: row, inColumn: column) as? ProjectItem else { return }
         presenter.addNewFile(at: item)
         browser.editItem(at: IndexPath(item: 0, section: 0), with: nil, select: true)
+    }
+    
+    @IBAction func deleteFile(sender: Any) {
+        
+    }
+    
+    @IBAction func renameFile(sender: Any) {
+        
     }
     
     
@@ -36,39 +44,42 @@ extension NavigatorViewController: NavigatorView {
     func displayProject(named: String) {
         view.window?.title = named
     }
+    
+    func reloadItems(in section: Int) {
+        browser.reloadColumn(section)
+    }
 }
 
 extension NavigatorViewController: NSBrowserDelegate {
     
     func rootItem(for browser: NSBrowser) -> Any? {
-        return presenter.selectedItem
+        return presenter.rootNode
     }
 
     func browser(_ browser: NSBrowser, numberOfChildrenOfItem item: Any?) -> Int {
-        guard let item = item as? ProjectItem, let children = item.children else { return 0 }
-        return children.count
+        guard let node = item as? Node else { return 0 }
+        return node.children.count
     }
 
     func browser(_ browser: NSBrowser, child index: Int, ofItem item: Any?) -> Any {
-        guard let item = item as? ProjectItem, let children = item.children else { return ProjectItem.empty }
-        return children[index]
+        guard let node = item as? Node else { return Node(item: .empty, index: 0) }
+        return node.children[index]
     }
 
 
     func browser(_ browser: NSBrowser, isLeafItem item: Any?) -> Bool {
-        guard let item = item as? ProjectItem else { return false }
-        return item.children == nil
+        guard let node = item as? Node else { return false }
+        return node.children.isEmpty
     }
 
 
     func browser(_ browser: NSBrowser, objectValueForItem item: Any?) -> Any? {
-        guard let item = item as? ProjectItem else { return false }
-        return item.name
+        guard let node = item as? Node else { return false }
+        return node.item.name
     }
     
     func browser(_ sender: NSBrowser, willDisplayCell cell: Any, atRow row: Int, column: Int) {
         let cell = cell as? NSCell
-        //TODO: check if item is leaf and update items
         cell?.menu = cellMenu
     }
 }

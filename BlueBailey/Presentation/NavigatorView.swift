@@ -10,4 +10,5 @@ import Foundation
 
 protocol NavigatorView: class {
     func displayProject(named: String)
+    func reloadItems(in section: Int)
 }

@@ -731,14 +731,31 @@
                 <customObject id="gm9-th-F6X" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="sJi-4P-RvU">
                     <items>
-                        <menuItem title="Add New File" state="on" id="8kk-bp-s1z">
-                            <modifierMask key="keyEquivalentModifierMask"/>
+                        <menuItem title="Add New File" keyEquivalent="n" id="8kk-bp-s1z">
+                            <connections>
+                                <action selector="addNewFileWithSender:" target="XPc-iF-VCC" id="sI6-Ou-gSV"/>
+                            </connections>
                         </menuItem>
-                        <menuItem title="Delete File" state="on" id="qEc-Kz-z9f">
-                            <modifierMask key="keyEquivalentModifierMask"/>
+                        <menuItem title="Delete File" keyEquivalent="d" id="qEc-Kz-z9f">
+                            <connections>
+                                <action selector="deleteFileWithSender:" target="XPc-iF-VCC" id="fkA-Ua-Wpv"/>
+                            </connections>
                         </menuItem>
-                        <menuItem title="Rename" state="on" id="Gdd-0P-9Q7">
+                        <menuItem title="Rename" keyEquivalent="r" id="Gdd-0P-9Q7">
+                            <connections>
+                                <action selector="renameFileWithSender:" target="XPc-iF-VCC" id="mbG-RM-ocb"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="URm-yt-G2o"/>
+                        <menuItem title="Multiple Files" id="JjG-oa-beS">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Multiple Files" id="GCS-zj-ke2">
+                                <items>
+                                    <menuItem title="New MVP Module" id="agd-Uh-aiK">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                </items>
+                            </menu>
                         </menuItem>
                     </items>
                 </menu>
