@@ -22,18 +22,27 @@ class NavigatorViewController: NSViewController {
     }
     
     @IBAction func addNewFile(sender: Any) {
-        let column = browser.selectedColumn
-        let row = browser.selectedRow(inColumn: column)
-        guard let item = browser.item(atRow: row, inColumn: column) as? ProjectItem else { return }
-        presenter.addNewFile(at: item)
-        browser.editItem(at: IndexPath(item: 0, section: 0), with: nil, select: true)
+        guard let node = selectedNode() else { return }
+        presenter.addNewFile(at: node)
     }
     
     @IBAction func deleteFile(sender: Any) {
-        
+        guard let node = selectedNode() else { return }
+        presenter.deleteFile(at: node)
     }
     
     @IBAction func renameFile(sender: Any) {
+        let column = browser.selectedColumn
+        let row = browser.selectedRow(inColumn: column)
+        let indexPath = IndexPath(item: row, section: column)
+        browser.editItem(at: indexPath, with: nil, select: true)
+
+    }
+    
+    func selectedNode() -> Node? {
+        let column = browser.selectedColumn
+        let row = browser.selectedRow(inColumn: column)
+        return browser.item(atRow: row, inColumn: column) as? Node
         
     }
     
@@ -81,6 +90,20 @@ extension NavigatorViewController: NSBrowserDelegate {
     func browser(_ sender: NSBrowser, willDisplayCell cell: Any, atRow row: Int, column: Int) {
         let cell = cell as? NSCell
         cell?.menu = cellMenu
+    }
+    
+    func browser(_ browser: NSBrowser, shouldEditItem item: Any?) -> Bool {
+        return true
+    }
+    
+    func browser(_ browser: NSBrowser, setObjectValue object: Any?, forItem item: Any?) {
+        debugPrint(#function)
+        guard let newName = object as? String,
+            let node = item as? Node else {
+            return
+        }
+        presenter.renameFile(newName, at: node)
+//        browser.reloadColumn(browser.selectedColumn)
     }
 }
 

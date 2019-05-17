@@ -25,8 +25,7 @@ class NavigatorPresenter {
         self.projectPath = path
         self.project = try XcodeProj(path: path)
         let item = ProjectItem(project: project)
-        self.rootNode = Node(item: item, index: 0)
-        
+        self.rootNode = Node(item: item, index: 0)   
     }
     
     func viewDidLoad() {
@@ -38,27 +37,84 @@ class NavigatorPresenter {
             let item = node.item
             guard let path = try item.file?.fullPath(sourceRoot: projectPath.parent()) else { return }
             
-            let newFilePath = path + "FileName.swift"
-            try newFilePath.write(FileTemplate(fileName: "FileName", project: "TestProject", author: "Adrian Bilescu", date: .init(), company: "Bilescu", frameworks: ["Foundation", "XcodeProj", "PathKit"], fileType: .class).string)
+            let fileName = "FileName.swift"
+            let newFilePath = path + fileName
+            try newFilePath.write(FileTemplate(fileName: fileName, project: project, frameworks: ["Foundation", "XcodeProj", "PathKit"], fileType: .class).string)
             
-            //        let newFile = PBXFileElement.init(sourceTree: PBXSourceTree.group, path: path, name: "Filename.swift", includeInIndex: nil, usesTabs: nil, indentWidth: nil, tabWidth: nil, wrapsLines: nil)
-            _ = try (item.file as? PBXGroup)?.addFile(at: newFilePath, sourceRoot: newFilePath)
+            guard let fileReference = try (item.file as? PBXGroup)?.addFile(at: Path(fileName), sourceRoot: path, validatePresence: false) else { return }
+            try commitChanges()
+            let newNode = Node(item: ProjectItem(file: fileReference), index: node.siblingsCount)
+            newNode.parent = node
+            newNode.parent?.addChild(newNode)
             
-            try project.write(path: projectPath)
+            view?.reloadItems(in: newNode.parentsCount - 1)
         } catch {
             debugPrint(error)
         }
     }
     
+    func renameFile(_ name: String, at node: Node) {
+        do {
+            guard let fullPath = try node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
+                return
+            }
+            let newPath = fullPath.parent() + name
+//            try fullPath.copy(newPath)
+//            try fullPath.delete()
+            try fullPath.move(newPath)
+            node.item.file?.name = name
+            try commitChanges()
+//            view?.reloadItems(in: node.parentsCount - 1)
+        } catch {
+            debugPrint(error)
+        }
+    }
+    
+    func deleteFile(at node: Node) {
+        guard let fullPath = try? node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
+            return
+        }
+        
+        do {
+            try? fullPath.delete()
+            if let group = node.parent?.item.file as? PBXGroup {
+                group.children.removeAll { $0.name == node.item.file?.name }
+            }
+            node.remove()
+            try commitChanges()
+            view?.reloadItems(in: node.parentsCount)
+        } catch {
+            debugPrint(error)
+        }
+    }
+    
+    private func commitChanges() throws {
+        try project.write(path: projectPath)
+    }
+    
 }
 
-struct ProjectItem {
-    let name: String
-    let children: [ProjectItem]?
-    let file: PBXFileElement?
+extension FileTemplate {
+    init(fileName: String, project: XcodeProj, frameworks: [String], fileType: FileType) {
+        let company = project.pbxproj.rootObject?.attributes["ORGANIZATIONNAME"] as? String ?? ""
+        let projectName = project.pbxproj.rootObject?.name ?? ""
+        self.init(fileName: fileName, project: projectName, author: NSFullUserName(), date: .init(), company: company, frameworks: frameworks, fileType: fileType)
+    }
 }
 
-class Node {
+class ProjectItem {
+    var name: String
+    var children: [ProjectItem]?
+    var file: PBXFileElement?
+    
+    init(name: String, children: [ProjectItem]?, file: PBXFileElement?) {
+        self.name = name
+        self.children = children
+        self.file = file
+    }
+}
+
+class Node: CustomDebugStringConvertible {
     var parent: Node? = nil
     var children: [Node]
     let item: ProjectItem
@@ -74,7 +130,13 @@ class Node {
     }
     
     var siblingsCount: Int {
-        return parent?.children.count ?? 0
+        guard let parent = parent else { return 0 }
+        return parent.children.count - 1
+    }
+    
+    var parentsCount: Int {
+        guard let parent = parent else { return 0 }
+        return parent.parentsCount + 1
     }
     
     subscript(indexes: [Int]) -> Node? {
@@ -96,11 +158,24 @@ class Node {
     func addChild(_ node: Node) {
         self.children.append(node)
     }
+    
+    func remove() {
+        self.parent?.children.removeAll(where: { $0.item.name == self.item.name })
+    }
+    
+    var debugDescription: String {
+        return """
+        name: \(item.name)
+        children: \(children.map { $0.debugDescription }.joined(separator: "\n") )
+        """
+    }
 }
 
 extension ProjectItem {
-    init(project: XcodeProj) {
-        name = project.pbxproj.rootObject?.name ?? "-"
+    convenience init(project: XcodeProj) {
+        let name = project.pbxproj.rootObject?.name ?? "-"
+        let children: [ProjectItem]?
+        let file: PBXFileElement?
         if let rootGroup = try? project.pbxproj.rootGroup() {
             children = rootGroup.children.map({ (fileElement) -> ProjectItem in
                 return ProjectItem(file: fileElement)
@@ -110,19 +185,21 @@ extension ProjectItem {
             children = nil
             file = nil
         }
+        self.init(name: name, children: children, file: file)
     }
     
-    init(group: PBXGroup) {
-        name = (group.path ?? group.name) ?? "-"
-        children = group.children.map { ProjectItem(file: $0) }
-        file = group
+    convenience init(group: PBXGroup) {
+        let name = (group.path ?? group.name) ?? "-"
+        let children = group.children.map { ProjectItem(file: $0) }
+        let file = group
+        self.init(name: name, children: children, file: file)
     }
     
-    init(file: PBXFileReference) {
+    convenience init(file: PBXFileReference) {
         self.init(name: file.path ?? "-", children: nil, file: file)
     }
     
-    init(file: PBXFileElement) {
+    convenience init(file: PBXFileElement) {
         if let group = file as? PBXGroup {
             self.init(group: group)
         } else if let fileReference = file as? PBXFileReference {
