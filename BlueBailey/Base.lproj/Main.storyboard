@@ -710,17 +710,30 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <browser verticalHuggingPriority="750" allowsExpansionToolTips="YES" enabled="YES" hasHorizontalScroller="YES" allowsMultipleSelection="YES" allowsEmptySelection="YES" defaultColumnWidth="170" minColumnWidth="100" titled="YES" separatesColumns="YES" allowsTypeSelect="YES" sendsActionOnArrowKeys="YES" columnResizingType="auto" translatesAutoresizingMaskIntoConstraints="NO" id="25s-J2-ytw">
-                                <rect key="frame" x="20" y="12" width="410" height="423"/>
+                                <rect key="frame" x="20" y="12" width="410" height="383"/>
                                 <connections>
                                     <outlet property="delegate" destination="XPc-iF-VCC" id="cGU-cW-Jvu"/>
                                 </connections>
                             </browser>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sfW-bf-IIR">
+                                <rect key="frame" x="14" y="385" width="87" height="32"/>
+                                <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="xXo-e4-Nrj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="refreshActionWithSender:" target="XPc-iF-VCC" id="Ocw-cj-ieN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="25s-J2-ytw" firstAttribute="leading" secondItem="pDw-Yu-FiT" secondAttribute="leading" constant="20" id="3Xi-Yq-QgR"/>
+                            <constraint firstItem="sfW-bf-IIR" firstAttribute="top" secondItem="pDw-Yu-FiT" secondAttribute="top" constant="20" id="6P1-Xc-cZh"/>
+                            <constraint firstItem="sfW-bf-IIR" firstAttribute="leading" secondItem="pDw-Yu-FiT" secondAttribute="leading" constant="20" id="ZiX-45-blv"/>
                             <constraint firstAttribute="bottom" secondItem="25s-J2-ytw" secondAttribute="bottom" constant="12" id="nsW-6w-NvF"/>
-                            <constraint firstItem="25s-J2-ytw" firstAttribute="top" secondItem="pDw-Yu-FiT" secondAttribute="top" constant="20" id="qmZ-Ya-KcQ"/>
+                            <constraint firstItem="25s-J2-ytw" firstAttribute="top" secondItem="pDw-Yu-FiT" secondAttribute="top" constant="60" id="qmZ-Ya-KcQ"/>
                             <constraint firstAttribute="trailing" secondItem="25s-J2-ytw" secondAttribute="trailing" constant="20" id="s44-6g-oQ0"/>
+                            <constraint firstItem="25s-J2-ytw" firstAttribute="top" secondItem="sfW-bf-IIR" secondAttribute="bottom" constant="19" id="vNf-h2-9Lo"/>
                         </constraints>
                     </view>
                     <connections>

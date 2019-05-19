@@ -11,12 +11,20 @@ import XcodeProj
 import PathKit
 
 class NavigatorPresenter {
+    var rootNode: Node
+    
     private weak var view: NavigatorView?
     private let navigation: NavigatorNavigation
-    private let project: XcodeProj
+    private var project: XcodeProj
     private let projectPath: Path
     private let useCaseFactory: UseCaseFactory
-    var rootNode: Node
+    private var selectedNode: Node! {
+        didSet {
+            if selectedNode == nil {
+                selectedNode = rootNode
+            }
+        }
+    }
     
     init(view: NavigatorView, navigation: NavigatorNavigation, useCaseFactory: UseCaseFactory, path: Path) throws {
         self.view = view
@@ -25,32 +33,76 @@ class NavigatorPresenter {
         self.projectPath = path
         self.project = try XcodeProj(path: path)
         let item = ProjectItem(project: project)
-        self.rootNode = Node(item: item, index: 0)   
+        self.rootNode = Node(item: item)
+        self.selectedNode = rootNode
     }
     
     func viewDidLoad() {
         view?.displayProject(named: project.pbxproj.rootObject?.name ?? "Project")
     }
     
-    func addNewFile(at node: Node) {
+    func addNewFile() {
         do {
-            let item = node.item
-            guard let path = try item.file?.fullPath(sourceRoot: projectPath.parent()) else { return }
+            guard selectedNode.children.count != 0 else {
+                selectedNode = selectedNode.parent
+                addNewFile()
+                return
+            }
             
+            guard let path = try selectedNode.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
+                    return
+            }
+            
+            let fileContainer = selectedNode.item.file as? PBXGroup
             let fileName = "FileName.swift"
-            let newFilePath = path + fileName
-            try newFilePath.write(FileTemplate(fileName: fileName, project: project, frameworks: ["Foundation", "XcodeProj", "PathKit"], fileType: .class).string)
+            try createNewFile(named: fileName, at: path)
             
-            guard let fileReference = try (item.file as? PBXGroup)?.addFile(at: Path(fileName), sourceRoot: path, validatePresence: false) else { return }
+            guard let fileReference = try fileContainer?.addFile(at: Path(fileName), sourceRoot: path, validatePresence: false) else { return }
             try commitChanges()
-            let newNode = Node(item: ProjectItem(file: fileReference), index: node.siblingsCount)
-            newNode.parent = node
-            newNode.parent?.addChild(newNode)
-            
-            view?.reloadItems(in: newNode.parentsCount - 1)
+            let newNode = Node(item: ProjectItem(file: fileReference))
+            selectedNode.addChild(newNode)
+            addedNewNode(at: selectedNode.index)
         } catch {
             debugPrint(error)
         }
+    }
+    
+    func addNewFolder() {
+        
+    }
+    
+    private func addNewFileReference(_ fileReference: PBXFileReference) {
+//        do {
+//            guard selectedNode?.children.count != 0 else {
+//                selectedNode = selectedNode?.parent
+//                addNewFile()
+//                return
+//            }
+//
+//            guard let node = selectedNode,
+//                let path = try node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
+//                    return
+//            }
+//
+//            let fileContainer = node.item.file as? PBXGroup
+//            let fileName = "FileName.swift"
+//            try createNewFile(named: fileName, at: path)
+//
+//            guard let addedfileReference = try fileContainer?.addFile(at: Path(fileName), sourceRoot: path, validatePresence: false) else { return }
+//            try commitChanges()
+//            let newNode = Node(item: ProjectItem(file: fileReference))
+//            node.addChild(newNode)
+//            addedNewNode(at: node.index)
+//        } catch {
+//            debugPrint(error)
+//        }
+    }
+    
+    @discardableResult
+    private func createNewFile(named fileName: String, at path: Path) throws -> Path {
+        let newFilePath = path + fileName
+        try newFilePath.write(FileTemplate(fileName: fileName, project: project, frameworks: ["Foundation", "XcodeProj", "PathKit"], fileType: .class).string)
+        return newFilePath
     }
     
     func renameFile(_ name: String, at node: Node) {
@@ -70,28 +122,66 @@ class NavigatorPresenter {
         }
     }
     
-    func deleteFile(at node: Node) {
-        guard let fullPath = try? node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
+    func deleteFile() {
+        
+        guard let node = selectedNode,
+            let fullPath = try? node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
             return
         }
+        let parentNode = node.parent
         
         do {
             try? fullPath.delete()
-            if let group = node.parent?.item.file as? PBXGroup {
-                group.children.removeAll { $0.name == node.item.file?.name }
+            if let group = parentNode?.item.file as? PBXGroup {
+                group.children.remove(at: node.index)
             }
             node.remove()
             try commitChanges()
-            view?.reloadItems(in: node.parentsCount)
+            deletedNode(at: node.index, parent: parentNode)
         } catch {
             debugPrint(error)
         }
+    }
+    
+    func refreshProject() {
+        do { self.project = try XcodeProj(path: projectPath) }
+        catch { debugPrint(error) }
     }
     
     private func commitChanges() throws {
         try project.write(path: projectPath)
     }
     
+    
+    private func addedNewNode(at index: Int) {
+//        selectedNode?.addChild(.init(name: "New Node"))
+//        guard let index = selectedNode?.index else { return }
+        
+        view?.reloadCurrentSection()
+        view?.select(row: index)
+    }
+    
+    private func deletedNode(at index: Int, parent: Node?) {
+        guard let parentNode = parent else {
+            view?.reloadParentSection()
+            return
+        }
+        
+        if parentNode.children.count > 0 {
+            if index >= parentNode.children.count {
+                view?.select(row: parentNode.children.count-1)
+            } else {
+                view?.select(row: index)
+            }
+        } else {
+            view?.reloadParentSection()
+        }
+        view?.reloadCurrentSection()
+    }
+    
+    func selectNode(_ node: Node) {
+        selectedNode = node
+    }
 }
 
 extension FileTemplate {
@@ -114,19 +204,23 @@ class ProjectItem {
     }
 }
 
-class Node: CustomDebugStringConvertible {
-    var parent: Node? = nil
-    var children: [Node]
+class Node: NSObject {
+    weak var parent: Node? = nil
+    var children: [Node] = [] {
+        didSet {
+            indexChildren()
+        }
+    }
     let item: ProjectItem
-    let index: Int
+    var index: Int = 0
     
-    init(item: ProjectItem, parent: Node? = nil, index: Int) {
-        
+    init(item: ProjectItem, parent: Node? = nil) {
         self.item = item
         self.parent = parent
-        self.children = item.children?.enumerated().map { return  Node(item: $0.element, index: $0.offset) } ?? []
-        self.index = index
-        self.children.forEach { $0.parent = self }
+        super.init()
+        if let children = item.children?.map({ return  Node(item: $0)}) {
+            self.addChildren(children)
+        }
     }
     
     var siblingsCount: Int {
@@ -157,20 +251,24 @@ class Node: CustomDebugStringConvertible {
     
     func addChild(_ node: Node) {
         self.children.append(node)
+        node.parent = self
+    }
+    
+    func addChildren(_ nodes: [Node]) {
+        children = nodes
+        nodes.forEach { $0.parent = self }
     }
     
     func remove() {
-        self.parent?.children.removeAll(where: { $0.item.name == self.item.name })
+        parent?.children.remove(at: index)
     }
     
-    var debugDescription: String {
-        return """
-        name: \(item.name)
-        children: \(children.map { $0.debugDescription }.joined(separator: "\n") )
-        """
+    func indexChildren() {
+        self.children.enumerated().forEach { $0.element.index = $0.offset }
     }
 }
 
+// MARK: - ProjectItem
 extension ProjectItem {
     convenience init(project: XcodeProj) {
         let name = project.pbxproj.rootObject?.name ?? "-"
@@ -210,6 +308,7 @@ extension ProjectItem {
     }
 }
 
+/// FileTemplate
 struct FileTemplate {
     enum FileType {
         case `enum`, `struct`, `class`, `protocol`

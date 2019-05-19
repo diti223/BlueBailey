@@ -19,16 +19,16 @@ class NavigatorViewController: NSViewController {
         super.viewDidLoad()
         presenter.viewDidLoad()
         browser.allowsMultipleSelection = true
+        browser.menu = cellMenu
+        cellMenu.delegate = self
     }
     
     @IBAction func addNewFile(sender: Any) {
-        guard let node = selectedNode() else { return }
-        presenter.addNewFile(at: node)
+        presenter.addNewFile()
     }
     
     @IBAction func deleteFile(sender: Any) {
-        guard let node = selectedNode() else { return }
-        presenter.deleteFile(at: node)
+        presenter.deleteFile()
     }
     
     @IBAction func renameFile(sender: Any) {
@@ -39,14 +39,25 @@ class NavigatorViewController: NSViewController {
 
     }
     
-    func selectedNode() -> Node? {
-        let column = browser.selectedColumn
-        let row = browser.selectedRow(inColumn: column)
-        return browser.item(atRow: row, inColumn: column) as? Node
-        
+    @IBAction func refreshAction(sender: Any) {
+        presenter.refreshProject()
     }
     
+    private var selectedNode: Node? {
+        let column = browser.selectedColumn
+        guard column >= 0 else { return nil }
+        let row = browser.selectedRow(inColumn: column)
+        guard row >= 0 else { return nil }
+        return browser.item(atRow: row, inColumn: column) as? Node
+    }
     
+    private func selectNode() {
+        guard let node = selectedNode else {
+            presenter.selectNode(presenter.rootNode)
+            return
+        }
+        presenter.selectNode(node)
+    }
 }
 
 extension NavigatorViewController: NavigatorView {
@@ -54,8 +65,27 @@ extension NavigatorViewController: NavigatorView {
         view.window?.title = named
     }
     
-    func reloadItems(in section: Int) {
-        browser.reloadColumn(section)
+    
+    func reloadCurrentSection() {
+        var column = browser.selectedColumn
+        if column < 0 {
+            column = 0
+        }
+        browser.reloadColumn(column)
+    }
+    
+    func reloadChildSection() {
+        browser.reloadColumn(browser.selectedColumn+1)
+    }
+    
+    func reloadParentSection() {
+        let previousColumn = browser.selectedColumn-1
+        browser.selectRow(browser.selectedRow(inColumn: previousColumn), inColumn: previousColumn)
+    }
+    
+    func select(row: Int) {
+        let column = browser.selectedColumn
+        browser.selectRow(row, inColumn: column)
     }
 }
 
@@ -71,7 +101,7 @@ extension NavigatorViewController: NSBrowserDelegate {
     }
 
     func browser(_ browser: NSBrowser, child index: Int, ofItem item: Any?) -> Any {
-        guard let node = item as? Node else { return Node(item: .empty, index: 0) }
+        guard let node = item as? Node else { return Node(item: .empty) }
         return node.children[index]
     }
 
@@ -111,5 +141,12 @@ extension NavigatorViewController: NSBrowserDelegate {
 extension ProjectItem {
     static var empty: ProjectItem {
         return ProjectItem(name: "", children: nil, file: nil)
+    }
+}
+
+extension NavigatorViewController: NSMenuDelegate {
+    func menuWillOpen(_ menu: NSMenu) {
+        selectNode()
+        
     }
 }
