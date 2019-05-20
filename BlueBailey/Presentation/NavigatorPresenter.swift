@@ -43,59 +43,64 @@ class NavigatorPresenter {
     
     func addNewFile() {
         do {
-            guard selectedNode.children.count != 0 else {
-                selectedNode = selectedNode.parent
-                addNewFile()
-                return
-            }
-            
-            guard let path = try selectedNode.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
-                    return
-            }
-            
-            let fileContainer = selectedNode.item.file as? PBXGroup
             let fileName = "FileName.swift"
+            guard let path = try addNewFileReference(named: fileName) else { return }
             try createNewFile(named: fileName, at: path)
-            
-            guard let fileReference = try fileContainer?.addFile(at: Path(fileName), sourceRoot: path, validatePresence: false) else { return }
-            try commitChanges()
-            let newNode = Node(item: ProjectItem(file: fileReference))
-            selectedNode.addChild(newNode)
-            addedNewNode(at: selectedNode.index)
+
         } catch {
             debugPrint(error)
         }
     }
     
     func addNewFolder() {
-        
+        do {
+            let folderName = "Group"
+            guard let path = try addNewGroupReference(named: folderName) else { return }
+            try createFolder(named: folderName, at: path)
+            
+        } catch {
+            debugPrint(error)
+        }
     }
     
-    private func addNewFileReference(_ fileReference: PBXFileReference) {
-//        do {
-//            guard selectedNode?.children.count != 0 else {
-//                selectedNode = selectedNode?.parent
-//                addNewFile()
-//                return
-//            }
-//
-//            guard let node = selectedNode,
-//                let path = try node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
-//                    return
-//            }
-//
-//            let fileContainer = node.item.file as? PBXGroup
-//            let fileName = "FileName.swift"
-//            try createNewFile(named: fileName, at: path)
-//
-//            guard let addedfileReference = try fileContainer?.addFile(at: Path(fileName), sourceRoot: path, validatePresence: false) else { return }
-//            try commitChanges()
-//            let newNode = Node(item: ProjectItem(file: fileReference))
-//            node.addChild(newNode)
-//            addedNewNode(at: node.index)
-//        } catch {
-//            debugPrint(error)
-//        }
+    private func selectFirstGroupNode() {
+        if (selectedNode?.item.file as? PBXGroup) == nil {
+            selectedNode = selectedNode?.parent
+        }
+    }
+    
+    private func addNewFileReference(named: String) throws -> Path? {
+        selectFirstGroupNode()
+        let node = selectedNode!
+        guard let path = try node.item.file?.fullPath(sourceRoot: projectPath.parent()),
+            let fileContainer = selectedNode.item.file as? PBXGroup else {
+            return nil
+        }
+        
+        let fileReference = try fileContainer.addFile(at: Path(named), sourceRoot: path, validatePresence: false)
+        try addFile(reference: fileReference, to: node)
+        
+        return path
+    }
+    
+    private func addNewGroupReference(named: String) throws -> Path? {
+        selectFirstGroupNode()
+        let node = selectedNode!
+        guard let path = try node.item.file?.fullPath(sourceRoot: projectPath.parent()),
+            let fileContainer = selectedNode.item.file as? PBXGroup,
+            let fileReference = try fileContainer.addGroup(named: named).first else {
+                return nil
+        }
+        try addFile(reference: fileReference, to: node)
+        
+        return (path + named)
+    }
+    
+    private func addFile(reference: PBXFileElement, to node: Node) throws {
+        let newNode = Node(item: ProjectItem(file: reference))
+        node.addChild(newNode)
+        addedNewNode(at: node.index)
+        try commitChanges()
     }
     
     @discardableResult
@@ -105,18 +110,21 @@ class NavigatorPresenter {
         return newFilePath
     }
     
+    private func createFolder(named: String, at path: Path) throws {
+        try (path + named).mkdir()
+    }
+    
     func renameFile(_ name: String, at node: Node) {
         do {
             guard let fullPath = try node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
                 return
             }
             let newPath = fullPath.parent() + name
-//            try fullPath.copy(newPath)
-//            try fullPath.delete()
             try fullPath.move(newPath)
             node.item.file?.name = name
+            node.item.file?.path = newPath.string
+            view?.reloadCurrentSection()
             try commitChanges()
-//            view?.reloadItems(in: node.parentsCount - 1)
         } catch {
             debugPrint(error)
         }

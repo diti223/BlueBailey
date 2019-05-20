@@ -744,9 +744,14 @@
                 <customObject id="gm9-th-F6X" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="sJi-4P-RvU">
                     <items>
-                        <menuItem title="Add New File" keyEquivalent="n" id="8kk-bp-s1z">
+                        <menuItem title="Add New File" keyEquivalent="a" id="8kk-bp-s1z">
                             <connections>
                                 <action selector="addNewFileWithSender:" target="XPc-iF-VCC" id="sI6-Ou-gSV"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Add New Folder" keyEquivalent="A" id="Vb4-ky-Jht">
+                            <connections>
+                                <action selector="addNewFolderWithSender:" target="XPc-iF-VCC" id="crn-9l-PKL"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Delete File" keyEquivalent="d" id="qEc-Kz-z9f">

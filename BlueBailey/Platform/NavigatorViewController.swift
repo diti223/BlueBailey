@@ -27,6 +27,10 @@ class NavigatorViewController: NSViewController {
         presenter.addNewFile()
     }
     
+    @IBAction func addNewFolder(sender: Any) {
+        presenter.addNewFolder()
+    }
+    
     @IBAction func deleteFile(sender: Any) {
         presenter.deleteFile()
     }
