@@ -56,9 +56,22 @@ class NavigatorPresenter {
         do {
             let folderName = "Group"
             guard let path = try addNewGroupReference(named: folderName) else { return }
-            try createFolder(named: folderName, at: path)
+            try path.mkdir()
             
         } catch {
+            debugPrint(error)
+        }
+    }
+    
+    func refreshProject() {
+        do {
+            self.project = try XcodeProj(path: projectPath)
+            let item = ProjectItem(project: project)
+            self.rootNode = Node(item: item)
+            self.selectedNode = rootNode
+            view?.reloadAll()
+        }
+        catch {
             debugPrint(error)
         }
     }
@@ -110,9 +123,9 @@ class NavigatorPresenter {
         return newFilePath
     }
     
-    private func createFolder(named: String, at path: Path) throws {
-        try (path + named).mkdir()
-    }
+//    private func createFolder(named: String, at path: Path) throws {
+//        try (path + named).mkdir()
+//    }
     
     func renameFile(_ name: String, at node: Node) {
         do {
@@ -120,9 +133,9 @@ class NavigatorPresenter {
                 return
             }
             let newPath = fullPath.parent() + name
-            try fullPath.move(newPath)
-            node.item.file?.name = name
-            node.item.file?.path = newPath.string
+            try? fullPath.move(newPath)
+            
+            try node.renameFileReference(name, sourceRoot: newPath)
             view?.reloadCurrentSection()
             try commitChanges()
         } catch {
@@ -140,9 +153,7 @@ class NavigatorPresenter {
         
         do {
             try? fullPath.delete()
-            if let group = parentNode?.item.file as? PBXGroup {
-                group.children.remove(at: node.index)
-            }
+            node.removeFileReference()
             node.remove()
             try commitChanges()
             deletedNode(at: node.index, parent: parentNode)
@@ -151,20 +162,12 @@ class NavigatorPresenter {
         }
     }
     
-    func refreshProject() {
-        do { self.project = try XcodeProj(path: projectPath) }
-        catch { debugPrint(error) }
-    }
-    
     private func commitChanges() throws {
         try project.write(path: projectPath)
     }
     
     
     private func addedNewNode(at index: Int) {
-//        selectedNode?.addChild(.init(name: "New Node"))
-//        guard let index = selectedNode?.index else { return }
-        
         view?.reloadCurrentSection()
         view?.select(row: index)
     }
@@ -191,6 +194,26 @@ class NavigatorPresenter {
         selectedNode = node
     }
 }
+
+extension Node {
+    func renameFileReference(_ name: String, sourceRoot: Path) throws {
+        if let group = parent?.item.file as? PBXGroup {
+            let removedItem = group.children.remove(at: index)
+            removedItem.name = name
+            removedItem.path = name
+            
+            group.children.append(removedItem)
+            item.name = name
+        }
+    }
+    
+    func removeFileReference() {
+        if let group = parent?.item.file as? PBXGroup {
+            group.children.remove(at: index)
+        }
+    }
+}
+
 
 extension FileTemplate {
     init(fileName: String, project: XcodeProj, frameworks: [String], fileType: FileType) {

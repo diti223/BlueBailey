@@ -12,5 +12,6 @@ protocol NavigatorView: class {
     func displayProject(named: String)
     func reloadCurrentSection()
     func reloadParentSection()
+    func reloadAll()
     func select(row: Int)
 }

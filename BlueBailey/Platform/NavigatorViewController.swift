@@ -40,7 +40,6 @@ class NavigatorViewController: NSViewController {
         let row = browser.selectedRow(inColumn: column)
         let indexPath = IndexPath(item: row, section: column)
         browser.editItem(at: indexPath, with: nil, select: true)
-
     }
     
     @IBAction func refreshAction(sender: Any) {
@@ -69,6 +68,9 @@ extension NavigatorViewController: NavigatorView {
         view.window?.title = named
     }
     
+    func reloadAll() {
+        browser.loadColumnZero()
+    }
     
     func reloadCurrentSection() {
         var column = browser.selectedColumn
