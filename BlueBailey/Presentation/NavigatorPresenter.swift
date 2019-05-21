@@ -42,11 +42,22 @@ class NavigatorPresenter {
     }
     
     func addNewFile() {
+        addNewEmptyFile()
+    }
+    
+    private func addNewEmptyFile() {
+        addNewFile(template: XcodeProjFileTemplate.empty(project: project))
+    }
+    
+    private func addNewEmptyFile(named: String) {
+        addNewFile(template: XcodeProjFileTemplate.namedEmpty(name: named, project: project))
+    }
+    
+    private func addNewFile(template: FileTemplate) {
         do {
-            let fileName = "FileName.swift"
-            guard let path = try addNewFileReference(named: fileName) else { return }
-            try createNewFile(named: fileName, at: path)
-
+            guard let path = try addNewFileReference(named: template.completeName) else { return }
+            try createNewFile(at: path, template: template)
+            
         } catch {
             debugPrint(error)
         }
@@ -74,6 +85,56 @@ class NavigatorPresenter {
         catch {
             debugPrint(error)
         }
+    }
+    
+    func renameFile(_ name: String, at node: Node) {
+        do {
+            guard let fullPath = try node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
+                return
+            }
+            let newPath = fullPath.parent() + name
+            try? fullPath.move(newPath)
+            
+            try node.renameFileReference(name, sourceRoot: newPath)
+            view?.reloadCurrentSection()
+            try commitChanges()
+        } catch {
+            debugPrint(error)
+        }
+    }
+    
+    func deleteFile() {
+        guard let node = selectedNode,
+            let fullPath = try? node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
+                return
+        }
+        let parentNode = node.parent
+        
+        do {
+            try? fullPath.delete()
+            node.removeFileReference()
+            node.remove()
+            try commitChanges()
+            deletedNode(at: node.index, parent: parentNode)
+        } catch {
+            debugPrint(error)
+        }
+    }
+    
+    func createMVPFiles(moduleName: String) {
+        guard let platformNode = selectedNode["Platform"],
+            let presentationNode = selectedNode["Presentation"] else {
+                return
+        }
+        selectedNode = platformNode
+        [MVPComponent.connector, .viewController].forEach {
+            addNewEmptyFile(named: "\(moduleName)\($0.name)")
+        }
+        selectedNode = presentationNode
+        [MVPComponent.view, .navigation].forEach {
+            addNewEmptyFile(named: "\(moduleName)\($0.name)")
+        }
+        addNewFile(template: PresenterFileTemplate(moduleName: moduleName, project: project))
     }
     
     private func selectFirstGroupNode() {
@@ -117,49 +178,10 @@ class NavigatorPresenter {
     }
     
     @discardableResult
-    private func createNewFile(named fileName: String, at path: Path) throws -> Path {
-        let newFilePath = path + fileName
-        try newFilePath.write(FileTemplate(fileName: fileName, project: project, frameworks: ["Foundation", "XcodeProj", "PathKit"], fileType: .class).string)
+    private func createNewFile(at path: Path, template: FileTemplate) throws -> Path {
+        let newFilePath = path + template.completeName
+        try newFilePath.write(template.string)
         return newFilePath
-    }
-    
-//    private func createFolder(named: String, at path: Path) throws {
-//        try (path + named).mkdir()
-//    }
-    
-    func renameFile(_ name: String, at node: Node) {
-        do {
-            guard let fullPath = try node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
-                return
-            }
-            let newPath = fullPath.parent() + name
-            try? fullPath.move(newPath)
-            
-            try node.renameFileReference(name, sourceRoot: newPath)
-            view?.reloadCurrentSection()
-            try commitChanges()
-        } catch {
-            debugPrint(error)
-        }
-    }
-    
-    func deleteFile() {
-        
-        guard let node = selectedNode,
-            let fullPath = try? node.item.file?.fullPath(sourceRoot: projectPath.parent()) else {
-            return
-        }
-        let parentNode = node.parent
-        
-        do {
-            try? fullPath.delete()
-            node.removeFileReference()
-            node.remove()
-            try commitChanges()
-            deletedNode(at: node.index, parent: parentNode)
-        } catch {
-            debugPrint(error)
-        }
     }
     
     private func commitChanges() throws {
@@ -195,6 +217,12 @@ class NavigatorPresenter {
     }
 }
 
+extension FileTemplate {
+    var completeName: String {
+        return fileName + ".\(fileExtension)"
+    }
+}
+
 extension Node {
     func renameFileReference(_ name: String, sourceRoot: Path) throws {
         if let group = parent?.item.file as? PBXGroup {
@@ -211,15 +239,6 @@ extension Node {
         if let group = parent?.item.file as? PBXGroup {
             group.children.remove(at: index)
         }
-    }
-}
-
-
-extension FileTemplate {
-    init(fileName: String, project: XcodeProj, frameworks: [String], fileType: FileType) {
-        let company = project.pbxproj.rootObject?.attributes["ORGANIZATIONNAME"] as? String ?? ""
-        let projectName = project.pbxproj.rootObject?.name ?? ""
-        self.init(fileName: fileName, project: projectName, author: NSFullUserName(), date: .init(), company: company, frameworks: frameworks, fileType: fileType)
     }
 }
 
@@ -277,6 +296,12 @@ class Node: NSObject {
                 return
             }
             self.children.insert(newValue, at: lastIndex)
+        }
+    }
+    
+    subscript(name: String) -> Node? {
+        get {
+            return children.first(where: { $0.item.name == name })
         }
     }
     
@@ -340,11 +365,12 @@ extension ProjectItem {
 }
 
 /// FileTemplate
-struct FileTemplate {
+class FileTemplate {
     enum FileType {
-        case `enum`, `struct`, `class`, `protocol`
+        case none, `enum`, `struct`, `class`, `protocol`
     }
     let fileName: String
+    let fileExtension: String
     let project: String
     let author: String
     let date: Date
@@ -352,25 +378,127 @@ struct FileTemplate {
     let frameworks: [String]
     let fileType: FileType
     
-    var string: String {
+    init(fileName: String, fileExtension: String, project: String, author: String, date: Date, company: String, frameworks: [String], fileType: FileType) {
+        self.fileName = fileName
+        self.fileExtension = fileExtension
+        self.project = project
+        self.author = author
+        self.date = date
+        self.company = company
+        self.frameworks = frameworks
+        self.fileType = fileType
+    }
+    
+    
+    
+    var topFileComment: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
         let shortDateString = dateFormatter.string(from: date)
         dateFormatter.dateFormat = "yyyy"
         let yearDateString = dateFormatter.string(from: date)
-        let frameworksString = frameworks.map { "import \($0)" }.joined(separator: "\n")
-        let templateString = """
+        return
+"""
 //
-//  \(fileName)
+//  \(fileName).\(fileExtension)
 //  \(project)
 //
 //  Created by \(author) on \(shortDateString)
 //  Copyright © \(yearDateString) \(company). All rights reserved.
 //
-
-\(frameworksString)
 """
-        return templateString
+    }
+    
+    var frameworksImports: String {
+        let frameworksString = frameworks.map { "import \($0)" }.joined(separator: "\n")
+        return "\(frameworksString)"
+    }
+    
+    var beforeClassDefinition: String {
+        return
+"""
+\(topFileComment)
+
+\(frameworksImports)
+"""
+    }
+    
+    var string: String {
+        return beforeClassDefinition
+    }
+}
+
+extension XcodeProjFileTemplate {
+    static func empty(project: XcodeProj) -> FileTemplate {
+        return namedEmpty(name: "FileName", project: project)
+    }
+    
+    static func namedEmpty(name: String, project: XcodeProj) -> FileTemplate {
+        return XcodeProjFileTemplate(fileName: name, fileExtension: "swift", project: project, frameworks: ["Foundation"], fileType: .none)
+    }
+}
+
+class XcodeProjFileTemplate: FileTemplate {
+    init(fileName: String, fileExtension: String, project: XcodeProj, frameworks: [String], fileType: FileType) {
+        let company = project.pbxproj.rootObject?.attributes["ORGANIZATIONNAME"] as? String ?? ""
+        let projectName = project.pbxproj.rootObject?.name ?? ""
+        super.init(fileName: fileName, fileExtension: fileExtension, project: projectName, author: NSFullUserName(), date: .init(), company: company, frameworks: frameworks, fileType: fileType)
+    }
+}
+
+
+private enum MVPComponent {
+    case connector, viewController, presenter, view, navigation, useCase, presentation, entityGateway, entity
+    
+    var name: String {
+        var componentName = String.init(describing: self)
+        let firstLetter = componentName.removeFirst().uppercased()
+        return firstLetter + componentName
+    }
+}
+
+class MVPFileTemplate: XcodeProjFileTemplate {
+    let moduleName: String
+    let methodDefinitions: String
+    
+    init(moduleName: String, methodDefinitions: String, componentName: String, project: XcodeProj) {
+        self.methodDefinitions = methodDefinitions
+        self.moduleName = moduleName
+        super.init(fileName: "\(moduleName)\(componentName)", fileExtension: "swift", project: project, frameworks: ["Foundation"], fileType: .class)
+    }
+}
+
+
+
+class PresenterFileTemplate: MVPFileTemplate {
+    static let viewDidLoadMethod: String =
+    """
+    func viewDidLoad() {
+
+    }
+    """
+    init(moduleName: String, methodDefinitions: String = PresenterFileTemplate.viewDidLoadMethod, project: XcodeProj) {
+        super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: MVPComponent.presenter.name, project: project)
+    }
+    
+    override var string: String {
+        let viewInterfaceName = "\(moduleName)\(MVPComponent.view.name)"
+        let navigationInterfaceName = "\(moduleName)\(MVPComponent.navigation.name)"
+        return super.string +
+        """
+        \(String.init(describing: fileType)) \(fileName) {
+        weak var view: \(viewInterfaceName)?
+        let navigation: \(navigationInterfaceName)
+        
+        init(view: \(viewInterfaceName), navigation: \(navigationInterfaceName)) {
+        self.view = view
+        self.navigation = navigation
+        }
+        
+        \(methodDefinitions)
+        }
+        
+        """
     }
 }

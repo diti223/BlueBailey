@@ -11,6 +11,7 @@ import Cocoa
 class NavigatorViewController: NSViewController {
     @IBOutlet weak var browser: NSBrowser!
     @IBOutlet var cellMenu: NSMenu!
+    @IBOutlet weak var moduleNameTextField: NSTextField!
     
     var presenter: NavigatorPresenter!
     let manager = FileManager.default
@@ -36,10 +37,16 @@ class NavigatorViewController: NSViewController {
     }
     
     @IBAction func renameFile(sender: Any) {
-        let column = browser.selectedColumn
+            let column = browser.selectedColumn
         let row = browser.selectedRow(inColumn: column)
         let indexPath = IndexPath(item: row, section: column)
         browser.editItem(at: indexPath, with: nil, select: true)
+    }
+    
+    @IBAction func createMVPFiles(sender: Any) {
+        guard !moduleNameTextField.stringValue.isEmpty else { return }
+        selectNode()
+        presenter.createMVPFiles(moduleName: moduleNameTextField.stringValue)
     }
     
     @IBAction func refreshAction(sender: Any) {
