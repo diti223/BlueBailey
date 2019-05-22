@@ -10,11 +10,11 @@ import Foundation
 import XcodeProj
 
 class ViewFileTemplate: MVPFileTemplate {
-    static let reloadMethod: String =
+    static let commentedReloadMethod: String =
     """
-    func reloadData()
+    //func reloadData()
     """
-    init(moduleName: String, methodDefinitions: String = ViewFileTemplate.reloadMethod, project: XcodeProj) {
+    init(moduleName: String, methodDefinitions: String = ViewFileTemplate.commentedReloadMethod, project: XcodeProj) {
         super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: MVPComponent.view.name, project: project, frameworks: ["Foundation"])
         fileType = .protocol
     }

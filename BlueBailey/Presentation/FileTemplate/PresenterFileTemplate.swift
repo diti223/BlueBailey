@@ -12,12 +12,13 @@ import XcodeProj
 class PresenterFileTemplate: MVPFileTemplate {
     static let viewDidLoadMethod: String =
     """
-    func viewDidLoad() {
-
-    }
+    \tfunc viewDidLoad() {
+    \t\t
+    \t}
     """
     init(moduleName: String, methodDefinitions: String = PresenterFileTemplate.viewDidLoadMethod, project: XcodeProj) {
-        super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: MVPComponent.presenter.name, project: project)
+        super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: MVPComponent.presenter.name, project: project, frameworks: ["Foundation"])
+        fileType = .class
     }
     
     override var string: String {
@@ -26,15 +27,17 @@ class PresenterFileTemplate: MVPFileTemplate {
         return super.string +
         """
         \(String.init(describing: fileType)) \(fileName) {
-        \tweak var view: \(viewInterfaceName)?
-        \tlet navigation: \(navigationInterfaceName)
+        \tprivate weak var view: \(viewInterfaceName)?
+        \tprivate let navigation: \(navigationInterfaceName)
+        \tprivate let useCaseFactory: UseCaseFactory
         
-        \tinit(view: \(viewInterfaceName), navigation: \(navigationInterfaceName)) {
-        \tself.view = view
-        \tself.navigation = navigation
+        \tinit(view: \(viewInterfaceName), navigation: \(navigationInterfaceName), useCaseFactory: UseCaseFactory) {
+        \t\tself.view = view
+        \t\tself.navigation = navigation
+        \t\tself.useCaseFactory = useCaseFactory
         \t}
         
-        \t\(methodDefinitions)
+        \(methodDefinitions)
         }
         
         """

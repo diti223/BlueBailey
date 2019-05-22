@@ -59,9 +59,14 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
+                                        <menuItem title="New File" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
+                                                <action selector="addNewFileWithSender:" target="Ady-hI-5gd" id="y3s-NL-OUl"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="New Group" keyEquivalent="N" id="i8i-GO-oYj">
+                                            <connections>
+                                                <action selector="addNewFolderWithSender:" target="Ady-hI-5gd" id="QJE-Mk-sZL"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
@@ -136,7 +141,7 @@
 CA
 </string>
                                             <connections>
-                                                <action selector="delete:" target="Ady-hI-5gd" id="0Mk-Ml-PaM"/>
+                                                <action selector="deleteFileWithSender:" target="Ady-hI-5gd" id="ygz-aC-jAR"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Select All" keyEquivalent="a" id="Ruw-6m-B2m">
@@ -222,17 +227,17 @@ CA
             <objects>
                 <viewController storyboardIdentifier="NavigatorViewController" id="XPc-iF-VCC" customClass="NavigatorViewController" customModule="BlueBailey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="pDw-Yu-FiT">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="435"/>
+                        <rect key="frame" x="0.0" y="0.0" width="642" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <browser verticalHuggingPriority="750" allowsExpansionToolTips="YES" enabled="YES" hasHorizontalScroller="YES" allowsMultipleSelection="YES" allowsEmptySelection="YES" defaultColumnWidth="170" minColumnWidth="100" titled="YES" separatesColumns="YES" allowsTypeSelect="YES" sendsActionOnArrowKeys="YES" columnResizingType="auto" translatesAutoresizingMaskIntoConstraints="NO" id="25s-J2-ytw">
-                                <rect key="frame" x="20" y="92" width="410" height="305"/>
+                                <rect key="frame" x="20" y="115" width="602" height="347"/>
                                 <connections>
                                     <outlet property="delegate" destination="XPc-iF-VCC" id="cGU-cW-Jvu"/>
                                 </connections>
                             </browser>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sfW-bf-IIR">
-                                <rect key="frame" x="14" y="387" width="87" height="32"/>
+                                <rect key="frame" x="14" y="452" width="87" height="32"/>
                                 <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="xXo-e4-Nrj">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -242,7 +247,7 @@ CA
                                 </connections>
                             </button>
                             <gridView xPlacement="leading" yPlacement="fill" rowAlignment="none" rowSpacing="0.0" columnSpacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rsM-Uv-df1">
-                                <rect key="frame" x="20" y="62" width="212" height="22"/>
+                                <rect key="frame" x="20" y="85" width="212" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="IzI-TF-i4E"/>
                                 </constraints>
@@ -280,11 +285,12 @@ CA
                                 </gridCells>
                             </gridView>
                             <gridView xPlacement="leading" yPlacement="top" rowAlignment="none" columnSpacing="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Tk6-vI-31f">
-                                <rect key="frame" x="322" y="30" width="108" height="54"/>
+                                <rect key="frame" x="514" y="26" width="108" height="81"/>
                                 <rows>
                                     <gridRow id="bW5-bm-9Pr"/>
                                     <gridRow id="xXq-Rm-3Zq"/>
                                     <gridRow id="502-6U-IGm"/>
+                                    <gridRow id="Fqy-1b-dvF"/>
                                 </rows>
                                 <columns>
                                     <gridColumn id="L9H-aL-Qnu"/>
@@ -292,7 +298,7 @@ CA
                                 <gridCells>
                                     <gridCell row="bW5-bm-9Pr" column="L9H-aL-Qnu" id="2z7-d5-QwN">
                                         <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8mK-uC-53q">
-                                            <rect key="frame" x="-2" y="38" width="86" height="18"/>
+                                            <rect key="frame" x="-2" y="65" width="86" height="18"/>
                                             <buttonCell key="cell" type="check" title="Connector" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Bfn-lI-PCb">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -301,7 +307,7 @@ CA
                                     </gridCell>
                                     <gridCell row="xXq-Rm-3Zq" column="L9H-aL-Qnu" id="E47-SK-xe2">
                                         <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VPJ-LA-imp">
-                                            <rect key="frame" x="-2" y="18" width="112" height="18"/>
+                                            <rect key="frame" x="-2" y="45" width="112" height="18"/>
                                             <buttonCell key="cell" type="check" title="ViewController" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eIz-vK-3uE">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -310,17 +316,34 @@ CA
                                     </gridCell>
                                     <gridCell row="502-6U-IGm" column="L9H-aL-Qnu" id="1j6-85-FMe">
                                         <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Za-Bz-mow">
-                                            <rect key="frame" x="-2" y="-2" width="81" height="18"/>
+                                            <rect key="frame" x="-2" y="25" width="81" height="18"/>
                                             <buttonCell key="cell" type="check" title="Presenter" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MWS-BL-aDM">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                         </button>
                                     </gridCell>
+                                    <gridCell row="Fqy-1b-dvF" column="L9H-aL-Qnu" id="LDZ-c8-uVe">
+                                        <popUpButton key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g0E-k8-bme">
+                                            <rect key="frame" x="-2" y="-3" width="93" height="25"/>
+                                            <popUpButtonCell key="cell" type="push" title="iOS" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Nqz-QC-7YL" id="94F-57-IBy">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" title="Select Platform" id="G5h-qt-PDo">
+                                                    <items>
+                                                        <menuItem title="iOS" state="on" id="Nqz-QC-7YL"/>
+                                                        <menuItem title="macOS" id="8dD-gp-809"/>
+                                                        <menuItem title="tvOS" id="7lk-Nd-gz7" userLabel="tvOS"/>
+                                                        <menuItem title="watchOS" id="Yfb-T5-JMc" userLabel="watchOS"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                        </popUpButton>
+                                    </gridCell>
                                 </gridCells>
                             </gridView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="456-8i-Xgh">
-                                <rect key="frame" x="72" y="22" width="109" height="32"/>
+                                <rect key="frame" x="72" y="45" width="109" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="NHu-X7-cZB"/>
                                 </constraints>
@@ -332,6 +355,79 @@ CA
                                     <action selector="createMVPFilesWithSender:" target="XPc-iF-VCC" id="WbM-I6-cXn"/>
                                 </connections>
                             </button>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnZ-Pw-nww">
+                                <rect key="frame" x="315" y="10" width="185" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" ambiguous="YES" id="4Sn-V3-Myf">
+                                    <rect key="frame" x="1" y="0.0" width="183" height="96"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="22" rowSizeStyle="systemDefault" headerView="JaL-En-shE" viewBased="YES" id="k0C-c6-dEs">
+                                            <rect key="frame" x="0.0" y="0.0" width="366" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn identifier="CheckBoxCellView" editable="NO" width="180" minWidth="40" maxWidth="1000" id="Oxi-8h-m8d">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Targets">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <buttonCell key="dataCell" type="check" title="Bait" bezelStyle="regularSquare" imagePosition="left" state="on" identifier="CheckBoxCell" inset="2" id="hJC-HG-aJK">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="CheckBoxCellView" id="2Bf-tr-Ula" customClass="CheckBoxCellView" customModule="BlueBailey" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="1" width="180" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pEa-6n-k2u">
+                                                                    <rect key="frame" x="-2" y="0.0" width="61" height="18"/>
+                                                                    <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7Cw-Ad-1kj">
+                                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="targetSelectionChangedWithSender:" target="XPc-iF-VCC" id="IfJ-wJ-8cQ"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="pEa-6n-k2u" secondAttribute="bottom" constant="2" id="kL7-ZT-MQ5"/>
+                                                                <constraint firstItem="pEa-6n-k2u" firstAttribute="top" secondItem="2Bf-tr-Ula" secondAttribute="top" constant="1" id="wuP-zl-wCT"/>
+                                                                <constraint firstItem="pEa-6n-k2u" firstAttribute="leading" secondItem="2Bf-tr-Ula" secondAttribute="leading" id="znO-0k-mtY"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="checkBox" destination="7Cw-Ad-1kj" id="EO5-07-CU3"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="XPc-iF-VCC" id="Via-uG-XJp"/>
+                                                <outlet property="delegate" destination="XPc-iF-VCC" id="Ipd-Ao-C5v"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ZoC-v5-L9S">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="a0g-Zh-kZm">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" wantsLayer="YES" id="JaL-En-shE">
+                                    <rect key="frame" x="0.0" y="0.0" width="183" height="25"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Tk6-vI-31f" firstAttribute="top" secondItem="25s-J2-ytw" secondAttribute="bottom" constant="8" id="30v-Hf-uO3"/>
@@ -355,6 +451,7 @@ CA
                         <outlet property="browser" destination="25s-J2-ytw" id="AyS-eG-KlN"/>
                         <outlet property="cellMenu" destination="sJi-4P-RvU" id="sZN-Lf-Dcw"/>
                         <outlet property="moduleNameTextField" destination="DrW-kb-dOQ" id="FkW-4Q-G5h"/>
+                        <outlet property="targetsTable" destination="k0C-c6-dEs" id="wx7-0q-vao"/>
                     </connections>
                 </viewController>
                 <customObject id="gm9-th-F6X" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -394,7 +491,7 @@ CA
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="676" y="721.5"/>
+            <point key="canvasLocation" x="772" y="721"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">

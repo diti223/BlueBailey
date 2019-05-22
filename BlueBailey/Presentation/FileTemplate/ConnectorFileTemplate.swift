@@ -9,32 +9,38 @@
 import Foundation
 import XcodeProj
 
-class ConnectorFileTemplate: MVPFileTemplate {
-    static let viewDidLoadMethod: String =
-    """
-    func viewDidLoad() {
-
-    }
-    """
-    init(moduleName: String, methodDefinitions: String, project: XcodeProj) {
-        super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: MVPComponent.presenter.name, project: project)
+class ConnectorFileTemplate: PlatformFileTemplate {
+    init(moduleName: String, methodDefinitions: String, project: XcodeProj, platform: Platform) {
+        super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: MVPComponent.connector.name, project: project, platform: platform)
+        self.fileType = .class
     }
     
     override var string: String {
-        let className = "\(moduleName)\(MVPComponent.connector.name)"
         let navigationInterfaceName = "\(moduleName)\(MVPComponent.navigation.name)"
+        let viewControllerName = "\(moduleName)\(MVPComponent.viewController.name)"
+        let presenterName = "\(moduleName)\(MVPComponent.presenter.name)"
         return super.string +
         """
         \(String.init(describing: fileType)) \(fileName) {
-        \tweak var view: \(viewInterfaceName)?
-        \tlet navigation: \(navigationInterfaceName)
+        \tlet useCaseFactory: UseCaseFactory?
+        \tweak var viewController: \(viewControllerName)?
         
-        \tinit(view: \(viewInterfaceName), navigation: \(navigationInterfaceName)) {
-        \tself.view = view
-        \tself.navigation = navigation
+        \tinit(useCaseFactory: UseCaseFactory) {
+        \t\tself.useCaseFactory = useCaseFactor
         \t}
         
+        \tfunc assembleViewController(_ viewController: \(viewControllerName)) {
+        \t\tself.viewController = viewController
+        \t\tlet presenter = \(presenterName)(view: viewController, navigation: self)
+        \t\tviewController.presenter = presenter
+        \t}
+        \t
         \t\(methodDefinitions)
+        \t
+        }
+        
+        \(String.init(describing: FileType.extension)) \(fileName): \(navigationInterfaceName) {
+        \t
         }
         
         """

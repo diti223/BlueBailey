@@ -11,8 +11,9 @@ import XcodeProj
 
 class FileTemplate {
     enum FileType {
-        case none, `enum`, `struct`, `class`, `protocol`
+        case none, `enum`, `struct`, `class`, `protocol`, `extension`
     }
+    
     let fileName: String
     let fileExtension: String
     let project: String

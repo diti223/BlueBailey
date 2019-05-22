@@ -15,7 +15,11 @@ class NavigatorPresenter {
     
     private weak var view: NavigatorView?
     private let navigation: NavigatorNavigation
-    private var project: XcodeProj
+    private var project: XcodeProj {
+        didSet {
+            extractTargets()
+        }
+    }
     private let projectPath: Path
     private let useCaseFactory: UseCaseFactory
     private var selectedNode: Node! {
@@ -26,6 +30,14 @@ class NavigatorPresenter {
         }
     }
     
+    private var targets: [Target] = []
+    
+    var numberOfTargets: Int {
+        return targets.count
+    }
+    
+    private var selectedPlatform: PlatformFileTemplate.Platform = .iOS
+    
     init(view: NavigatorView, navigation: NavigatorNavigation, useCaseFactory: UseCaseFactory, path: Path) throws {
         self.view = view
         self.useCaseFactory = useCaseFactory
@@ -35,6 +47,7 @@ class NavigatorPresenter {
         let item = ProjectItem(project: project)
         self.rootNode = Node(item: item)
         self.selectedNode = rootNode
+        extractTargets()
     }
     
     func viewDidLoad() {
@@ -127,14 +140,30 @@ class NavigatorPresenter {
                 return
         }
         selectedNode = platformNode
-        [MVPComponent.connector, .viewController].forEach {
-            addNewEmptyFile(named: "\(moduleName)\($0.name)")
-        }
+        addNewFile(template: ViewControllerFileTemplate(moduleName: moduleName, methodDefinitions: "", project: project, platform: selectedPlatform))
+        addNewFile(template: ConnectorFileTemplate(moduleName: moduleName, methodDefinitions: "", project: project, platform: selectedPlatform))
         
         selectedNode = presentationNode
         addNewFile(template: NavigationFileTemplate(moduleName: moduleName, methodDefinitions: "", project: project))
         addNewFile(template: ViewFileTemplate(moduleName: moduleName, project: project))
         addNewFile(template: PresenterFileTemplate(moduleName: moduleName, project: project))
+    }
+    
+    func selectPlatform(name: String) {
+        guard let platform = PlatformFileTemplate.Platform(rawValue: name) else { return }
+        self.selectedPlatform = platform
+    }
+    
+    func targetTitle(at index: Int) -> String {
+        return targets[index].name
+    }
+    
+    func isTargetSelected(at index: Int) -> Bool {
+        return targets[index].isSelected
+    }
+    
+    func selectTarget(at index: Int) {
+        targets[index].isSelected.toggle()
     }
     
     private func selectFirstGroupNode() {
@@ -214,6 +243,12 @@ class NavigatorPresenter {
     
     func selectNode(_ node: Node) {
         selectedNode = node
+    }
+    
+    // MARK: - Targets
+    
+    private func extractTargets() {
+        targets = project.pbxproj.nativeTargets.map { Target(target: $0) }
     }
 }
 
@@ -377,3 +412,15 @@ extension XcodeProjFileTemplate {
     }
 }
 
+class Target {
+    let target: PBXTarget
+    var name: String {
+        return target.name
+    }
+    
+    var isSelected = false
+    
+    init(target: PBXTarget) {
+        self.target = target
+    }
+}

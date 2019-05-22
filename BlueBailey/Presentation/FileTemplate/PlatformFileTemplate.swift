@@ -7,7 +7,24 @@
 //
 
 import Foundation
+import XcodeProj
 
-//class PlatformFileTemplate: MVPComponent {
-//    
-//}
+class PlatformFileTemplate: MVPFileTemplate {
+    enum Platform: String {
+        case macOS, iOS, watchOS, tvOS
+        
+        var defaultFrameworks: [String] {
+            switch self {
+            case .iOS, .tvOS: return ["UIKit"]
+            case .macOS: return ["AppKit"]
+            case .watchOS: return ["WatchKit"]
+            }
+        }
+    }
+    let platform: Platform
+    
+    init(moduleName: String, methodDefinitions: String, componentName: String, project: XcodeProj, platform: Platform) {
+        self.platform = platform
+        super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: componentName, project: project, frameworks: platform.defaultFrameworks)
+    }
+}

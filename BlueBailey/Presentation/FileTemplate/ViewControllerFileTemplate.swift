@@ -8,3 +8,45 @@
 
 import Foundation
 import XcodeProj
+
+class ViewControllerFileTemplate: PlatformFileTemplate {
+    static let viewDidLoadMethod: String =
+    """
+    \toverride func viewDidLoad() {
+    \t\tsuper.viewDidLoad
+    \t}
+    """
+    init(moduleName: String, methodDefinitions: String = ViewControllerFileTemplate.viewDidLoadMethod, project: XcodeProj, platform: Platform) {
+        super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: MVPComponent.viewController.name, project: project, platform: platform)
+        self.fileType = .class
+    }
+    
+    override var string: String {
+        let viewControllerClass = "\(platform.viewControllerName)"
+        let viewInterfaceName = "\(moduleName)\(MVPComponent.view.name)"
+        let presenterName = "\(moduleName)\(MVPComponent.presenter.name)"
+        return super.string +
+        """
+        
+        \(String.init(describing: fileType)) \(fileName): \(viewControllerClass) {
+        \tvar presenter: \(presenterName)!
+        \(methodDefinitions)
+        }
+        
+        \(String.init(describing: FileType.extension)) \(fileName): \(viewInterfaceName) {
+        \t
+        }
+        
+        """
+    }
+}
+
+extension ViewControllerFileTemplate.Platform {
+    var viewControllerName: String {
+        switch self {
+        case .iOS, .tvOS: return "UIViewController"
+        case .macOS: return "NSViewController"
+        case .watchOS: return "WKInterfaceController"
+        }
+    }
+}

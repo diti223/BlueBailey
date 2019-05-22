@@ -12,32 +12,40 @@ class NavigatorViewController: NSViewController {
     @IBOutlet weak var browser: NSBrowser!
     @IBOutlet var cellMenu: NSMenu!
     @IBOutlet weak var moduleNameTextField: NSTextField!
+    @IBOutlet weak var platformMenu: NSPopUpButton!
+    @IBOutlet weak var targetsTable: NSTableView!
     
     var presenter: NavigatorPresenter!
     let manager = FileManager.default
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         presenter.viewDidLoad()
         browser.allowsMultipleSelection = true
         browser.menu = cellMenu
-        cellMenu.delegate = self
+//        cellMenu.delegate = self
     }
     
     @IBAction func addNewFile(sender: Any) {
+        selectNode()
         presenter.addNewFile()
     }
     
     @IBAction func addNewFolder(sender: Any) {
+        selectNode()
         presenter.addNewFolder()
     }
     
     @IBAction func deleteFile(sender: Any) {
+        
+        selectNode()
         presenter.deleteFile()
     }
     
     @IBAction func renameFile(sender: Any) {
-            let column = browser.selectedColumn
+        selectNode()
+        let column = browser.selectedColumn
         let row = browser.selectedRow(inColumn: column)
         let indexPath = IndexPath(item: row, section: column)
         browser.editItem(at: indexPath, with: nil, select: true)
@@ -51,6 +59,16 @@ class NavigatorViewController: NSViewController {
     
     @IBAction func refreshAction(sender: Any) {
         presenter.refreshProject()
+    }
+    
+    @IBAction func openDocument(sender: Any) {
+        
+    }
+    
+    @IBAction func targetSelectionChanged(sender: Any) {
+        guard let cellView = (sender as? NSButton)?.superview else { return }
+        let index = targetsTable.row(for: cellView)
+        presenter.selectTarget(at: index)
     }
     
     private var selectedNode: Node? {
@@ -132,6 +150,7 @@ extension NavigatorViewController: NSBrowserDelegate {
     
     func browser(_ sender: NSBrowser, willDisplayCell cell: Any, atRow row: Int, column: Int) {
         let cell = cell as? NSCell
+        
         cell?.menu = cellMenu
     }
     
@@ -157,9 +176,30 @@ extension ProjectItem {
     }
 }
 
-extension NavigatorViewController: NSMenuDelegate {
-    func menuWillOpen(_ menu: NSMenu) {
-        selectNode()
+//extension NavigatorViewController: NSMenuDelegate {
+//    func menuWillOpen(_ menu: NSMenu) {
+//        selectNode()
+//
+//    }
+//}
+
+
+extension NavigatorViewController: NSTableViewDataSource, NSTableViewDelegate {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return presenter.numberOfTargets
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let identifier = tableColumn?.identifier else { return nil }
+        
+        if let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as? CheckBoxCellView {
+            cell.checkBox.state = presenter.isTargetSelected(at: row) ? .on : .off
+            cell.checkBox.title = presenter.targetTitle(at: row)
+            return cell
+        }
+    
+        return nil
         
     }
+    
 }
