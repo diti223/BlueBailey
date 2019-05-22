@@ -130,10 +130,10 @@ class NavigatorPresenter {
         [MVPComponent.connector, .viewController].forEach {
             addNewEmptyFile(named: "\(moduleName)\($0.name)")
         }
+        
         selectedNode = presentationNode
-        [MVPComponent.view, .navigation].forEach {
-            addNewEmptyFile(named: "\(moduleName)\($0.name)")
-        }
+        addNewFile(template: NavigationFileTemplate(moduleName: moduleName, methodDefinitions: "", project: project))
+        addNewFile(template: ViewFileTemplate(moduleName: moduleName, project: project))
         addNewFile(template: PresenterFileTemplate(moduleName: moduleName, project: project))
     }
     
@@ -364,70 +364,8 @@ extension ProjectItem {
     }
 }
 
-/// FileTemplate
-class FileTemplate {
-    enum FileType {
-        case none, `enum`, `struct`, `class`, `protocol`
-    }
-    let fileName: String
-    let fileExtension: String
-    let project: String
-    let author: String
-    let date: Date
-    let company: String
-    let frameworks: [String]
-    let fileType: FileType
-    
-    init(fileName: String, fileExtension: String, project: String, author: String, date: Date, company: String, frameworks: [String], fileType: FileType) {
-        self.fileName = fileName
-        self.fileExtension = fileExtension
-        self.project = project
-        self.author = author
-        self.date = date
-        self.company = company
-        self.frameworks = frameworks
-        self.fileType = fileType
-    }
-    
-    
-    
-    var topFileComment: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        let shortDateString = dateFormatter.string(from: date)
-        dateFormatter.dateFormat = "yyyy"
-        let yearDateString = dateFormatter.string(from: date)
-        return
-"""
-//
-//  \(fileName).\(fileExtension)
-//  \(project)
-//
-//  Created by \(author) on \(shortDateString)
-//  Copyright © \(yearDateString) \(company). All rights reserved.
-//
-"""
-    }
-    
-    var frameworksImports: String {
-        let frameworksString = frameworks.map { "import \($0)" }.joined(separator: "\n")
-        return "\(frameworksString)"
-    }
-    
-    var beforeClassDefinition: String {
-        return
-"""
-\(topFileComment)
+//MARK: - FileTemplate
 
-\(frameworksImports)
-"""
-    }
-    
-    var string: String {
-        return beforeClassDefinition
-    }
-}
 
 extension XcodeProjFileTemplate {
     static func empty(project: XcodeProj) -> FileTemplate {
@@ -439,66 +377,3 @@ extension XcodeProjFileTemplate {
     }
 }
 
-class XcodeProjFileTemplate: FileTemplate {
-    init(fileName: String, fileExtension: String, project: XcodeProj, frameworks: [String], fileType: FileType) {
-        let company = project.pbxproj.rootObject?.attributes["ORGANIZATIONNAME"] as? String ?? ""
-        let projectName = project.pbxproj.rootObject?.name ?? ""
-        super.init(fileName: fileName, fileExtension: fileExtension, project: projectName, author: NSFullUserName(), date: .init(), company: company, frameworks: frameworks, fileType: fileType)
-    }
-}
-
-
-private enum MVPComponent {
-    case connector, viewController, presenter, view, navigation, useCase, presentation, entityGateway, entity
-    
-    var name: String {
-        var componentName = String.init(describing: self)
-        let firstLetter = componentName.removeFirst().uppercased()
-        return firstLetter + componentName
-    }
-}
-
-class MVPFileTemplate: XcodeProjFileTemplate {
-    let moduleName: String
-    let methodDefinitions: String
-    
-    init(moduleName: String, methodDefinitions: String, componentName: String, project: XcodeProj) {
-        self.methodDefinitions = methodDefinitions
-        self.moduleName = moduleName
-        super.init(fileName: "\(moduleName)\(componentName)", fileExtension: "swift", project: project, frameworks: ["Foundation"], fileType: .class)
-    }
-}
-
-
-
-class PresenterFileTemplate: MVPFileTemplate {
-    static let viewDidLoadMethod: String =
-    """
-    func viewDidLoad() {
-
-    }
-    """
-    init(moduleName: String, methodDefinitions: String = PresenterFileTemplate.viewDidLoadMethod, project: XcodeProj) {
-        super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: MVPComponent.presenter.name, project: project)
-    }
-    
-    override var string: String {
-        let viewInterfaceName = "\(moduleName)\(MVPComponent.view.name)"
-        let navigationInterfaceName = "\(moduleName)\(MVPComponent.navigation.name)"
-        return super.string +
-        """
-        \(String.init(describing: fileType)) \(fileName) {
-        weak var view: \(viewInterfaceName)?
-        let navigation: \(navigationInterfaceName)
-        
-        init(view: \(viewInterfaceName), navigation: \(navigationInterfaceName)) {
-        self.view = view
-        self.navigation = navigation
-        }
-        
-        \(methodDefinitions)
-        }
-        
-        """
-    }
-}
