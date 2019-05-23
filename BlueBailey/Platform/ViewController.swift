@@ -29,7 +29,7 @@ class ViewController: NSViewController, DropViewDelegate {
         view.window?.close()
     }
     
-    func openDocument(_ sender: Any?) {
+    @IBAction func openDocument(_ sender: Any?) {
         ViewController.openNewProjectPanel { [weak self] in
             self?.view.window?.close()
         }

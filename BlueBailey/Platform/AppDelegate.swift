@@ -26,8 +26,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     @objc func didCloseWindow(_ notification: NSNotification) {
-        guard NSApplication.shared.windows.count <= 2 else { return }
-        ViewController.openInitialViewController()
+        guard ((notification.object as? NSWindow)?.contentViewController as? ViewController) == nil else { return }
+        let openWindows = NSApplication.shared.orderedWindows
+        guard openWindows.count <= 2 else { return }
+        openWindows.compactMap({ $0.contentViewController as? ViewController}).first?.view.window?.makeKeyAndOrderFront(nil)
+//        ViewController.openInitialViewController()
     }
 
 }
