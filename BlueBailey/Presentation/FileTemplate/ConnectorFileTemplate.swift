@@ -21,26 +21,32 @@ class ConnectorFileTemplate: PlatformFileTemplate {
         let presenterName = "\(moduleName)\(MVPComponent.presenter.name)"
         return super.string +
         """
+        
         \(String.init(describing: fileType)) \(fileName) {
-        \tlet useCaseFactory: UseCaseFactory
-        \tweak var viewController: \(viewControllerName)?
+            let useCaseFactory: UseCaseFactory
+            weak var viewController: \(viewControllerName)?
         
-        \tinit(useCaseFactory: UseCaseFactory) {
-        \t\tself.useCaseFactory = useCaseFactory
-        \t}
+        //    lazy var <#nextScene#>ConnectorInit: (() -> <#NextSceneConnector#>) = {
+        //        let connector = <#NextSceneConnector#>(useCaseFactory: self.useCaseFactory)
+        //        return connector
+        //    }
+
+            init(useCaseFactory: UseCaseFactory) {
+                self.useCaseFactory = useCaseFactory
+            }
         
-        \tfunc assembleViewController(_ viewController: \(viewControllerName)) {
-        \t\tself.viewController = viewController
-        \t\tlet presenter = \(presenterName)(view: viewController, navigation: self, useCaseFactory: UseCaseFactory)
-        \t\tviewController.presenter = presenter
-        \t}
-        \t
-        \t\(methodDefinitions)
-        \t
+            func assembleViewController(_ viewController: \(viewControllerName)) {
+                self.viewController = viewController
+                let presenter = \(presenterName)(view: viewController, navigation: self, useCaseFactory: useCaseFactory)
+                viewController.presenter = presenter
+            }
+        
+            \(methodDefinitions)
+        
         }
         
         \(String.init(describing: FileType.extension)) \(fileName): \(navigationInterfaceName) {
-        \t
+        
         }
         
         """

@@ -21,7 +21,7 @@ class NavigationFileTemplate: MVPFileTemplate {
         """
         
         \(String.init(describing: fileType)) \(navigationInterfaceName): class {
-        \t\(methodDefinitions)
+            \(methodDefinitions)
         }
         
         """

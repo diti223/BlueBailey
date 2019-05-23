@@ -24,8 +24,10 @@ class NavigatorViewController: NSViewController {
         presenter.viewDidLoad()
         browser.allowsMultipleSelection = true
         browser.menu = cellMenu
-//        cellMenu.delegate = self
+        createPlatformMenu()
     }
+    
+    // MARK: - Actions
     
     @IBAction func addNewFile(sender: Any) {
         selectNode()
@@ -38,9 +40,13 @@ class NavigatorViewController: NSViewController {
     }
     
     @IBAction func deleteFile(sender: Any) {
-        
-        selectNode()
-        presenter.deleteFile()
+        let selectedColumn = browser.selectedColumn
+        browser.selectedRowIndexes(inColumn: selectedColumn)?.compactMap({
+            browser.item(atRow: $0, inColumn: selectedColumn) as? Node
+        }).forEach({
+            presenter.selectNode($0)
+            presenter.deleteFile()
+        })
     }
     
     @IBAction func renameFile(sender: Any) {
@@ -71,6 +77,12 @@ class NavigatorViewController: NSViewController {
         presenter.selectTarget(at: index)
     }
     
+    @IBAction func platformSelectionChanged(sender: Any) {
+        presenter.selectPlatform(at: platformMenu.indexOfSelectedItem)
+    }
+    
+    // MARK: - Private Methods
+    
     private var selectedNode: Node? {
         let column = browser.selectedColumn
         guard column >= 0 else { return nil }
@@ -85,6 +97,11 @@ class NavigatorViewController: NSViewController {
             return
         }
         presenter.selectNode(node)
+    }
+    
+    private func createPlatformMenu() {
+        platformMenu.removeAllItems()
+        (0..<presenter.numberOfPlatforms).forEach { platformMenu.addItem(withTitle: presenter.platformTitle(at: $0))}
     }
 }
 

@@ -12,9 +12,9 @@ import XcodeProj
 class ViewControllerFileTemplate: PlatformFileTemplate {
     static let viewDidLoadMethod: String =
     """
-    \toverride func viewDidLoad() {
-    \t\tsuper.viewDidLoad
-    \t}
+        override func viewDidLoad() {
+            super.viewDidLoad
+        }
     """
     init(moduleName: String, methodDefinitions: String = ViewControllerFileTemplate.viewDidLoadMethod, project: XcodeProj, platform: Platform) {
         super.init(moduleName: moduleName, methodDefinitions: methodDefinitions, componentName: MVPComponent.viewController.name, project: project, platform: platform)
@@ -29,12 +29,12 @@ class ViewControllerFileTemplate: PlatformFileTemplate {
         """
         
         \(String.init(describing: fileType)) \(fileName): \(viewControllerClass) {
-        \tvar presenter: \(presenterName)!
+            var presenter: \(presenterName)!
         \(methodDefinitions)
         }
         
         \(String.init(describing: FileType.extension)) \(fileName): \(viewInterfaceName) {
-        \t
+            
         }
         
         """

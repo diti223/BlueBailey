@@ -25,7 +25,7 @@ class ViewFileTemplate: MVPFileTemplate {
         """
         
         \(String.init(describing: fileType)) \(viewInterfaceName): class {
-        \t\(methodDefinitions)
+            \(methodDefinitions)
         }
         
         """

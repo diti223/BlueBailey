@@ -338,6 +338,9 @@ CA
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <connections>
+                                                <action selector="platformSelectionChangedWithSender:" target="XPc-iF-VCC" id="EDD-qD-rKz"/>
+                                            </connections>
                                         </popUpButton>
                                     </gridCell>
                                 </gridCells>
@@ -363,7 +366,7 @@ CA
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="22" rowSizeStyle="systemDefault" headerView="JaL-En-shE" viewBased="YES" id="k0C-c6-dEs">
-                                            <rect key="frame" x="0.0" y="0.0" width="366" height="71"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="183" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -451,6 +454,7 @@ CA
                         <outlet property="browser" destination="25s-J2-ytw" id="AyS-eG-KlN"/>
                         <outlet property="cellMenu" destination="sJi-4P-RvU" id="sZN-Lf-Dcw"/>
                         <outlet property="moduleNameTextField" destination="DrW-kb-dOQ" id="FkW-4Q-G5h"/>
+                        <outlet property="platformMenu" destination="g0E-k8-bme" id="Oj0-lj-k9j"/>
                         <outlet property="targetsTable" destination="k0C-c6-dEs" id="wx7-0q-vao"/>
                     </connections>
                 </viewController>

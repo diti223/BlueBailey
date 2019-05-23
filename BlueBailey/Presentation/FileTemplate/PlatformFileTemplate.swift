@@ -10,7 +10,7 @@ import Foundation
 import XcodeProj
 
 class PlatformFileTemplate: MVPFileTemplate {
-    enum Platform: String {
+    enum Platform: CaseIterable {
         case macOS, iOS, watchOS, tvOS
         
         var defaultFrameworks: [String] {
@@ -20,6 +20,11 @@ class PlatformFileTemplate: MVPFileTemplate {
             case .watchOS: return ["WatchKit"]
             }
         }
+        
+        var name: String {
+            return String(describing: self)
+        }
+        
     }
     let platform: Platform
     

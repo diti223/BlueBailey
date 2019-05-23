@@ -36,7 +36,12 @@ class NavigatorPresenter {
         return targets.count
     }
     
-    private var selectedPlatform: PlatformFileTemplate.Platform = .iOS
+    private let platforms = PlatformFileTemplate.Platform.allCases
+    var numberOfPlatforms: Int {
+        return platforms.count
+    }
+    
+    private var selectedPlatform: PlatformFileTemplate.Platform
     
     init(view: NavigatorView, navigation: NavigatorNavigation, useCaseFactory: UseCaseFactory, path: Path) throws {
         self.view = view
@@ -47,6 +52,7 @@ class NavigatorPresenter {
         let item = ProjectItem(project: project)
         self.rootNode = Node(item: item)
         self.selectedNode = rootNode
+        self.selectedPlatform = platforms[0]
         extractTargets()
     }
     
@@ -149,10 +155,7 @@ class NavigatorPresenter {
         addNewFile(template: PresenterFileTemplate(moduleName: moduleName, project: project))
     }
     
-    func selectPlatform(name: String) {
-        guard let platform = PlatformFileTemplate.Platform(rawValue: name) else { return }
-        self.selectedPlatform = platform
-    }
+    // MARK: - Target data
     
     func targetTitle(at index: Int) -> String {
         return targets[index].name
@@ -164,6 +167,16 @@ class NavigatorPresenter {
     
     func selectTarget(at index: Int) {
         targets[index].isSelected.toggle()
+    }
+    
+    // MARK: - Platform data
+    
+    func platformTitle(at index: Int) -> String {
+        return platforms[index].name
+    }
+    
+    func selectPlatform(at index: Int) {
+        self.selectedPlatform = platforms[index]
     }
     
     private func selectFirstGroupNode() {
@@ -181,6 +194,7 @@ class NavigatorPresenter {
         }
         
         let fileReference = try fileContainer.addFile(at: Path(named), sourceRoot: path, validatePresence: false)
+        try targets.filter { $0.isSelected }.map { $0.target }.forEach { _ = try $0.sourcesBuildPhase()?.add(file: fileReference) }
         try addFile(reference: fileReference, to: node)
         
         return path
