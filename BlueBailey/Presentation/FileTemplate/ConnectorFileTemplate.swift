@@ -22,16 +22,16 @@ class ConnectorFileTemplate: PlatformFileTemplate {
         return super.string +
         """
         \(String.init(describing: fileType)) \(fileName) {
-        \tlet useCaseFactory: UseCaseFactory?
+        \tlet useCaseFactory: UseCaseFactory
         \tweak var viewController: \(viewControllerName)?
         
         \tinit(useCaseFactory: UseCaseFactory) {
-        \t\tself.useCaseFactory = useCaseFactor
+        \t\tself.useCaseFactory = useCaseFactory
         \t}
         
         \tfunc assembleViewController(_ viewController: \(viewControllerName)) {
         \t\tself.viewController = viewController
-        \t\tlet presenter = \(presenterName)(view: viewController, navigation: self)
+        \t\tlet presenter = \(presenterName)(view: viewController, navigation: self, useCaseFactory: UseCaseFactory)
         \t\tviewController.presenter = presenter
         \t}
         \t
