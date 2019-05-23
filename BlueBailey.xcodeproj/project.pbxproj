@@ -34,6 +34,7 @@
 		2EFB23BA228AD64D00CBFB30 /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23B9228AD64D00CBFB30 /* NavigatorView.swift */; };
 		2EFB23BF228AD76A00CBFB30 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23BE228AD76A00CBFB30 /* UseCaseFactory.swift */; };
 		2EFB23C1228AD7D000CBFB30 /* NavigatorNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23C0228AD7D000CBFB30 /* NavigatorNavigation.swift */; };
+		B92C48922296CFB10082B1A3 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C48912296CFB10082B1A3 /* WindowController.swift */; };
 		B9920A79229581BC00CFE392 /* CheckBoxCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9920A78229581BC00CFE392 /* CheckBoxCellView.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		7B2B7B88A20C013C1A1088C07481B8C2 /* PresenterFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = PresenterFileTemplate.swift; sourceTree = "<group>"; };
 		8345E0D98ACE335AAA4F2BFE7A15F35E /* ConnectorFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ConnectorFileTemplate.swift; sourceTree = "<group>"; };
 		8FDFEFAB064256FDB4CF61C20F64ECB3 /* NavigationFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = NavigationFileTemplate.swift; sourceTree = "<group>"; };
+		B92C48912296CFB10082B1A3 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		B9920A78229581BC00CFE392 /* CheckBoxCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxCellView.swift; sourceTree = "<group>"; };
 		E5A3138BF4B812F83AB36D71B08AB209 /* MVPFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = MVPFileTemplate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,6 +225,7 @@
 				2EFB23B3228AD5C100CBFB30 /* NavigatorViewController.swift */,
 				2EFB23B5228AD5D300CBFB30 /* NavigatorConnector.swift */,
 				B9920A78229581BC00CFE392 /* CheckBoxCellView.swift */,
+				B92C48912296CFB10082B1A3 /* WindowController.swift */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -306,7 +309,7 @@
 						CreatedOnToolsVersion = 10.2;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -375,6 +378,7 @@
 				2EFB23B4228AD5C100CBFB30 /* NavigatorViewController.swift in Sources */,
 				2EFB23B6228AD5D300CBFB30 /* NavigatorConnector.swift in Sources */,
 				2E60E8262288665E005DF0F5 /* ViewController.swift in Sources */,
+				B92C48922296CFB10082B1A3 /* WindowController.swift in Sources */,
 				2E70FB332294355E00555D34 /* PresenterFileTemplate.swift in Sources */,
 				2EFB23B8228AD61800CBFB30 /* NavigatorPresenter.swift in Sources */,
 				2EFB23BA228AD64D00CBFB30 /* NavigatorView.swift in Sources */,

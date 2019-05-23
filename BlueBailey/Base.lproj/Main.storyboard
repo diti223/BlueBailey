@@ -88,7 +88,7 @@
                                             </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                                        <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
+                                        <menuItem title="Close" enabled="NO" keyEquivalent="w" id="DVo-aG-piG">
                                             <connections>
                                                 <action selector="performClose:" target="Ady-hI-5gd" id="HmO-Ls-i7Q"/>
                                             </connections>
@@ -205,10 +205,9 @@ CA
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="196" y="0.0" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -358,10 +357,9 @@ CA
                                     <action selector="createMVPFilesWithSender:" target="XPc-iF-VCC" id="WbM-I6-cXn"/>
                                 </connections>
                             </button>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnZ-Pw-nww">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnZ-Pw-nww">
                                 <rect key="frame" x="315" y="10" width="185" height="97"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" ambiguous="YES" id="4Sn-V3-Myf">
+                                <clipView key="contentView" id="4Sn-V3-Myf">
                                     <rect key="frame" x="1" y="0.0" width="183" height="96"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -418,6 +416,9 @@ CA
                                         </tableView>
                                     </subviews>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="185" id="iL1-zY-o83"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ZoC-v5-L9S">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -444,9 +445,12 @@ CA
                             <constraint firstItem="rsM-Uv-df1" firstAttribute="centerX" secondItem="456-8i-Xgh" secondAttribute="centerX" id="ceY-uE-dHT"/>
                             <constraint firstAttribute="trailing" secondItem="Tk6-vI-31f" secondAttribute="trailing" constant="20" id="dD3-lh-RJB"/>
                             <constraint firstItem="456-8i-Xgh" firstAttribute="top" secondItem="rsM-Uv-df1" secondAttribute="bottom" constant="12" id="dFh-ZT-2aI"/>
+                            <constraint firstItem="fnZ-Pw-nww" firstAttribute="top" secondItem="25s-J2-ytw" secondAttribute="bottom" constant="8" id="mPs-tv-pDH"/>
+                            <constraint firstAttribute="bottom" secondItem="fnZ-Pw-nww" secondAttribute="bottom" constant="10" id="pXz-Oe-R7I"/>
                             <constraint firstItem="25s-J2-ytw" firstAttribute="top" secondItem="pDw-Yu-FiT" secondAttribute="top" constant="60" id="qmZ-Ya-KcQ"/>
                             <constraint firstAttribute="trailing" secondItem="25s-J2-ytw" secondAttribute="trailing" constant="20" id="s44-6g-oQ0"/>
                             <constraint firstItem="rsM-Uv-df1" firstAttribute="leading" secondItem="25s-J2-ytw" secondAttribute="leading" id="tFG-cu-Fqf"/>
+                            <constraint firstItem="Tk6-vI-31f" firstAttribute="leading" secondItem="fnZ-Pw-nww" secondAttribute="trailing" constant="14" id="tSO-wE-UA9"/>
                             <constraint firstItem="25s-J2-ytw" firstAttribute="top" secondItem="sfW-bf-IIR" secondAttribute="bottom" constant="19" id="vNf-h2-9Lo"/>
                         </constraints>
                     </view>
@@ -521,6 +525,13 @@ CA
                                     <constraint firstItem="X1Z-Ev-hUY" firstAttribute="centerY" secondItem="7IW-sF-hMb" secondAttribute="centerY" id="Jka-kL-Zhh"/>
                                     <constraint firstItem="X1Z-Ev-hUY" firstAttribute="centerX" secondItem="7IW-sF-hMb" secondAttribute="centerX" id="qbc-dl-zTz"/>
                                 </constraints>
+                                <gestureRecognizers>
+                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="2" id="Wbk-KZ-fcW">
+                                        <connections>
+                                            <action selector="doubleClick:" target="XfG-lQ-9wD" id="zw7-ux-bMa"/>
+                                        </connections>
+                                    </clickGestureRecognizer>
+                                </gestureRecognizers>
                             </customView>
                         </subviews>
                         <constraints>

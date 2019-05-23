@@ -67,9 +67,13 @@ class NavigatorViewController: NSViewController {
         presenter.refreshProject()
     }
     
-    @IBAction func openDocument(sender: Any) {
-        
+    @IBAction func openDocument(_ sender: Any?) {
+        ViewController.openNewProjectPanel()
     }
+    
+//    @IBAction func performClose(_ sender: Any?) {
+//        view.window?.performClose(self)
+//    }
     
     @IBAction func targetSelectionChanged(sender: Any) {
         guard let cellView = (sender as? NSButton)?.superview else { return }
