@@ -71,10 +71,6 @@ class NavigatorViewController: NSViewController {
         ViewController.openNewProjectPanel()
     }
     
-//    @IBAction func performClose(_ sender: Any?) {
-//        view.window?.performClose(self)
-//    }
-    
     @IBAction func targetSelectionChanged(sender: Any) {
         guard let cellView = (sender as? NSButton)?.superview else { return }
         let index = targetsTable.row(for: cellView)
@@ -83,6 +79,14 @@ class NavigatorViewController: NSViewController {
     
     @IBAction func platformSelectionChanged(sender: Any) {
         presenter.selectPlatform(at: platformMenu.indexOfSelectedItem)
+    }
+    
+    @IBAction func openUseCaseViewController(_ sender: Any) {
+        presenter.openDomainController()
+    }
+    
+    @IBAction func sortCompileSources(_ sender: Any) {
+        presenter.sortCompileSources()
     }
     
     // MARK: - Private Methods

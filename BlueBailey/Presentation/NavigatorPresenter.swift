@@ -31,6 +31,9 @@ class NavigatorPresenter {
     }
     
     private var targets: [Target] = []
+    private var selectedPBXTargets: [PBXTarget] {
+        return targets.filter { $0.isSelected }.map { $0.target }
+    }
     
     var numberOfTargets: Int {
         return targets.count
@@ -179,6 +182,26 @@ class NavigatorPresenter {
         self.selectedPlatform = platforms[index]
     }
     
+    func openDomainController() {
+        //.. get domain node or create it
+        navigation.navigateToDomain(domainNode: selectedNode)
+    }
+    
+    func sortCompileSources() {
+        do {
+            try selectedPBXTargets.compactMap { try $0.sourcesBuildPhase() }.forEach({ (buildPhase) in
+                buildPhase.files?.sort(by: { (file1, file2) -> Bool in
+                    return file1.file?.displayName.compare(file2.file?.displayName ?? "") == .orderedAscending
+                })
+            })
+            try commitChanges()
+        } catch {
+            debugPrint(error)
+        }
+    }
+    
+    //MARK: - Private Methods
+    
     private func selectFirstGroupNode() {
         if (selectedNode?.item.file as? PBXGroup) == nil {
             selectedNode = selectedNode?.parent
@@ -194,7 +217,7 @@ class NavigatorPresenter {
         }
         
         let fileReference = try fileContainer.addFile(at: Path(named), sourceRoot: path, validatePresence: false)
-        try targets.filter { $0.isSelected }.map { $0.target }.forEach { _ = try $0.sourcesBuildPhase()?.add(file: fileReference) }
+        try selectedPBXTargets.forEach { _ = try $0.sourcesBuildPhase()?.add(file: fileReference) }
         try addFile(reference: fileReference, to: node)
         
         return path
@@ -436,5 +459,11 @@ class Target {
     
     init(target: PBXTarget) {
         self.target = target
+    }
+}
+
+extension PBXFileElement {
+    var displayName: String {
+        return name ?? path ?? ""
     }
 }

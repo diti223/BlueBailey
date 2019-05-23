@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		147DF7F8F346E5B35DCA375ADA5E8D20 /* DomainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB65CF8A937F8954ADCA35CA86C13E /* DomainView.swift */; };
 		2E4FD0752294510B00E6E71D /* PlatformFileTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4FD0742294510B00E6E71D /* PlatformFileTemplate.swift */; };
 		2E60E7ED2286E6D8005DF0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E60E7EC2286E6D8005DF0F5 /* AppDelegate.swift */; };
 		2E60E7F12286E6D9005DF0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E60E7F02286E6D9005DF0F5 /* Assets.xcassets */; };
@@ -34,8 +35,12 @@
 		2EFB23BA228AD64D00CBFB30 /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23B9228AD64D00CBFB30 /* NavigatorView.swift */; };
 		2EFB23BF228AD76A00CBFB30 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23BE228AD76A00CBFB30 /* UseCaseFactory.swift */; };
 		2EFB23C1228AD7D000CBFB30 /* NavigatorNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23C0228AD7D000CBFB30 /* NavigatorNavigation.swift */; };
+		4F4445B2093FA723A4B24B892FAC47F5 /* DomainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F15DD27553537D9BDC3B0CA0FE8E181 /* DomainNavigation.swift */; };
+		513B234E87D21AD25AABD5B1FC6FC247 /* DomainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11736EF40B3430D777B5758D71968727 /* DomainPresenter.swift */; };
+		80015097BF3A2C7B05CBAA8B8D624299 /* DomainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79F4290C6984B537907F7C1427EF609 /* DomainViewController.swift */; };
 		B92C48922296CFB10082B1A3 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C48912296CFB10082B1A3 /* WindowController.swift */; };
 		B9920A79229581BC00CFE392 /* CheckBoxCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9920A78229581BC00CFE392 /* CheckBoxCellView.swift */; };
+		EEC73D642CBD51A9D25BE4088806F5D4 /* DomainConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDAED96D57F668FCD411708CE9B9FD5 /* DomainConnector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		015B78DF3511BF0CCFB3CBCF0281F24A /* ViewFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ViewFileTemplate.swift; sourceTree = "<group>"; };
+		11736EF40B3430D777B5758D71968727 /* DomainPresenter.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = DomainPresenter.swift; path = DomainPresenter.swift; sourceTree = "<group>"; };
+		19AB65CF8A937F8954ADCA35CA86C13E /* DomainView.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = DomainView.swift; path = DomainView.swift; sourceTree = "<group>"; };
 		2E4FD0742294510B00E6E71D /* PlatformFileTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformFileTemplate.swift; sourceTree = "<group>"; };
 		2E60E7E92286E6D8005DF0F5 /* BlueBailey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueBailey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E60E7EC2286E6D8005DF0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,14 +104,17 @@
 		2EFB23B9228AD64D00CBFB30 /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
 		2EFB23BE228AD76A00CBFB30 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
 		2EFB23C0228AD7D000CBFB30 /* NavigatorNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorNavigation.swift; sourceTree = "<group>"; };
+		2F15DD27553537D9BDC3B0CA0FE8E181 /* DomainNavigation.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = DomainNavigation.swift; path = DomainNavigation.swift; sourceTree = "<group>"; };
 		30EBCFD2A3652A311AA0401E9451A1FE /* ViewControllerFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ViewControllerFileTemplate.swift; sourceTree = "<group>"; };
 		5BC316B7F0D9039D18557EBFA1CD9CB7 /* FileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = FileTemplate.swift; sourceTree = "<group>"; };
 		7B2B7B88A20C013C1A1088C07481B8C2 /* PresenterFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = PresenterFileTemplate.swift; sourceTree = "<group>"; };
 		8345E0D98ACE335AAA4F2BFE7A15F35E /* ConnectorFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ConnectorFileTemplate.swift; sourceTree = "<group>"; };
 		8FDFEFAB064256FDB4CF61C20F64ECB3 /* NavigationFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = NavigationFileTemplate.swift; sourceTree = "<group>"; };
+		AFDAED96D57F668FCD411708CE9B9FD5 /* DomainConnector.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = DomainConnector.swift; path = DomainConnector.swift; sourceTree = "<group>"; };
 		B92C48912296CFB10082B1A3 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		B9920A78229581BC00CFE392 /* CheckBoxCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxCellView.swift; sourceTree = "<group>"; };
 		E5A3138BF4B812F83AB36D71B08AB209 /* MVPFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = MVPFileTemplate.swift; sourceTree = "<group>"; };
+		F79F4290C6984B537907F7C1427EF609 /* DomainViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = DomainViewController.swift; path = DomainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +223,9 @@
 				2EFB23B9228AD64D00CBFB30 /* NavigatorView.swift */,
 				2EFB23C0228AD7D000CBFB30 /* NavigatorNavigation.swift */,
 				2E70FB30229434A200555D34 /* FileTemplate */,
+				2F15DD27553537D9BDC3B0CA0FE8E181 /* DomainNavigation.swift */,
+				19AB65CF8A937F8954ADCA35CA86C13E /* DomainView.swift */,
+				11736EF40B3430D777B5758D71968727 /* DomainPresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -226,6 +239,8 @@
 				2EFB23B5228AD5D300CBFB30 /* NavigatorConnector.swift */,
 				B9920A78229581BC00CFE392 /* CheckBoxCellView.swift */,
 				B92C48912296CFB10082B1A3 /* WindowController.swift */,
+				F79F4290C6984B537907F7C1427EF609 /* DomainViewController.swift */,
+				AFDAED96D57F668FCD411708CE9B9FD5 /* DomainConnector.swift */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -374,25 +389,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E70FB342294355E00555D34 /* ViewFileTemplate.swift in Sources */,
-				2EFB23B4228AD5C100CBFB30 /* NavigatorViewController.swift in Sources */,
+				2E60E7ED2286E6D8005DF0F5 /* AppDelegate.swift in Sources */,
+				B9920A79229581BC00CFE392 /* CheckBoxCellView.swift in Sources */,
+				2E70FB362294355E00555D34 /* ConnectorFileTemplate.swift in Sources */,
+				EEC73D642CBD51A9D25BE4088806F5D4 /* DomainConnector.swift in Sources */,
+				4F4445B2093FA723A4B24B892FAC47F5 /* DomainNavigation.swift in Sources */,
+				513B234E87D21AD25AABD5B1FC6FC247 /* DomainPresenter.swift in Sources */,
+				147DF7F8F346E5B35DCA375ADA5E8D20 /* DomainView.swift in Sources */,
+				80015097BF3A2C7B05CBAA8B8D624299 /* DomainViewController.swift in Sources */,
+				2E70FB312294355E00555D34 /* FileTemplate.swift in Sources */,
+				2E70FB39229435A800555D34 /* MVPComponent.swift in Sources */,
+				2E70FB322294355E00555D34 /* MVPFileTemplate.swift in Sources */,
+				2E70FB372294355E00555D34 /* NavigationFileTemplate.swift in Sources */,
 				2EFB23B6228AD5D300CBFB30 /* NavigatorConnector.swift in Sources */,
-				2E60E8262288665E005DF0F5 /* ViewController.swift in Sources */,
-				B92C48922296CFB10082B1A3 /* WindowController.swift in Sources */,
-				2E70FB332294355E00555D34 /* PresenterFileTemplate.swift in Sources */,
+				2EFB23C1228AD7D000CBFB30 /* NavigatorNavigation.swift in Sources */,
 				2EFB23B8228AD61800CBFB30 /* NavigatorPresenter.swift in Sources */,
 				2EFB23BA228AD64D00CBFB30 /* NavigatorView.swift in Sources */,
-				2E70FB39229435A800555D34 /* MVPComponent.swift in Sources */,
-				2EFB23BF228AD76A00CBFB30 /* UseCaseFactory.swift in Sources */,
-				2E60E7ED2286E6D8005DF0F5 /* AppDelegate.swift in Sources */,
-				2E70FB362294355E00555D34 /* ConnectorFileTemplate.swift in Sources */,
+				2EFB23B4228AD5C100CBFB30 /* NavigatorViewController.swift in Sources */,
 				2E4FD0752294510B00E6E71D /* PlatformFileTemplate.swift in Sources */,
-				2E70FB312294355E00555D34 /* FileTemplate.swift in Sources */,
-				2E70FB372294355E00555D34 /* NavigationFileTemplate.swift in Sources */,
+				2E70FB332294355E00555D34 /* PresenterFileTemplate.swift in Sources */,
+				2EFB23BF228AD76A00CBFB30 /* UseCaseFactory.swift in Sources */,
+				2E60E8262288665E005DF0F5 /* ViewController.swift in Sources */,
 				2E70FB352294355E00555D34 /* ViewControllerFileTemplate.swift in Sources */,
-				B9920A79229581BC00CFE392 /* CheckBoxCellView.swift in Sources */,
-				2EFB23C1228AD7D000CBFB30 /* NavigatorNavigation.swift in Sources */,
-				2E70FB322294355E00555D34 /* MVPFileTemplate.swift in Sources */,
+				2E70FB342294355E00555D34 /* ViewFileTemplate.swift in Sources */,
+				B92C48922296CFB10082B1A3 /* WindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

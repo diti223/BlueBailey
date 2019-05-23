@@ -357,6 +357,16 @@ CA
                                     <action selector="createMVPFilesWithSender:" target="XPc-iF-VCC" id="WbM-I6-cXn"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pPF-wV-Z2C">
+                                <rect key="frame" x="55" y="14" width="142" height="32"/>
+                                <buttonCell key="cell" type="push" title="Create Use Case" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u02-J5-lXd">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openUseCaseViewController:" target="XPc-iF-VCC" id="2dJ-bE-JQX"/>
+                                </connections>
+                            </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnZ-Pw-nww">
                                 <rect key="frame" x="315" y="10" width="185" height="97"/>
                                 <clipView key="contentView" id="4Sn-V3-Myf">
@@ -432,16 +442,28 @@ CA
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-ZW-WdG">
+                                <rect key="frame" x="101" y="452" width="172" height="32"/>
+                                <buttonCell key="cell" type="push" title="Sort Compile Sources" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="1q0-ZV-dMc">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="sortCompileSources:" target="XPc-iF-VCC" id="bro-8S-xGc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="pPF-wV-Z2C" firstAttribute="top" secondItem="456-8i-Xgh" secondAttribute="bottom" constant="10" id="15E-42-NHZ"/>
                             <constraint firstItem="Tk6-vI-31f" firstAttribute="top" secondItem="25s-J2-ytw" secondAttribute="bottom" constant="8" id="30v-Hf-uO3"/>
                             <constraint firstItem="25s-J2-ytw" firstAttribute="leading" secondItem="pDw-Yu-FiT" secondAttribute="leading" constant="20" id="3Xi-Yq-QgR"/>
                             <constraint firstItem="sfW-bf-IIR" firstAttribute="top" secondItem="pDw-Yu-FiT" secondAttribute="top" constant="20" id="6P1-Xc-cZh"/>
+                            <constraint firstItem="pPF-wV-Z2C" firstAttribute="centerX" secondItem="456-8i-Xgh" secondAttribute="centerX" id="9Ic-Jw-ctr"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Tk6-vI-31f" secondAttribute="bottom" constant="20" id="BA5-DC-gkl"/>
                             <constraint firstItem="rsM-Uv-df1" firstAttribute="top" secondItem="25s-J2-ytw" secondAttribute="bottom" constant="8" id="PKD-Qq-cIt"/>
                             <constraint firstItem="25s-J2-ytw" firstAttribute="height" secondItem="pDw-Yu-FiT" secondAttribute="height" multiplier="0.65" id="Pcd-5Q-Vza"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="456-8i-Xgh" secondAttribute="bottom" constant="20" id="T8D-m3-0IN"/>
                             <constraint firstItem="sfW-bf-IIR" firstAttribute="leading" secondItem="pDw-Yu-FiT" secondAttribute="leading" constant="20" id="ZiX-45-blv"/>
+                            <constraint firstItem="a7D-ZW-WdG" firstAttribute="leading" secondItem="sfW-bf-IIR" secondAttribute="trailing" constant="12" id="ZyF-Zk-pgV"/>
                             <constraint firstItem="rsM-Uv-df1" firstAttribute="centerX" secondItem="456-8i-Xgh" secondAttribute="centerX" id="ceY-uE-dHT"/>
                             <constraint firstAttribute="trailing" secondItem="Tk6-vI-31f" secondAttribute="trailing" constant="20" id="dD3-lh-RJB"/>
                             <constraint firstItem="456-8i-Xgh" firstAttribute="top" secondItem="rsM-Uv-df1" secondAttribute="bottom" constant="12" id="dFh-ZT-2aI"/>
@@ -451,7 +473,10 @@ CA
                             <constraint firstAttribute="trailing" secondItem="25s-J2-ytw" secondAttribute="trailing" constant="20" id="s44-6g-oQ0"/>
                             <constraint firstItem="rsM-Uv-df1" firstAttribute="leading" secondItem="25s-J2-ytw" secondAttribute="leading" id="tFG-cu-Fqf"/>
                             <constraint firstItem="Tk6-vI-31f" firstAttribute="leading" secondItem="fnZ-Pw-nww" secondAttribute="trailing" constant="14" id="tSO-wE-UA9"/>
+                            <constraint firstItem="a7D-ZW-WdG" firstAttribute="height" secondItem="sfW-bf-IIR" secondAttribute="height" id="uGN-6E-GxF"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pPF-wV-Z2C" secondAttribute="bottom" constant="20" id="ull-d8-JX5"/>
                             <constraint firstItem="25s-J2-ytw" firstAttribute="top" secondItem="sfW-bf-IIR" secondAttribute="bottom" constant="19" id="vNf-h2-9Lo"/>
+                            <constraint firstItem="a7D-ZW-WdG" firstAttribute="centerY" secondItem="sfW-bf-IIR" secondAttribute="centerY" id="vWw-qU-ZpZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -500,6 +525,84 @@ CA
                 </menu>
             </objects>
             <point key="canvasLocation" x="772" y="721"/>
+        </scene>
+        <!--Domain View Controller-->
+        <scene sceneID="LR2-dC-zoS">
+            <objects>
+                <viewController storyboardIdentifier="DomainViewController" id="wXW-0Q-mPu" customClass="DomainViewController" customModule="BlueBailey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="s3Q-WG-LRu">
+                        <rect key="frame" x="0.0" y="0.0" width="458" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qn4-YH-VHd">
+                                <rect key="frame" x="20" y="127" width="418" height="153"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" ambiguous="YES" id="Lr4-Yp-HLD">
+                                    <rect key="frame" x="1" y="0.0" width="416" height="152"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="bBk-gi-1yx" indentationPerLevel="16" outlineTableColumn="dVp-BQ-Ki3" id="iRq-Fi-CP4">
+                                            <rect key="frame" x="0.0" y="0.0" width="416" height="127"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="180" minWidth="40" maxWidth="1000" id="dVp-BQ-Ki3" userLabel="Components">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Component">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <popUpButtonCell key="dataCell" type="bevel" title="UserRemoteGateway" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="08M-rf-8LH" id="3UA-pz-H1V" userLabel="Gateways">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                        <menu key="menu" id="93u-qr-YON">
+                                                            <items>
+                                                                <menuItem title="UserRemoteGateway" state="on" id="08M-rf-8LH"/>
+                                                                <menuItem title="UserLocalGateway" state="on" id="R33-3a-K39"/>
+                                                                <menuItem title="Add New Item" keyEquivalent="n" id="IaE-u9-azY"/>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                                <tableColumn width="230" minWidth="40" maxWidth="1000" id="JtY-vx-rox">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Entity">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="SWD-IL-pw5">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </outlineView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="d1g-ct-cwP">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="w1e-EP-Sad">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="bBk-gi-1yx">
+                                    <rect key="frame" x="0.0" y="0.0" width="416" height="25"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="z0x-Xb-lqv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1376" y="790"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
