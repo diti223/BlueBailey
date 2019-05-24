@@ -7,13 +7,9 @@
 //
 
 import Cocoa
-import XcodeProj
-import PathKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -30,11 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let openWindows = NSApplication.shared.orderedWindows
         guard openWindows.count <= 2 else { return }
         openWindows.compactMap({ $0.contentViewController as? ViewController}).first?.view.window?.makeKeyAndOrderFront(nil)
-//        ViewController.openInitialViewController()
     }
 
-}
-
-extension XcodeProj {
-    
 }

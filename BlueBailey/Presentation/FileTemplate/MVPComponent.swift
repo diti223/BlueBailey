@@ -12,8 +12,6 @@ enum MVPComponent {
     case connector, viewController, presenter, view, navigation, useCase, presentation, entityGateway, entity
     
     var name: String {
-        var componentName = String(describing: self)
-        let firstLetter = componentName.removeFirst().uppercased()
-        return firstLetter + componentName
+        return String(describing: self).firstLetterUppercased
     }
 }
