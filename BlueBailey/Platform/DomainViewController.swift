@@ -26,36 +26,45 @@ extension DomainViewController: NSOutlineViewDelegate, NSOutlineViewDataSource {
     
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        if let feed = item as? Feed {
-            return feed.children[index]
-        }
-        
-        return feeds[index]
+        return presenter.child(at: index, ofItem: item)
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        if let feed = item as? Feed {
-            return feed.children.count > 0
-        }
-        
-        return false
+        return presenter.hasChildren(item: item)
     }
     
-//    func numberOfRows(in tableView: NSTableView) -> Int {
-//        return presenter.numberOfComponents
-//    }
-//
-//    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-//        guard let identifier = tableColumn?.identifier else { return nil }
-//        if tableColumn?.identifier == .componentIdentifier {
-//            let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as? NSTableCellView
-//
-////            cell?.title = presenter.componentTitle(at: row)
-//        }
-//        return nil
-//    }
+    
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        
+        var view: NSTableCellView?
+        guard let columnId = tableColumn?.identifier,
+            let column = Section(columnId: columnId) else {
+                return view
+        }
+        
+        
+        return view
+    }
+    
 }
+
+enum Section {
+    case component, name, action
+}
+
+extension Section {
+    init?(columnId: String) {
+        switch columnId {
+        case "ComponentColumn": self = .component
+        case "NameColumn": self = .name
+        case "ActionColumn": self = .action
+        default: return nil
+        }
+    }
 
 private extension NSUserInterfaceItemIdentifier {
     static var componentIdentifier = NSUserInterfaceItemIdentifier("Component")
 }
+
+
+

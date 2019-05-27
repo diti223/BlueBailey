@@ -57,6 +57,30 @@ class DomainPresenter {
         return itemGroups.count
     }
     
+    func child(at index: Int, ofItem item: Any?) -> Any {
+        if let group = item as? ItemGroup {
+            return group.items[index]
+        }
+        
+        return itemGroups[index]
+    }
+    
+    func hasChildren(item: Any) -> Bool {
+        if let group = item as? ItemGroup {
+            return group.items.count > 0
+        }
+        
+        return false
+    }
+    
+    func isGroup(item: Any) -> Bool {
+        if item as? ItemGroup != nil {
+            return true
+        }
+        
+        return false
+    }
+    
 //    func componentTitle(at index: Int) -> String {
 //        return items[index].name
 //    }
