@@ -43,6 +43,7 @@ extension DomainViewController: NSOutlineViewDelegate, NSOutlineViewDataSource {
         }
         
         
+        
         return view
     }
     
@@ -53,18 +54,21 @@ enum Section {
 }
 
 extension Section {
-    init?(columnId: String) {
-        switch columnId {
+    init?(columnId: NSUserInterfaceItemIdentifier) {
+        switch columnId.rawValue {
         case "ComponentColumn": self = .component
         case "NameColumn": self = .name
         case "ActionColumn": self = .action
         default: return nil
         }
     }
-
-private extension NSUserInterfaceItemIdentifier {
-    static var componentIdentifier = NSUserInterfaceItemIdentifier("Component")
 }
 
 
 
+extension NSTableCellView: DomainComponentView {
+    func display(name: String) {
+        textField?.stringValue = name
+        textField?.sizeToFit()
+    }
+}

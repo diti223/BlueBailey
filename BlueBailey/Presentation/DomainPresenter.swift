@@ -81,6 +81,19 @@ class DomainPresenter {
         return false
     }
     
+    func configure(itemView: Any, with item: Any, at index: Int, in section: Section) {
+        let component = self.itemGroups
+        switch section {
+        case .component:
+            let itemView = itemView as? DomainComponentView
+            if let item = item as? ItemGroup {
+                itemView?.display(name: item.)
+            }
+        case .name: <#code#>
+        case .action: <#code#>
+        }
+    }
+    
 //    func componentTitle(at index: Int) -> String {
 //        return items[index].name
 //    }
@@ -103,3 +116,4 @@ private extension DomainComponent {
         }
     }
 }
+
