@@ -12,7 +12,6 @@ class DomainPresenter {
     
     struct ItemGroup {
         let items: [Item]
-        
     }
     
     class Item {
@@ -32,11 +31,11 @@ class DomainPresenter {
     private let navigation: DomainNavigation
     private let useCaseFactory: UseCaseFactory
     private let domainNode: Node
-    private let itemGroups: [ItemGroup]
+    let itemGroups: [ItemGroup]
     
-    var numberOfComponents: Int {
-        return items.count
-    }
+//    var numberOfComponents: Int {
+//        return items.count
+//    }
 
     init(view: DomainView, navigation: DomainNavigation, useCaseFactory: UseCaseFactory, domainNode: Node) {
         self.view = view
@@ -50,13 +49,21 @@ class DomainPresenter {
         
     }
     
-    func componentTitle(at index: Int) -> String {
-        return items[index].name
+    func numberOfChildrenOfItem(_ item: Any?) -> Int {
+        if let group = item as? ItemGroup {
+            return group.items.count
+        }
+        
+        return itemGroups.count
     }
     
-    func numberOfSubcomponents(at index: Int) -> Int {
-        return items[
-    }
+//    func componentTitle(at index: Int) -> String {
+//        return items[index].name
+//    }
+//    
+//    func numberOfSubcomponents(at index: Int) -> Int {
+//        return items[
+//    }
     
 }
 

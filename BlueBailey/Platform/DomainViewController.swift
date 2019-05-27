@@ -21,8 +21,26 @@ extension DomainViewController: DomainView {
 extension DomainViewController: NSOutlineViewDelegate, NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        return 
+        return presenter.numberOfChildrenOfItem(item)
     }
+    
+    
+    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+        if let feed = item as? Feed {
+            return feed.children[index]
+        }
+        
+        return feeds[index]
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
+        if let feed = item as? Feed {
+            return feed.children.count > 0
+        }
+        
+        return false
+    }
+    
 //    func numberOfRows(in tableView: NSTableView) -> Int {
 //        return presenter.numberOfComponents
 //    }
