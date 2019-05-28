@@ -40,8 +40,8 @@
 		4F4445B2093FA723A4B24B892FAC47F5 /* DomainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F15DD27553537D9BDC3B0CA0FE8E181 /* DomainNavigation.swift */; };
 		513B234E87D21AD25AABD5B1FC6FC247 /* DomainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11736EF40B3430D777B5758D71968727 /* DomainPresenter.swift */; };
 		80015097BF3A2C7B05CBAA8B8D624299 /* DomainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79F4290C6984B537907F7C1427EF609 /* DomainViewController.swift */; };
+		B920AA4C229D6C2100A7817D /* DomainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920AA4B229D6C2000A7817D /* DomainComponents.swift */; };
 		B92C48922296CFB10082B1A3 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C48912296CFB10082B1A3 /* WindowController.swift */; };
-		B92C48942297D8A00082B1A3 /* DomainComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C48932297D8A00082B1A3 /* DomainComponent.swift */; };
 		B92C48962297D9B80082B1A3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92C48952297D9B80082B1A3 /* String+Extension.swift */; };
 		B9920A79229581BC00CFE392 /* CheckBoxCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9920A78229581BC00CFE392 /* CheckBoxCellView.swift */; };
 		EEC73D642CBD51A9D25BE4088806F5D4 /* DomainConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDAED96D57F668FCD411708CE9B9FD5 /* DomainConnector.swift */; };
@@ -117,8 +117,8 @@
 		8345E0D98ACE335AAA4F2BFE7A15F35E /* ConnectorFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ConnectorFileTemplate.swift; sourceTree = "<group>"; };
 		8FDFEFAB064256FDB4CF61C20F64ECB3 /* NavigationFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = NavigationFileTemplate.swift; sourceTree = "<group>"; };
 		AFDAED96D57F668FCD411708CE9B9FD5 /* DomainConnector.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = DomainConnector.swift; sourceTree = "<group>"; };
+		B920AA4B229D6C2000A7817D /* DomainComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainComponents.swift; sourceTree = "<group>"; };
 		B92C48912296CFB10082B1A3 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		B92C48932297D8A00082B1A3 /* DomainComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainComponent.swift; sourceTree = "<group>"; };
 		B92C48952297D9B80082B1A3 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B9920A78229581BC00CFE392 /* CheckBoxCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxCellView.swift; sourceTree = "<group>"; };
 		E5A3138BF4B812F83AB36D71B08AB209 /* MVPFileTemplate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = MVPFileTemplate.swift; sourceTree = "<group>"; };
@@ -258,8 +258,8 @@
 		2EFB23BD228AD75B00CBFB30 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				B920AA4B229D6C2000A7817D /* DomainComponents.swift */,
 				2EFB23BE228AD76A00CBFB30 /* UseCaseFactory.swift */,
-				B92C48932297D8A00082B1A3 /* DomainComponent.swift */,
 				B92C48952297D9B80082B1A3 /* String+Extension.swift */,
 			);
 			path = Domain;
@@ -407,11 +407,11 @@
 				EEC73D642CBD51A9D25BE4088806F5D4 /* DomainConnector.swift in Sources */,
 				4F4445B2093FA723A4B24B892FAC47F5 /* DomainNavigation.swift in Sources */,
 				513B234E87D21AD25AABD5B1FC6FC247 /* DomainPresenter.swift in Sources */,
+				B920AA4C229D6C2100A7817D /* DomainComponents.swift in Sources */,
 				B92C48962297D9B80082B1A3 /* String+Extension.swift in Sources */,
 				147DF7F8F346E5B35DCA375ADA5E8D20 /* DomainView.swift in Sources */,
 				80015097BF3A2C7B05CBAA8B8D624299 /* DomainViewController.swift in Sources */,
 				2E70FB312294355E00555D34 /* FileTemplate.swift in Sources */,
-				B92C48942297D8A00082B1A3 /* DomainComponent.swift in Sources */,
 				2E70FB39229435A800555D34 /* MVPComponent.swift in Sources */,
 				2E70FB322294355E00555D34 /* MVPFileTemplate.swift in Sources */,
 				2E70FB372294355E00555D34 /* NavigationFileTemplate.swift in Sources */,

@@ -10,28 +10,30 @@ import Foundation
 
 class DomainPresenter {
     
-    struct ItemGroup {
-        let items: [Item]
-    }
-    
-    class Item {
-        let component: DomainComponent
-        let name: String
-        var isSelected: Bool = true
-        var shouldDisplayAddOption: Bool
-        init(component: DomainComponent) {
-            self.component = component
-            self.name = component.name
-            self.shouldDisplayAddOption = component.canAddMultipleItems
-        }
-        
-    }
+//    struct ItemGroup {
+//        let component: DomainComponent
+//        let items: [Item]
+//    }
+//
+//    class Item {
+//        var name: String
+//        var isSelected: Bool = true
+//        var shouldDisplayAddOption: Bool
+//        init(name: String) {
+//            self.component = component
+//            self.name = component.name
+//            self.shouldDisplayAddOption = component.canAddMultipleItems
+//        }
+//
+//    }
     
     private weak var view: DomainView?
     private let navigation: DomainNavigation
     private let useCaseFactory: UseCaseFactory
     private let domainNode: Node
-    let itemGroups: [ItemGroup]
+    
+    private let useCaseComponent = UseCaseComponent()
+//    let itemGroups: [ItemGroup]
     
 //    var numberOfComponents: Int {
 //        return items.count
@@ -42,7 +44,6 @@ class DomainPresenter {
         self.navigation = navigation
         self.useCaseFactory = useCaseFactory
         self.domainNode = domainNode
-        self.itemGroups = DomainComponent.allCases.map { Item(component: $0) }.map { ItemGroup(items: [$0])}
     }
 
     func viewDidLoad() {
@@ -82,16 +83,18 @@ class DomainPresenter {
     }
     
     func configure(itemView: Any, with item: Any, at index: Int, in section: Section) {
-        let component = self.itemGroups
-        switch section {
-        case .component:
-            let itemView = itemView as? DomainComponentView
-            if let item = item as? ItemGroup {
-                itemView?.display(name: item.)
-            }
-        case .name: <#code#>
-        case .action: <#code#>
-        }
+//        let component = self.itemGroups
+//        switch section {
+//        case .component:
+//            let itemView = itemView as? DomainComponentView
+//            if let item = item as? ItemGroup {
+//                itemView?.display(name: item.component.name)
+//            } else if let item = item as? Item {
+//                itemView?.display(name: item.name)
+//            }
+//        case .name: <#code#>
+//        case .action: <#code#>
+//        }
     }
     
 //    func componentTitle(at index: Int) -> String {
@@ -104,16 +107,4 @@ class DomainPresenter {
     
 }
 
-private extension DomainComponent {
-    var name: String {
-        return String(describing: self).firstLetterUppercased
-    }
-    
-    var canAddMultipleItems: Bool {
-        switch self {
-            case .entity, .gateway: return true
-            default: return false
-        }
-    }
-}
 
