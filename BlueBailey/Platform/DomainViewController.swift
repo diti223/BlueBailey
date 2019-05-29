@@ -30,19 +30,23 @@ extension DomainViewController: NSOutlineViewDelegate, NSOutlineViewDataSource {
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return presenter.hasChildren(item: item)
+        return presenter.isGroup(item: item)
     }
     
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
-        var view: NSTableCellView?
         guard let columnId = tableColumn?.identifier,
-            let column = Section(columnId: columnId) else {
-                return view
+            let section = Section(columnId: columnId),
+            presenter.shouldDisplayView(for: item, in: section) else {
+                return nil
         }
         
         
+        guard let view = outlineView.makeView(withIdentifier: section.cellId, owner: nil) as? NSTableCellView else {
+            return nil
+        }
+        presenter.configure(itemView: view, with: item, in: section)
         
         return view
     }
@@ -61,6 +65,11 @@ extension Section {
         case "ActionColumn": self = .action
         default: return nil
         }
+    }
+    
+    var cellId: NSUserInterfaceItemIdentifier {
+        let rawValue = String(describing: self).capitalized + "Cell"
+        return .init(rawValue)
     }
 }
 

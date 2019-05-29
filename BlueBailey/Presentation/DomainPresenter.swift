@@ -9,35 +9,11 @@
 import Foundation
 
 class DomainPresenter {
-    
-//    struct ItemGroup {
-//        let component: DomainComponent
-//        let items: [Item]
-//    }
-//
-//    class Item {
-//        var name: String
-//        var isSelected: Bool = true
-//        var shouldDisplayAddOption: Bool
-//        init(name: String) {
-//            self.component = component
-//            self.name = component.name
-//            self.shouldDisplayAddOption = component.canAddMultipleItems
-//        }
-//
-//    }
-    
     private weak var view: DomainView?
     private let navigation: DomainNavigation
     private let useCaseFactory: UseCaseFactory
     private let domainNode: Node
-    
     private let useCaseComponent = UseCaseComponent()
-//    let itemGroups: [ItemGroup]
-    
-//    var numberOfComponents: Int {
-//        return items.count
-//    }
 
     init(view: DomainView, navigation: DomainNavigation, useCaseFactory: UseCaseFactory, domainNode: Node) {
         self.view = view
@@ -51,60 +27,50 @@ class DomainPresenter {
     }
     
     func numberOfChildrenOfItem(_ item: Any?) -> Int {
-        if let group = item as? ItemGroup {
-            return group.items.count
+        guard let children = (item as? DomainComponent)?.subComponents else {
+            return 0
         }
         
-        return itemGroups.count
+        return children.count
     }
     
     func child(at index: Int, ofItem item: Any?) -> Any {
-        if let group = item as? ItemGroup {
-            return group.items[index]
+        guard let children = (item as? DomainComponent)?.subComponents else {
+            return useCaseComponent
         }
         
-        return itemGroups[index]
-    }
-    
-    func hasChildren(item: Any) -> Bool {
-        if let group = item as? ItemGroup {
-            return group.items.count > 0
-        }
-        
-        return false
+        return children[index]
     }
     
     func isGroup(item: Any) -> Bool {
-        if item as? ItemGroup != nil {
+        return (item as? DomainComponent)?.subComponents != nil
+    }
+    
+    func configure(itemView: DomainComponentView, with item: Any, in section: Section) {
+        guard let item = item as? DomainComponent else { return }
+        
+        switch section {
+        case .component:
+            guard let itemView = itemView as? DomainComponentItemView else { return }
+            itemView.displayName(type(of: item).userDescription)
+        case .name:
+            guard let itemView = itemView as? DomainComponentNameView else { return }
+            itemView.displayName()
+            
+        case .action:
+            guard let itemView = itemView as? DomainComponentActionView else { return }
+            
+            itemView.displayAddAction()
+            
+        }
+    }
+    
+    func shouldDisplayView(for item: Any, in section: Section) -> Bool {
+        guard section == .action else {
             return true
         }
-        
-        return false
+        return isGroup(item: item)
     }
     
-    func configure(itemView: Any, with item: Any, at index: Int, in section: Section) {
-//        let component = self.itemGroups
-//        switch section {
-//        case .component:
-//            let itemView = itemView as? DomainComponentView
-//            if let item = item as? ItemGroup {
-//                itemView?.display(name: item.component.name)
-//            } else if let item = item as? Item {
-//                itemView?.display(name: item.name)
-//            }
-//        case .name: <#code#>
-//        case .action: <#code#>
-//        }
-    }
-    
-//    func componentTitle(at index: Int) -> String {
-//        return items[index].name
-//    }
-//    
-//    func numberOfSubcomponents(at index: Int) -> Int {
-//        return items[
-//    }
     
 }
-
-

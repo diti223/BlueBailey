@@ -12,7 +12,13 @@ protocol DomainComponent {
     static var userDescription: String { get }
     var fileName: String { get set }
     var subComponents: [DomainComponent]? { get }
+    static var canAddSubComponents: Bool { get }
 }
+
+extension DomainComponent {
+    static let canAddSubComponents: Bool { return false }
+}
+
 
 class BaseComponent {
     var fileName: String = ""
@@ -49,6 +55,15 @@ class UseCaseComponent: MainComponent, DomainComponent {
 
 class EntityComponent: MainComponent, DomainComponent {
     static let userDescription: String = "Entity"
+    var gateways: [EntityGatewayComponent] = []
+    override var subComponents: [DomainComponent]? {
+        get {
+            return gateways
+        }
+        set {
+            self.gateways = newValue as? [EntityGatewayComponent] ?? []
+        }
+    }
     
     override init() {
         super.init()
@@ -57,9 +72,18 @@ class EntityComponent: MainComponent, DomainComponent {
     
 }
 
-class EntityGatewayComponent: FinalComponent, DomainComponent {
+class EntityGatewayComponent: MainComponent, DomainComponent {
     static let userDescription: String = "EntityGateway"
     static let prefixSuggestionOrder = [EntityGatewayType.remote, .local, .unknown]
+    
+    override init() {
+        super.init()
+        self.subComponents = [EntityStoreComponent()]
+    }
+}
+
+class EntityStoreComponent: FinalComponent, DomainComponent {
+    static let userDescription: String = "EntityStore"
 }
 
 enum EntityGatewayType {
