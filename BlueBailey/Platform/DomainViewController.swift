@@ -38,7 +38,7 @@ extension DomainViewController: NSOutlineViewDelegate, NSOutlineViewDataSource {
         
         guard let columnId = tableColumn?.identifier,
             let section = Section(columnId: columnId),
-            presenter.shouldDisplayView(for: item, in: section) else {
+            presenter.shouldDisplayView(for: item, in: section) == true else {
                 return nil
         }
         

@@ -13,10 +13,12 @@ protocol DomainComponent {
     var fileName: String { get set }
     var subComponents: [DomainComponent]? { get }
     static var canAddSubComponents: Bool { get }
+    var isRemovable: Bool { get }
 }
 
 extension DomainComponent {
-    static let canAddSubComponents: Bool { return false }
+    static var canAddSubComponents: Bool { return false }
+    var isRemovable: Bool { return false }
 }
 
 
@@ -36,7 +38,7 @@ class FinalComponent: BaseComponent {
 
 class UseCaseComponent: MainComponent, DomainComponent {
     static let userDescription: String = "UseCase"
-    let entity = EntityComponent()
+    var entities: [EntityComponent] = []
     let presentation = PresentationComponent()
     var request: RequestComponent?
     var response: ResponseComponent?
@@ -44,6 +46,8 @@ class UseCaseComponent: MainComponent, DomainComponent {
     
     override init() {
         super.init()
+        let entity = EntityComponent()
+        entity.parent = self
         let request = RequestComponent()
         let response = ResponseComponent()
         self.request = request
@@ -56,6 +60,8 @@ class UseCaseComponent: MainComponent, DomainComponent {
 class EntityComponent: MainComponent, DomainComponent {
     static let userDescription: String = "Entity"
     var gateways: [EntityGatewayComponent] = []
+    weak var parent: UseCaseComponent?
+    
     override var subComponents: [DomainComponent]? {
         get {
             return gateways
@@ -63,6 +69,11 @@ class EntityComponent: MainComponent, DomainComponent {
         set {
             self.gateways = newValue as? [EntityGatewayComponent] ?? []
         }
+    }
+    
+    static let canAddSubComponents = true
+    var isRemovable: Bool {
+        return (parent?.entities.count ?? 0) > 1
     }
     
     override init() {
