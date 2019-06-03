@@ -11,16 +11,16 @@ import AppKit
 class DomainConnector {
     let useCaseFactory: UseCaseFactory
     weak var viewController: DomainViewController?
-    let domainNode: Node
+    weak var delegate: DomainPresenterDelegate?
 
-    init(useCaseFactory: UseCaseFactory, domainNode: Node) {
+    init(useCaseFactory: UseCaseFactory, delegate: DomainPresenterDelegate) {
         self.useCaseFactory = useCaseFactory
-        self.domainNode = domainNode
+        self.delegate = delegate
     }
 
     func assembleViewController(_ viewController: DomainViewController) {
         self.viewController = viewController
-        let presenter = DomainPresenter(view: viewController, navigation: self, useCaseFactory: useCaseFactory, domainNode: domainNode)
+        let presenter = DomainPresenter(view: viewController, navigation: self, useCaseFactory: useCaseFactory, delegate: delegate)
         viewController.presenter = presenter
     }
 }

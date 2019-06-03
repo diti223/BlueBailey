@@ -17,12 +17,11 @@ protocol DomainComponentItemView: DomainComponentView {
 }
 
 protocol DomainComponentNameView: DomainComponentView {
-    func updateSuggestedNamePrefix(_ prefix: String)
-    func updateSuggestedNameSuffix(_ suffix: String)
-    func displayName()
+    func displaySuggested(_ name: String)
+    
 }
 
 protocol DomainComponentActionView: DomainComponentView {
-    func displayAddAction()
-    func displayRemoveAction()
+    func displayAddAction(_ shouldDisplay: Bool)
+    func displayRemoveAction(_ shouldDisplay: Bool)
 }

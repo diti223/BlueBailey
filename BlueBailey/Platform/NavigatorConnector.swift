@@ -14,8 +14,8 @@ class NavigatorConnector {
     private let useCaseFactory: UseCaseFactory
     private weak var viewController: NavigatorViewController?
     
-    lazy var domainConnectorInit: ((Node) -> DomainConnector) = {
-        let connector = DomainConnector(useCaseFactory: self.useCaseFactory, domainNode: $0)
+    lazy var domainConnectorInit: ((DomainPresenterDelegate) -> DomainConnector) = {
+        let connector = DomainConnector(useCaseFactory: self.useCaseFactory, delegate: $0)
         return connector
     }
     
@@ -29,14 +29,13 @@ class NavigatorConnector {
         let presenter = try NavigatorPresenter(view: viewController, navigation: self, useCaseFactory: useCaseFactory, path: projectPath)
         viewController.presenter = presenter
     }
-    
 }
 
-
 extension NavigatorConnector: NavigatorNavigation {
-    func navigateToDomain(domainNode: Node) {
+    func navigateToDomain(delegate: DomainPresenterDelegate) {
         guard let destination = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "DomainViewController") as? DomainViewController else { return }
-        domainConnectorInit(domainNode).assembleViewController(destination)
+        domainConnectorInit(delegate).assembleViewController(destination)
+        
         viewController?.presentAsModalWindow(destination)
     }
 }

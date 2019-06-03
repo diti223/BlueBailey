@@ -14,4 +14,10 @@ extension String {
         let substring = String(dropFirst())
         return firstLetter.uppercased() + substring
     }
+    
+    var firstLetterLowercased: String {
+        guard let firstLetter = self.first else { return lowercased()}
+        let substring = String(dropFirst())
+        return firstLetter.lowercased() + substring
+    }
 }

@@ -12,7 +12,6 @@
 		2E60E7ED2286E6D8005DF0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E60E7EC2286E6D8005DF0F5 /* AppDelegate.swift */; };
 		2E60E7F12286E6D9005DF0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E60E7F02286E6D9005DF0F5 /* Assets.xcassets */; };
 		2E60E7F42286E6D9005DF0F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E60E7F22286E6D9005DF0F5 /* Main.storyboard */; };
-		2E60E8002286E6D9005DF0F5 /* BlueBaileyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E60E7FF2286E6D9005DF0F5 /* BlueBaileyTests.swift */; };
 		2E60E80B2286E6D9005DF0F5 /* BlueBaileyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E60E80A2286E6D9005DF0F5 /* BlueBaileyUITests.swift */; };
 		2E60E81C2286E6FF005DF0F5 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E60E81B2286E6FA005DF0F5 /* AEXML.framework */; };
 		2E60E81D2286E6FF005DF0F5 /* AEXML.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2E60E81B2286E6FA005DF0F5 /* AEXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -30,6 +29,30 @@
 		2E70FB372294355E00555D34 /* NavigationFileTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDFEFAB064256FDB4CF61C20F64ECB3 /* NavigationFileTemplate.swift */; };
 		2E70FB39229435A800555D34 /* MVPComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E70FB38229435A800555D34 /* MVPComponent.swift */; };
 		2E8FAEEA229C38CA003CB823 /* DomainComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8FAEE9229C38CA003CB823 /* DomainComponentView.swift */; };
+		2EA4EE1E22A1BFE500F1BDAB /* CreateComponentContentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE1D22A1BFE500F1BDAB /* CreateComponentContentUseCase.swift */; };
+		2EA4EE2022A1BFF300F1BDAB /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE1F22A1BFF300F1BDAB /* UseCase.swift */; };
+		2EA4EE2322A1C01500F1BDAB /* CreateFileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE2222A1C01500F1BDAB /* CreateFileRequest.swift */; };
+		2EA4EE2522A1C05800F1BDAB /* DomainComponents+Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE2422A1C05800F1BDAB /* DomainComponents+Templates.swift */; };
+		2EA4EE2722A1C1B400F1BDAB /* CreateFilePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE2622A1C1B400F1BDAB /* CreateFilePresentation.swift */; };
+		2EA4EE2922A243D400F1BDAB /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE2822A243D400F1BDAB /* Property.swift */; };
+		2EA4EE3622A2C78200F1BDAB /* CreateFileUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE3522A2C78200F1BDAB /* CreateFileUseCaseTests.swift */; };
+		2EA4EE3822A2C95400F1BDAB /* DomainMock in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EE3722A2C95400F1BDAB /* DomainMock */; };
+		2EA4EE3A22A2CA7700F1BDAB /* Bundle+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE3922A2CA7700F1BDAB /* Bundle+Tests.swift */; };
+		2EA4EE3C22A2CAB900F1BDAB /* Bundle+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE3B22A2CAB900F1BDAB /* Bundle+String.swift */; };
+		2EA4EE3E22A2CBCF00F1BDAB /* String+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE3D22A2CBCF00F1BDAB /* String+Tests.swift */; };
+		2EA4EE4022A2CBF900F1BDAB /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E60E81B2286E6FA005DF0F5 /* AEXML.framework */; };
+		2EA4EE4122A2CBF900F1BDAB /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E60E81A2286E6FA005DF0F5 /* PathKit.framework */; };
+		2EA4EE4222A2CBF900F1BDAB /* XcodeProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E60E8182286E6F9005DF0F5 /* XcodeProj.framework */; };
+		2EA4EE4422A3A04600F1BDAB /* DomainTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4EE4322A3A04600F1BDAB /* DomainTemplates.swift */; };
+		2EA4EE4522A3A76800F1BDAB /* UseCaseTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EDF822A1641100F1BDAB /* UseCaseTemplate */; };
+		2EA4EE4622A3A76800F1BDAB /* PresentationTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EDF922A1655900F1BDAB /* PresentationTemplate */; };
+		2EA4EE4722A3A76800F1BDAB /* RequestTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EDFC22A165F600F1BDAB /* RequestTemplate */; };
+		2EA4EE4822A3A76800F1BDAB /* ResponseTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EDFE22A1663200F1BDAB /* ResponseTemplate */; };
+		2EA4EE4922A3A76800F1BDAB /* EntityTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EE0022A1665300F1BDAB /* EntityTemplate */; };
+		2EA4EE4A22A3A76800F1BDAB /* EntityGatewayTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EE0222A1667600F1BDAB /* EntityGatewayTemplate */; };
+		2EA4EE4B22A3A76800F1BDAB /* EntityStoreTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EE0422A1667F00F1BDAB /* EntityStoreTemplate */; };
+		2EA4EE4C22A3A76800F1BDAB /* UseCaseFactoryTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EE0F22A1673500F1BDAB /* UseCaseFactoryTemplate */; };
+		2EA4EE4D22A3A76800F1BDAB /* UseCaseDeclarationTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2EA4EE1122A167B500F1BDAB /* UseCaseDeclarationTemplate */; };
 		2EFB23B4228AD5C100CBFB30 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23B3228AD5C100CBFB30 /* NavigatorViewController.swift */; };
 		2EFB23B6228AD5D300CBFB30 /* NavigatorConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23B5228AD5D300CBFB30 /* NavigatorConnector.swift */; };
 		2EFB23B8228AD61800CBFB30 /* NavigatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB23B7228AD61800CBFB30 /* NavigatorPresenter.swift */; };
@@ -91,7 +114,6 @@
 		2E60E7F52286E6D9005DF0F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E60E7F62286E6D9005DF0F5 /* BlueBailey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlueBailey.entitlements; sourceTree = "<group>"; };
 		2E60E7FB2286E6D9005DF0F5 /* BlueBaileyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueBaileyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E60E7FF2286E6D9005DF0F5 /* BlueBaileyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueBaileyTests.swift; sourceTree = "<group>"; };
 		2E60E8012286E6D9005DF0F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E60E8062286E6D9005DF0F5 /* BlueBaileyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueBaileyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E60E80A2286E6D9005DF0F5 /* BlueBaileyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueBaileyUITests.swift; sourceTree = "<group>"; };
@@ -102,6 +124,27 @@
 		2E60E8252288665E005DF0F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2E70FB38229435A800555D34 /* MVPComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPComponent.swift; sourceTree = "<group>"; };
 		2E8FAEE9229C38CA003CB823 /* DomainComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainComponentView.swift; sourceTree = "<group>"; };
+		2EA4EDF822A1641100F1BDAB /* UseCaseTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseTemplate; sourceTree = "<group>"; };
+		2EA4EDF922A1655900F1BDAB /* PresentationTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PresentationTemplate; sourceTree = "<group>"; };
+		2EA4EDFC22A165F600F1BDAB /* RequestTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = RequestTemplate; sourceTree = "<group>"; };
+		2EA4EDFE22A1663200F1BDAB /* ResponseTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = ResponseTemplate; sourceTree = "<group>"; };
+		2EA4EE0022A1665300F1BDAB /* EntityTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = EntityTemplate; sourceTree = "<group>"; };
+		2EA4EE0222A1667600F1BDAB /* EntityGatewayTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = EntityGatewayTemplate; sourceTree = "<group>"; };
+		2EA4EE0422A1667F00F1BDAB /* EntityStoreTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = EntityStoreTemplate; sourceTree = "<group>"; };
+		2EA4EE0F22A1673500F1BDAB /* UseCaseFactoryTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseFactoryTemplate; sourceTree = "<group>"; };
+		2EA4EE1122A167B500F1BDAB /* UseCaseDeclarationTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseDeclarationTemplate; sourceTree = "<group>"; };
+		2EA4EE1D22A1BFE500F1BDAB /* CreateComponentContentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateComponentContentUseCase.swift; sourceTree = "<group>"; };
+		2EA4EE1F22A1BFF300F1BDAB /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		2EA4EE2222A1C01500F1BDAB /* CreateFileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFileRequest.swift; sourceTree = "<group>"; };
+		2EA4EE2422A1C05800F1BDAB /* DomainComponents+Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DomainComponents+Templates.swift"; sourceTree = "<group>"; };
+		2EA4EE2622A1C1B400F1BDAB /* CreateFilePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFilePresentation.swift; sourceTree = "<group>"; };
+		2EA4EE2822A243D400F1BDAB /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		2EA4EE3522A2C78200F1BDAB /* CreateFileUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFileUseCaseTests.swift; sourceTree = "<group>"; };
+		2EA4EE3722A2C95400F1BDAB /* DomainMock */ = {isa = PBXFileReference; lastKnownFileType = text; path = DomainMock; sourceTree = "<group>"; };
+		2EA4EE3922A2CA7700F1BDAB /* Bundle+Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Tests.swift"; sourceTree = "<group>"; };
+		2EA4EE3B22A2CAB900F1BDAB /* Bundle+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+String.swift"; sourceTree = "<group>"; };
+		2EA4EE3D22A2CBCF00F1BDAB /* String+Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Tests.swift"; sourceTree = "<group>"; };
+		2EA4EE4322A3A04600F1BDAB /* DomainTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTemplates.swift; sourceTree = "<group>"; };
 		2EFB23B3228AD5C100CBFB30 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		2EFB23B5228AD5D300CBFB30 /* NavigatorConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorConnector.swift; sourceTree = "<group>"; };
 		2EFB23B7228AD61800CBFB30 /* NavigatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorPresenter.swift; sourceTree = "<group>"; };
@@ -138,6 +181,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EA4EE4022A2CBF900F1BDAB /* AEXML.framework in Frameworks */,
+				2EA4EE4122A2CBF900F1BDAB /* PathKit.framework in Frameworks */,
+				2EA4EE4222A2CBF900F1BDAB /* XcodeProj.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +207,7 @@
 				2E60E81B2286E6FA005DF0F5 /* AEXML.framework */,
 				2E60E81A2286E6FA005DF0F5 /* PathKit.framework */,
 				2E60E8182286E6F9005DF0F5 /* XcodeProj.framework */,
+				2EA4EE3F22A2CBF900F1BDAB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,8 +238,11 @@
 		2E60E7FE2286E6D9005DF0F5 /* BlueBaileyTests */ = {
 			isa = PBXGroup;
 			children = (
-				2E60E7FF2286E6D9005DF0F5 /* BlueBaileyTests.swift */,
+				2EA4EE3922A2CA7700F1BDAB /* Bundle+Tests.swift */,
+				2EA4EE3D22A2CBCF00F1BDAB /* String+Tests.swift */,
 				2E60E8012286E6D9005DF0F5 /* Info.plist */,
+				2EA4EE3522A2C78200F1BDAB /* CreateFileUseCaseTests.swift */,
+				2EA4EE3722A2C95400F1BDAB /* DomainMock */,
 			);
 			path = BlueBaileyTests;
 			sourceTree = "<group>";
@@ -220,6 +270,37 @@
 				2E70FB38229435A800555D34 /* MVPComponent.swift */,
 			);
 			path = FileTemplate;
+			sourceTree = "<group>";
+		};
+		2EA4EDFB22A165EB00F1BDAB /* Domain Templates */ = {
+			isa = PBXGroup;
+			children = (
+				2EA4EDF822A1641100F1BDAB /* UseCaseTemplate */,
+				2EA4EDF922A1655900F1BDAB /* PresentationTemplate */,
+				2EA4EDFC22A165F600F1BDAB /* RequestTemplate */,
+				2EA4EDFE22A1663200F1BDAB /* ResponseTemplate */,
+				2EA4EE0022A1665300F1BDAB /* EntityTemplate */,
+				2EA4EE0222A1667600F1BDAB /* EntityGatewayTemplate */,
+				2EA4EE0422A1667F00F1BDAB /* EntityStoreTemplate */,
+				2EA4EE0F22A1673500F1BDAB /* UseCaseFactoryTemplate */,
+				2EA4EE1122A167B500F1BDAB /* UseCaseDeclarationTemplate */,
+			);
+			path = "Domain Templates";
+			sourceTree = "<group>";
+		};
+		2EA4EE2122A1C00C00F1BDAB /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				2EA4EE2222A1C01500F1BDAB /* CreateFileRequest.swift */,
+			);
+			path = IO;
+			sourceTree = "<group>";
+		};
+		2EA4EE3F22A2CBF900F1BDAB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2EFB23BB228AD65000CBFB30 /* Presentation */ = {
@@ -256,8 +337,17 @@
 			isa = PBXGroup;
 			children = (
 				B920AA4B229D6C2000A7817D /* DomainComponents.swift */,
+				2EA4EE1D22A1BFE500F1BDAB /* CreateComponentContentUseCase.swift */,
+				2EA4EE2622A1C1B400F1BDAB /* CreateFilePresentation.swift */,
+				2EA4EE2422A1C05800F1BDAB /* DomainComponents+Templates.swift */,
+				2EA4EE2122A1C00C00F1BDAB /* IO */,
+				2EA4EDFB22A165EB00F1BDAB /* Domain Templates */,
 				2EFB23BE228AD76A00CBFB30 /* UseCaseFactory.swift */,
 				B92C48952297D9B80082B1A3 /* String+Extension.swift */,
+				2EA4EE1F22A1BFF300F1BDAB /* UseCase.swift */,
+				2EA4EE2822A243D400F1BDAB /* Property.swift */,
+				2EA4EE3B22A2CAB900F1BDAB /* Bundle+String.swift */,
+				2EA4EE4322A3A04600F1BDAB /* DomainTemplates.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -339,6 +429,7 @@
 					};
 					2E60E7FA2286E6D9005DF0F5 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 						TestTargetID = 2E60E7E82286E6D8005DF0F5;
 					};
 					2E60E8052286E6D9005DF0F5 = {
@@ -372,6 +463,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EA4EE4522A3A76800F1BDAB /* UseCaseTemplate in Resources */,
+				2EA4EE4622A3A76800F1BDAB /* PresentationTemplate in Resources */,
+				2EA4EE4722A3A76800F1BDAB /* RequestTemplate in Resources */,
+				2EA4EE4822A3A76800F1BDAB /* ResponseTemplate in Resources */,
+				2EA4EE4922A3A76800F1BDAB /* EntityTemplate in Resources */,
+				2EA4EE4A22A3A76800F1BDAB /* EntityGatewayTemplate in Resources */,
+				2EA4EE4B22A3A76800F1BDAB /* EntityStoreTemplate in Resources */,
+				2EA4EE4C22A3A76800F1BDAB /* UseCaseFactoryTemplate in Resources */,
+				2EA4EE4D22A3A76800F1BDAB /* UseCaseDeclarationTemplate in Resources */,
 				2E60E7F12286E6D9005DF0F5 /* Assets.xcassets in Resources */,
 				2E60E7F42286E6D9005DF0F5 /* Main.storyboard in Resources */,
 			);
@@ -381,6 +481,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EA4EE3822A2C95400F1BDAB /* DomainMock in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,13 +502,19 @@
 				2E60E7ED2286E6D8005DF0F5 /* AppDelegate.swift in Sources */,
 				B9920A79229581BC00CFE392 /* CheckBoxCellView.swift in Sources */,
 				2E70FB362294355E00555D34 /* ConnectorFileTemplate.swift in Sources */,
+				2EA4EE2722A1C1B400F1BDAB /* CreateFilePresentation.swift in Sources */,
+				2EA4EE2322A1C01500F1BDAB /* CreateFileRequest.swift in Sources */,
+				2EA4EE1E22A1BFE500F1BDAB /* CreateComponentContentUseCase.swift in Sources */,
+				2EA4EE4422A3A04600F1BDAB /* DomainTemplates.swift in Sources */,
+				2E8FAEEA229C38CA003CB823 /* DomainComponentView.swift in Sources */,
+				2EA4EE2522A1C05800F1BDAB /* DomainComponents+Templates.swift in Sources */,
+				B920AA4C229D6C2100A7817D /* DomainComponents.swift in Sources */,
 				EEC73D642CBD51A9D25BE4088806F5D4 /* DomainConnector.swift in Sources */,
 				4F4445B2093FA723A4B24B892FAC47F5 /* DomainNavigation.swift in Sources */,
 				513B234E87D21AD25AABD5B1FC6FC247 /* DomainPresenter.swift in Sources */,
-				B920AA4C229D6C2100A7817D /* DomainComponents.swift in Sources */,
-				B92C48962297D9B80082B1A3 /* String+Extension.swift in Sources */,
 				147DF7F8F346E5B35DCA375ADA5E8D20 /* DomainView.swift in Sources */,
 				80015097BF3A2C7B05CBAA8B8D624299 /* DomainViewController.swift in Sources */,
+				2EA4EE3C22A2CAB900F1BDAB /* Bundle+String.swift in Sources */,
 				2E70FB312294355E00555D34 /* FileTemplate.swift in Sources */,
 				2E70FB39229435A800555D34 /* MVPComponent.swift in Sources */,
 				2E70FB322294355E00555D34 /* MVPFileTemplate.swift in Sources */,
@@ -419,11 +526,13 @@
 				2EFB23B4228AD5C100CBFB30 /* NavigatorViewController.swift in Sources */,
 				2E4FD0752294510B00E6E71D /* PlatformFileTemplate.swift in Sources */,
 				2E70FB332294355E00555D34 /* PresenterFileTemplate.swift in Sources */,
+				2EA4EE2922A243D400F1BDAB /* Property.swift in Sources */,
+				B92C48962297D9B80082B1A3 /* String+Extension.swift in Sources */,
+				2EA4EE2022A1BFF300F1BDAB /* UseCase.swift in Sources */,
 				2EFB23BF228AD76A00CBFB30 /* UseCaseFactory.swift in Sources */,
 				2E60E8262288665E005DF0F5 /* ViewController.swift in Sources */,
 				2E70FB352294355E00555D34 /* ViewControllerFileTemplate.swift in Sources */,
 				2E70FB342294355E00555D34 /* ViewFileTemplate.swift in Sources */,
-				2E8FAEEA229C38CA003CB823 /* DomainComponentView.swift in Sources */,
 				B92C48922296CFB10082B1A3 /* WindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,7 +541,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E60E8002286E6D9005DF0F5 /* BlueBaileyTests.swift in Sources */,
+				2EA4EE3622A2C78200F1BDAB /* CreateFileUseCaseTests.swift in Sources */,
+				2EA4EE3A22A2CA7700F1BDAB /* Bundle+Tests.swift in Sources */,
+				2EA4EE3E22A2CBCF00F1BDAB /* String+Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,8 +756,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BlueBaileyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -655,6 +771,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.BlueBaileyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlueBailey.app/Contents/MacOS/BlueBailey";
 			};
@@ -665,8 +782,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BlueBaileyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

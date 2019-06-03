@@ -20,7 +20,7 @@ class NavigatorViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        browser.columnResizingType = .autoColumnResizing
         presenter.viewDidLoad()
         browser.allowsMultipleSelection = true
         browser.menu = cellMenu
@@ -82,6 +82,7 @@ class NavigatorViewController: NSViewController {
     }
     
     @IBAction func openUseCaseViewController(_ sender: Any) {
+        selectNode()
         presenter.openDomainController()
     }
     

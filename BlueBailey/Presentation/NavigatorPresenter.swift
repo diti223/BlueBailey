@@ -57,6 +57,9 @@ class NavigatorPresenter {
         self.selectedNode = rootNode
         self.selectedPlatform = platforms[0]
         extractTargets()
+        if targets.count > 0 {
+            selectTarget(at: 0)
+        }
     }
     
     func viewDidLoad() {
@@ -184,7 +187,7 @@ class NavigatorPresenter {
     
     func openDomainController() {
         //.. get domain node or create it
-        navigation.navigateToDomain(domainNode: selectedNode)
+        navigation.navigateToDomain(delegate: self)
     }
     
     func sortCompileSources() {
@@ -202,14 +205,21 @@ class NavigatorPresenter {
     
     //MARK: - Private Methods
     
-    private func selectFirstGroupNode() {
-        if (selectedNode?.item.file as? PBXGroup) == nil {
-            selectedNode = selectedNode?.parent
+    private func selectLastGroupNode() {
+        if let node = lastSelectedGroup() {
+            selectNode(node)
         }
     }
     
+    private func lastSelectedGroup() -> Node? {
+        if (selectedNode?.item.file as? PBXGroup) == nil {
+            return selectedNode?.parent
+        }
+        return selectedNode
+    }
+    
     private func addNewFileReference(named: String) throws -> Path? {
-        selectFirstGroupNode()
+        selectLastGroupNode()
         let node = selectedNode!
         guard let path = try node.item.file?.fullPath(sourceRoot: projectPath.parent()),
             let fileContainer = selectedNode.item.file as? PBXGroup else {
@@ -224,7 +234,20 @@ class NavigatorPresenter {
     }
     
     private func addNewGroupReference(named: String) throws -> Path? {
-        selectFirstGroupNode()
+        selectLastGroupNode()
+        let node = selectedNode!
+        guard let path = try node.item.file?.fullPath(sourceRoot: projectPath.parent()),
+            let fileContainer = selectedNode.item.file as? PBXGroup,
+            let fileReference = try fileContainer.addGroup(named: named).first else {
+                return nil
+        }
+        try addFile(reference: fileReference, to: node)
+        
+        return (path + named)
+    }
+    
+    private func addNewGroupReference(at node: Node, named: String) throws -> Path? {
+        selectNode(node)
         let node = selectedNode!
         guard let path = try node.item.file?.fullPath(sourceRoot: projectPath.parent()),
             let fileContainer = selectedNode.item.file as? PBXGroup,
@@ -285,8 +308,60 @@ class NavigatorPresenter {
     // MARK: - Targets
     
     private func extractTargets() {
-        targets = project.pbxproj.nativeTargets.map { Target(target: $0) }
+        targets = project.pbxproj.nativeTargets.map { Target(target: $0) }.sorted(by: { (target1, target2) -> Bool in
+            return target1.name < target2.name
+        })
     }
+    
+    private func firstSelectedNode() -> Node {
+        var node: Node = selectedNode
+        while let parent = node.parent,
+            parent != rootNode {
+            node = parent
+        }
+        return node
+    }
+}
+
+
+extension NavigatorPresenter: DomainPresenterDelegate {
+    func beginProjectUpdates() {
+        
+    }
+    
+    func endProjectUpdates() {
+        do { try commitChanges() }
+        catch { debugPrint(error) }
+    }
+    
+    func createFile(_ name: String, withContent content: String, atRelativePath relativePath: String) {
+        do {
+            selectNode(firstSelectedNode())
+            let firstNodeName = selectedNode.item.name
+            let startPath = projectPath.parent() + firstNodeName
+            let completePath = (startPath) + relativePath
+            createGroups(groupsPath: relativePath, from: <#T##Path#>)
+            let relativeComponents = relativePath.components(separatedBy: "/")
+            
+            try completePath.mkpath()
+            let filePath = (projectPath + name)
+            if !filePath.exists {
+                try (projectPath + name).write(content)
+            }
+            
+        } catch {
+            debugPrint("Save file error \(error)")
+        }
+    }
+    
+    private func createGroups(groupsPath: String, from path: Path) {
+        groupsPath.components(separatedBy: "/").forEach { (groupPath) in
+            <#code#>
+        }
+        addNewGroupReference(named: <#T##String#>)
+    }
+    
+    
 }
 
 extension FileTemplate {

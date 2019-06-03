@@ -9,5 +9,5 @@
 import Foundation
 
 protocol DomainView: class {
-    //func reloadData()
+    func reloadData()
 }

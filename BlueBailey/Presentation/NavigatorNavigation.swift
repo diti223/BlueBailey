@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NavigatorNavigation: class {
-    func navigateToDomain(domainNode: Node)
+    func navigateToDomain(delegate: DomainPresenterDelegate)
 }
