@@ -326,7 +326,7 @@ class NavigatorPresenter {
 
 extension NavigatorPresenter: DomainPresenterDelegate {
     func beginProjectUpdates() {
-        
+        createDomainGroupsIfNeeded()
     }
     
     func endProjectUpdates() {
@@ -335,30 +335,34 @@ extension NavigatorPresenter: DomainPresenterDelegate {
     }
     
     func createFile(_ name: String, withContent content: String, atRelativePath relativePath: String) {
-        do {
-            selectNode(firstSelectedNode())
-            let firstNodeName = selectedNode.item.name
-            let startPath = projectPath.parent() + firstNodeName
-            let completePath = (startPath) + relativePath
-            createGroups(groupsPath: relativePath, from: <#T##Path#>)
-            let relativeComponents = relativePath.components(separatedBy: "/")
-            
-            try completePath.mkpath()
-            let filePath = (projectPath + name)
-            if !filePath.exists {
-                try (projectPath + name).write(content)
-            }
-            
-        } catch {
-            debugPrint("Save file error \(error)")
-        }
+//        do {
+//            selectNode(firstSelectedNode())
+//            let firstNodeName = selectedNode.item.name
+//            let startPath = projectPath.parent() + firstNodeName
+//            let completePath = (startPath) + relativePath
+//            createGroups(groupsPath: relativePath, from: completePath)
+//            let relativeComponents = relativePath.components(separatedBy: "/")
+//            
+//            try completePath.mkpath()
+//            let filePath = (projectPath + name)
+//            if !filePath.exists {
+//                try (projectPath + name).write(content)
+//            }
+//            
+//        } catch {
+//            debugPrint("Save file error \(error)")
+//        }
+    }
+    
+    private func createDomainGroupsIfNeeded() {
+        
     }
     
     private func createGroups(groupsPath: String, from path: Path) {
-        groupsPath.components(separatedBy: "/").forEach { (groupPath) in
-            <#code#>
-        }
-        addNewGroupReference(named: <#T##String#>)
+//        groupsPath.components(separatedBy: "/").forEach { (groupPath) in
+//            <#code#>
+//        }
+//        addNewGroupReference(named: <#T##String#>)
     }
     
     
