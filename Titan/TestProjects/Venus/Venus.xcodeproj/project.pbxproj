@@ -1,0 +1,1082 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B9A882312359E194007A589B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A882302359E194007A589B /* main.swift */; };
+		B9A8823E2359EB2D007A589B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8823D2359EB2D007A589B /* main.swift */; };
+		B9A882502359EDC5007A589B /* Hyperion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A882472359EDC5007A589B /* Hyperion.framework */; };
+		B9A882552359EDC5007A589B /* HyperionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A882542359EDC5007A589B /* HyperionTests.swift */; };
+		B9A882572359EDC5007A589B /* Hyperion.h in Headers */ = {isa = PBXBuildFile; fileRef = B9A882492359EDC5007A589B /* Hyperion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B9A88260235AD2E4007A589B /* John.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A8825F235AD2E4007A589B /* John.swift */; };
+		B9A88262235AD2EA007A589B /* Tom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A88261235AD2EA007A589B /* Tom.swift */; };
+		B9A88264235AD2F1007A589B /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A88263235AD2F1007A589B /* Bill.swift */; };
+		B9A8826A235B3BA7007A589B /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A88269235B3BA7007A589B /* UserPresenter.swift */; };
+		B9A88272235B3C80007A589B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A88271235B3C80007A589B /* AppDelegate.swift */; };
+		B9A88274235B3C80007A589B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A88273235B3C80007A589B /* ViewController.swift */; };
+		B9A88276235B3C80007A589B /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A88275235B3C80007A589B /* Document.swift */; };
+		B9A88279235B3C80007A589B /* Document.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B9A88277235B3C80007A589B /* Document.xcdatamodeld */; };
+		B9A8827B235B3C82007A589B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9A8827A235B3C82007A589B /* Assets.xcassets */; };
+		B9A8827E235B3C82007A589B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9A8827C235B3C82007A589B /* Main.storyboard */; };
+		B9A8828A235B3C82007A589B /* ApolloTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A88289235B3C82007A589B /* ApolloTests.swift */; };
+		B9A88295235B3C82007A589B /* ApolloUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A88294235B3C82007A589B /* ApolloUITests.swift */; };
+		B9A882A4235B3CCB007A589B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A882A3235B3CCB007A589B /* User.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B9A882512359EDC5007A589B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A882252359E194007A589B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9A882462359EDC5007A589B;
+			remoteInfo = Hyperion;
+		};
+		B9A88286235B3C82007A589B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A882252359E194007A589B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9A8826E235B3C80007A589B;
+			remoteInfo = Apollo;
+		};
+		B9A88291235B3C82007A589B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A882252359E194007A589B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9A8826E235B3C80007A589B;
+			remoteInfo = Apollo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B9A8822B2359E194007A589B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		B9A882392359EB2D007A589B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B9A8822D2359E194007A589B /* Venus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Venus; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A882302359E194007A589B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B9A8823B2359EB2D007A589B /* Hera */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Hera; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A8823D2359EB2D007A589B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B9A882472359EDC5007A589B /* Hyperion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hyperion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A882492359EDC5007A589B /* Hyperion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hyperion.h; sourceTree = "<group>"; };
+		B9A8824A2359EDC5007A589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9A8824F2359EDC5007A589B /* HyperionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A882542359EDC5007A589B /* HyperionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperionTests.swift; sourceTree = "<group>"; };
+		B9A882562359EDC5007A589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9A8825F235AD2E4007A589B /* John.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = John.swift; sourceTree = "<group>"; };
+		B9A88261235AD2EA007A589B /* Tom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tom.swift; sourceTree = "<group>"; };
+		B9A88263235AD2F1007A589B /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		B9A88265235B398C007A589B /* NotAddedToTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotAddedToTarget.swift; sourceTree = "<group>"; };
+		B9A88269235B3BA7007A589B /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
+		B9A8826F235B3C80007A589B /* Apollo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apollo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A88271235B3C80007A589B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B9A88273235B3C80007A589B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Apo/Platform/ViewControllers/ViewController.swift; sourceTree = SOURCE_ROOT; };
+		B9A88275235B3C80007A589B /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		B9A88278235B3C80007A589B /* Document.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Document.xcdatamodel; sourceTree = "<group>"; };
+		B9A8827A235B3C82007A589B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B9A8827D235B3C82007A589B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B9A8827F235B3C82007A589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9A88280235B3C82007A589B /* Apollo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Apollo.entitlements; sourceTree = "<group>"; };
+		B9A88285235B3C82007A589B /* ApolloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApolloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A88289235B3C82007A589B /* ApolloTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloTests.swift; sourceTree = "<group>"; };
+		B9A8828B235B3C82007A589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9A88290235B3C82007A589B /* ApolloUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApolloUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A88294235B3C82007A589B /* ApolloUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloUITests.swift; sourceTree = "<group>"; };
+		B9A88296235B3C82007A589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9A882A3235B3CCB007A589B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B9A882A5235B4DCD007A589B /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B9A8822A2359E194007A589B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A882382359EB2D007A589B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A882442359EDC5007A589B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A8824C2359EDC5007A589B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A882502359EDC5007A589B /* Hyperion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A8826C235B3C80007A589B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A88282235B3C82007A589B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A8828D235B3C82007A589B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B9A882242359E194007A589B = {
+			isa = PBXGroup;
+			children = (
+				B9A882A5235B4DCD007A589B /* Common.swift */,
+				B9A8822F2359E194007A589B /* Venus */,
+				B9A8823C2359EB2D007A589B /* Hera */,
+				B9A882482359EDC5007A589B /* Hyperion */,
+				B9A882532359EDC5007A589B /* HyperionTests */,
+				B9A88270235B3C80007A589B /* Apo */,
+				B9A88288235B3C82007A589B /* ApolloTests */,
+				B9A88293235B3C82007A589B /* ApolloUITests */,
+				B9A8822E2359E194007A589B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B9A8822E2359E194007A589B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B9A8822D2359E194007A589B /* Venus */,
+				B9A8823B2359EB2D007A589B /* Hera */,
+				B9A882472359EDC5007A589B /* Hyperion.framework */,
+				B9A8824F2359EDC5007A589B /* HyperionTests.xctest */,
+				B9A8826F235B3C80007A589B /* Apollo.app */,
+				B9A88285235B3C82007A589B /* ApolloTests.xctest */,
+				B9A88290235B3C82007A589B /* ApolloUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B9A8822F2359E194007A589B /* Venus */ = {
+			isa = PBXGroup;
+			children = (
+				B9A882302359E194007A589B /* main.swift */,
+				B9A88268235B3B93007A589B /* Presentation */,
+			);
+			path = Venus;
+			sourceTree = "<group>";
+		};
+		B9A8823C2359EB2D007A589B /* Hera */ = {
+			isa = PBXGroup;
+			children = (
+				B9A8823D2359EB2D007A589B /* main.swift */,
+				B9A88265235B398C007A589B /* NotAddedToTarget.swift */,
+			);
+			path = Hera;
+			sourceTree = "<group>";
+		};
+		B9A882482359EDC5007A589B /* Hyperion */ = {
+			isa = PBXGroup;
+			children = (
+				B9A882492359EDC5007A589B /* Hyperion.h */,
+				B9A8825F235AD2E4007A589B /* John.swift */,
+				B9A88261235AD2EA007A589B /* Tom.swift */,
+				B9A88263235AD2F1007A589B /* Bill.swift */,
+				B9A8824A2359EDC5007A589B /* Info.plist */,
+			);
+			path = Hyperion;
+			sourceTree = "<group>";
+		};
+		B9A882532359EDC5007A589B /* HyperionTests */ = {
+			isa = PBXGroup;
+			children = (
+				B9A882542359EDC5007A589B /* HyperionTests.swift */,
+				B9A882562359EDC5007A589B /* Info.plist */,
+			);
+			path = HyperionTests;
+			sourceTree = "<group>";
+		};
+		B9A88268235B3B93007A589B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B9A88269235B3BA7007A589B /* UserPresenter.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		B9A88270235B3C80007A589B /* Apo */ = {
+			isa = PBXGroup;
+			children = (
+				B9A882A0235B3CA5007A589B /* Platform */,
+				B9A882A2235B3CB6007A589B /* Domain */,
+				B9A8827A235B3C82007A589B /* Assets.xcassets */,
+				B9A8827C235B3C82007A589B /* Main.storyboard */,
+				B9A8827F235B3C82007A589B /* Info.plist */,
+				B9A88280235B3C82007A589B /* Apollo.entitlements */,
+				B9A88277235B3C80007A589B /* Document.xcdatamodeld */,
+			);
+			path = Apo;
+			sourceTree = "<group>";
+		};
+		B9A88288235B3C82007A589B /* ApolloTests */ = {
+			isa = PBXGroup;
+			children = (
+				B9A88289235B3C82007A589B /* ApolloTests.swift */,
+				B9A8828B235B3C82007A589B /* Info.plist */,
+			);
+			path = ApolloTests;
+			sourceTree = "<group>";
+		};
+		B9A88293235B3C82007A589B /* ApolloUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B9A88294235B3C82007A589B /* ApolloUITests.swift */,
+				B9A88296235B3C82007A589B /* Info.plist */,
+			);
+			path = ApolloUITests;
+			sourceTree = "<group>";
+		};
+		B9A882A0235B3CA5007A589B /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				B9A88271235B3C80007A589B /* AppDelegate.swift */,
+				B9A88275235B3C80007A589B /* Document.swift */,
+				B9A882A1235B3CAF007A589B /* ViewControllers */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		B9A882A1235B3CAF007A589B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B9A88273235B3C80007A589B /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B9A882A2235B3CB6007A589B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B9A882A3235B3CCB007A589B /* User.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B9A882422359EDC5007A589B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A882572359EDC5007A589B /* Hyperion.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B9A8822C2359E194007A589B /* Venus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9A882342359E194007A589B /* Build configuration list for PBXNativeTarget "Venus" */;
+			buildPhases = (
+				B9A882292359E194007A589B /* Sources */,
+				B9A8822A2359E194007A589B /* Frameworks */,
+				B9A8822B2359E194007A589B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Venus;
+			productName = Venus;
+			productReference = B9A8822D2359E194007A589B /* Venus */;
+			productType = "com.apple.product-type.tool";
+		};
+		B9A8823A2359EB2D007A589B /* Hera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9A882412359EB2D007A589B /* Build configuration list for PBXNativeTarget "Hera" */;
+			buildPhases = (
+				B9A882372359EB2D007A589B /* Sources */,
+				B9A882382359EB2D007A589B /* Frameworks */,
+				B9A882392359EB2D007A589B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hera;
+			productName = Hera;
+			productReference = B9A8823B2359EB2D007A589B /* Hera */;
+			productType = "com.apple.product-type.tool";
+		};
+		B9A882462359EDC5007A589B /* Hyperion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9A882582359EDC5007A589B /* Build configuration list for PBXNativeTarget "Hyperion" */;
+			buildPhases = (
+				B9A882422359EDC5007A589B /* Headers */,
+				B9A882432359EDC5007A589B /* Sources */,
+				B9A882442359EDC5007A589B /* Frameworks */,
+				B9A882452359EDC5007A589B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hyperion;
+			productName = Hyperion;
+			productReference = B9A882472359EDC5007A589B /* Hyperion.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B9A8824E2359EDC5007A589B /* HyperionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9A8825B2359EDC5007A589B /* Build configuration list for PBXNativeTarget "HyperionTests" */;
+			buildPhases = (
+				B9A8824B2359EDC5007A589B /* Sources */,
+				B9A8824C2359EDC5007A589B /* Frameworks */,
+				B9A8824D2359EDC5007A589B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9A882522359EDC5007A589B /* PBXTargetDependency */,
+			);
+			name = HyperionTests;
+			productName = HyperionTests;
+			productReference = B9A8824F2359EDC5007A589B /* HyperionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B9A8826E235B3C80007A589B /* Apollo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9A88297235B3C82007A589B /* Build configuration list for PBXNativeTarget "Apollo" */;
+			buildPhases = (
+				B9A8826B235B3C80007A589B /* Sources */,
+				B9A8826C235B3C80007A589B /* Frameworks */,
+				B9A8826D235B3C80007A589B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Apollo;
+			productName = Apollo;
+			productReference = B9A8826F235B3C80007A589B /* Apollo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B9A88284235B3C82007A589B /* ApolloTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9A8829A235B3C82007A589B /* Build configuration list for PBXNativeTarget "ApolloTests" */;
+			buildPhases = (
+				B9A88281235B3C82007A589B /* Sources */,
+				B9A88282235B3C82007A589B /* Frameworks */,
+				B9A88283235B3C82007A589B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9A88287235B3C82007A589B /* PBXTargetDependency */,
+			);
+			name = ApolloTests;
+			productName = ApolloTests;
+			productReference = B9A88285235B3C82007A589B /* ApolloTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B9A8828F235B3C82007A589B /* ApolloUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9A8829D235B3C82007A589B /* Build configuration list for PBXNativeTarget "ApolloUITests" */;
+			buildPhases = (
+				B9A8828C235B3C82007A589B /* Sources */,
+				B9A8828D235B3C82007A589B /* Frameworks */,
+				B9A8828E235B3C82007A589B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9A88292235B3C82007A589B /* PBXTargetDependency */,
+			);
+			name = ApolloUITests;
+			productName = ApolloUITests;
+			productReference = B9A88290235B3C82007A589B /* ApolloUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B9A882252359E194007A589B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = Bilescu;
+				TargetAttributes = {
+					B9A8822C2359E194007A589B = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					B9A8823A2359EB2D007A589B = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					B9A882462359EDC5007A589B = {
+						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
+					};
+					B9A8824E2359EDC5007A589B = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					B9A8826E235B3C80007A589B = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					B9A88284235B3C82007A589B = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = B9A8826E235B3C80007A589B;
+					};
+					B9A8828F235B3C82007A589B = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = B9A8826E235B3C80007A589B;
+					};
+				};
+			};
+			buildConfigurationList = B9A882282359E194007A589B /* Build configuration list for PBXProject "Venus" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B9A882242359E194007A589B;
+			productRefGroup = B9A8822E2359E194007A589B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B9A8822C2359E194007A589B /* Venus */,
+				B9A8823A2359EB2D007A589B /* Hera */,
+				B9A882462359EDC5007A589B /* Hyperion */,
+				B9A8824E2359EDC5007A589B /* HyperionTests */,
+				B9A8826E235B3C80007A589B /* Apollo */,
+				B9A88284235B3C82007A589B /* ApolloTests */,
+				B9A8828F235B3C82007A589B /* ApolloUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B9A882452359EDC5007A589B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A8824D2359EDC5007A589B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A8826D235B3C80007A589B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A8827B235B3C82007A589B /* Assets.xcassets in Resources */,
+				B9A8827E235B3C82007A589B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A88283235B3C82007A589B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A8828E235B3C82007A589B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B9A882292359E194007A589B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A882312359E194007A589B /* main.swift in Sources */,
+				B9A8826A235B3BA7007A589B /* UserPresenter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A882372359EB2D007A589B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A8823E2359EB2D007A589B /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A882432359EDC5007A589B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A88262235AD2EA007A589B /* Tom.swift in Sources */,
+				B9A88264235AD2F1007A589B /* Bill.swift in Sources */,
+				B9A88260235AD2E4007A589B /* John.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A8824B2359EDC5007A589B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A882552359EDC5007A589B /* HyperionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A8826B235B3C80007A589B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A88279235B3C80007A589B /* Document.xcdatamodeld in Sources */,
+				B9A88274235B3C80007A589B /* ViewController.swift in Sources */,
+				B9A88272235B3C80007A589B /* AppDelegate.swift in Sources */,
+				B9A882A4235B3CCB007A589B /* User.swift in Sources */,
+				B9A88276235B3C80007A589B /* Document.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A88281235B3C82007A589B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A8828A235B3C82007A589B /* ApolloTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A8828C235B3C82007A589B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A88295235B3C82007A589B /* ApolloUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9A882522359EDC5007A589B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9A882462359EDC5007A589B /* Hyperion */;
+			targetProxy = B9A882512359EDC5007A589B /* PBXContainerItemProxy */;
+		};
+		B9A88287235B3C82007A589B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9A8826E235B3C80007A589B /* Apollo */;
+			targetProxy = B9A88286235B3C82007A589B /* PBXContainerItemProxy */;
+		};
+		B9A88292235B3C82007A589B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9A8826E235B3C80007A589B /* Apollo */;
+			targetProxy = B9A88291235B3C82007A589B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B9A8827C235B3C82007A589B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9A8827D235B3C82007A589B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B9A882322359E194007A589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B9A882332359E194007A589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		B9A882352359E194007A589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B9A882362359E194007A589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B9A8823F2359EB2D007A589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B9A882402359EB2D007A589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B9A882592359EDC5007A589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Hyperion/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.Hyperion;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B9A8825A2359EDC5007A589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Hyperion/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.Hyperion;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B9A8825C2359EDC5007A589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = HyperionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.HyperionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B9A8825D2359EDC5007A589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = HyperionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.HyperionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B9A88298235B3C82007A589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Apollo/Apollo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Apollo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.Apollo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B9A88299235B3C82007A589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Apollo/Apollo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Apollo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.Apollo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B9A8829B235B3C82007A589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ApolloTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.ApolloTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apollo.app/Contents/MacOS/Apollo";
+			};
+			name = Debug;
+		};
+		B9A8829C235B3C82007A589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ApolloTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.ApolloTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apollo.app/Contents/MacOS/Apollo";
+			};
+			name = Release;
+		};
+		B9A8829E235B3C82007A589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ApolloUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.ApolloUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Apollo;
+			};
+			name = Debug;
+		};
+		B9A8829F235B3C82007A589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ApolloUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.ApolloUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Apollo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B9A882282359E194007A589B /* Build configuration list for PBXProject "Venus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9A882322359E194007A589B /* Debug */,
+				B9A882332359E194007A589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9A882342359E194007A589B /* Build configuration list for PBXNativeTarget "Venus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9A882352359E194007A589B /* Debug */,
+				B9A882362359E194007A589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9A882412359EB2D007A589B /* Build configuration list for PBXNativeTarget "Hera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9A8823F2359EB2D007A589B /* Debug */,
+				B9A882402359EB2D007A589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9A882582359EDC5007A589B /* Build configuration list for PBXNativeTarget "Hyperion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9A882592359EDC5007A589B /* Debug */,
+				B9A8825A2359EDC5007A589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9A8825B2359EDC5007A589B /* Build configuration list for PBXNativeTarget "HyperionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9A8825C2359EDC5007A589B /* Debug */,
+				B9A8825D2359EDC5007A589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9A88297235B3C82007A589B /* Build configuration list for PBXNativeTarget "Apollo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9A88298235B3C82007A589B /* Debug */,
+				B9A88299235B3C82007A589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9A8829A235B3C82007A589B /* Build configuration list for PBXNativeTarget "ApolloTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9A8829B235B3C82007A589B /* Debug */,
+				B9A8829C235B3C82007A589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9A8829D235B3C82007A589B /* Build configuration list for PBXNativeTarget "ApolloUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9A8829E235B3C82007A589B /* Debug */,
+				B9A8829F235B3C82007A589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B9A88277235B3C80007A589B /* Document.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B9A88278235B3C80007A589B /* Document.xcdatamodel */,
+			);
+			currentVersion = B9A88278235B3C80007A589B /* Document.xcdatamodel */;
+			path = Document.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B9A882252359E194007A589B /* Project object */;
+}
