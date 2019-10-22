@@ -8,4 +8,8 @@ public struct Project {
     public let name: String
     public let targets: Set<Target>
     public let groups: [Group]
+
+    public func targets(of file: File) -> Set<Target> {
+        return self.targets.filter { $0.contains(file: file) }
+    }
 }

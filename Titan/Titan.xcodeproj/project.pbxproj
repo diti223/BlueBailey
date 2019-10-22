@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB21738362D94BCE44BCD701 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217B9DE57CB72A64A32308 /* File.swift */; };
 		AB217AE76E438DD6DD7FC8BD /* LoadProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217692389A8610A12D2FAB /* LoadProjectTests.swift */; };
 		AB217C990EED0676F7987BF7 /* XcodeProjectManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2177A4378BB7E8E9E67682 /* XcodeProjectManagerTests.swift */; };
 		AB217D94DD57D9DFE17DCE04 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217E80F7D4AA5768012798 /* main.swift */; };
@@ -68,6 +69,7 @@
 		AB2177A4378BB7E8E9E67682 /* XcodeProjectManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeProjectManagerTests.swift; sourceTree = "<group>"; };
 		AB217918530A0E006FDA07F4 /* Group+PBXFileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+PBXFileElement.swift"; sourceTree = "<group>"; };
 		AB217AA3DFD7A43D94A8A0DA /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		AB217B9DE57CB72A64A32308 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		AB217BBBA8D41A5CEB752615 /* ProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectManager.swift; sourceTree = "<group>"; };
 		AB217DCD560D0E82DB90E328 /* ProjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
 		AB217E80F7D4AA5768012798 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				AB217AA3DFD7A43D94A8A0DA /* Target.swift */,
 				AB217918530A0E006FDA07F4 /* Group+PBXFileElement.swift */,
 				B9A882D0235C985E007A589B /* Info.plist */,
+				AB217B9DE57CB72A64A32308 /* File.swift */,
 			);
 			path = TitanAPI;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				B9A882D7235C9870007A589B /* Group+PBXFileElement.swift in Sources */,
 				B9A882D9235C9870007A589B /* Group.swift in Sources */,
 				B9A882D8235C9870007A589B /* Project.swift in Sources */,
+				AB21738362D94BCE44BCD701 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

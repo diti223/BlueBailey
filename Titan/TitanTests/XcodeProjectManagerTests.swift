@@ -68,7 +68,7 @@ class XcodeProjectManagerTests: XCTestCase {
         XCTAssertEqual(["Hydra", "Products"], project?.groups.map { $0.name })
         XCTAssertEqual(["Main.storyboard", "Hydra.xcdatamodeld"], project?.groups["Hydra"]?.groups.map { $0.name })
         XCTAssertEqual(4, project?.targets["Hydra"]?.fileNames.count)
-        XCTAssertEqual(["AppDelegate.swift", "ViewController.swift", "Document.swift", "Assets.xcassets", "Info.plist", "Hydra.entitlements"], project?.groups["Hydra"]?.fileNames)
+        XCTAssertEqual(["AppDelegate.swift", "ViewController.swift", "Document.swift", "Assets.xcassets", "Main.storyboard", "Info.plist", "Hydra.entitlements", "Hydra.xcdatamodeld"], project?.groups["Hydra"]?.fileNames)
     }
 
     func testOpenVenusProjectMapsNestedGroupNames() {
@@ -83,6 +83,33 @@ class XcodeProjectManagerTests: XCTestCase {
         let expectedPlatformSubgroup = Set(["ViewControllers"])
         let actualPlatformSubgroups = Set(platformGroup.groups.map { $0.name })
         XCTAssertEqual(expectedPlatformSubgroup, actualPlatformSubgroups)
+    }
+
+    func testOpenVenusProject_VenusGroupMainFileIsAddedOnlyOnVenusTarget() {
+        let venusProject = openVenusProject()
+        let mainVenusFile = venusProject.groups["Venus"]!.files["main.swift"]!
+
+        let expectedTargetNames = Set(["Venus"])
+        let actualTargetNames = Set(venusProject.targets(of: mainVenusFile).map { $0.name })
+        XCTAssertEqual(expectedTargetNames, actualTargetNames)
+    }
+
+    func testOpenVenusProject_HeraGroupMainFileIsAddedOnlyOnHeraTarget() {
+        let venusProject = openVenusProject()
+        let mainVenusFile = venusProject.groups["Hera"]!.files["main.swift"]!
+
+        let expectedTargetNames = Set(["Hera"])
+        let actualTargetNames = Set(venusProject.targets(of: mainVenusFile).map { $0.name })
+        XCTAssertEqual(expectedTargetNames, actualTargetNames)
+    }
+
+    func testOpenVenusProject_MapNotAddedToTargetFile() {
+        let venusProject = openVenusProject()
+        let mainVenusFile = venusProject.groups["Hera"]!.files["NotAddedToTarget.swift"]!
+
+        let expectedTargetNames = Set<String>()
+        let actualTargetNames = Set(venusProject.targets(of: mainVenusFile).map { $0.name })
+        XCTAssertEqual(expectedTargetNames, actualTargetNames)
     }
 
     //MARK: - Helper methods

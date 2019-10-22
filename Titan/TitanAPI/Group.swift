@@ -7,12 +7,16 @@ import Foundation
 
 public struct Group: Equatable {
     public let name: String
-    public let fileNames: [String]
+    public let files: [File]
     public let groups: [Group]
 
-    public init(name: String, fileNames: [String], groups: [Group] = []) {
+    public var fileNames: [String] {
+        return files.map { $0.name }
+    }
+
+    public init(name: String, files: [File], groups: [Group] = []) {
         self.name = name
-        self.fileNames = fileNames
+        self.files = files
         self.groups = groups
     }
 }

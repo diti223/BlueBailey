@@ -7,9 +7,21 @@ import Foundation
 
 public struct Target: Hashable {
     public let name: String
-    public let fileNames: [String]
-}
+    let files: [File]
 
+    public var fileNames: [String] {
+        return files.map { $0.name }
+    }
+
+    public init(name: String, files: [File]) {
+        self.name = name
+        self.files = files
+    }
+
+    func contains(file: File) -> Bool {
+        return files.contains(where: { $0.path == file.path })
+    }
+}
 
 public extension Collection where Iterator.Element == Target {
     subscript(name: String) -> Target? {
