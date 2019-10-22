@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB21738362D94BCE44BCD701 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217B9DE57CB72A64A32308 /* File.swift */; };
+		AB2170D8053F9688807EEAAC /* Group+PBXFileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21732FEA246C5A8A73E101 /* Group+PBXFileElement.swift */; };
+		AB2172E748B3E24029C402DA /* ProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217E19C9082ADBC063A73A /* ProjectManager.swift */; };
+		AB2172FC491AE76C407BDF9B /* XcodeProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2177AAC627DD6329E1DF11 /* XcodeProjectManager.swift */; };
+		AB21731E9B0F86B5CE7A7AC6 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2175A48A2209F1F927A60A /* ProjectLoader.swift */; };
+		AB21768471054B1E1536B583 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217919BA1C930157B6092D /* File.swift */; };
+		AB217726A3411B82BBAB175E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2174B5AB5F6FDDF53BB6C3 /* Project.swift */; };
+		AB21784EC1E87B8B51ED9E56 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217E117D887ECE7BF0472C /* Target.swift */; };
+		AB217AD92D516B74D67642E2 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2175D5659FB039F788D126 /* Group.swift */; };
 		AB217AE76E438DD6DD7FC8BD /* LoadProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217692389A8610A12D2FAB /* LoadProjectTests.swift */; };
 		AB217C990EED0676F7987BF7 /* XcodeProjectManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2177A4378BB7E8E9E67682 /* XcodeProjectManagerTests.swift */; };
 		AB217D94DD57D9DFE17DCE04 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217E80F7D4AA5768012798 /* main.swift */; };
@@ -22,13 +29,6 @@
 		B9A882212359DE8B007A589B /* XcodeProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A881D8235758A7007A589B /* XcodeProj.framework */; };
 		B9A882232359E00C007A589B /* Projects.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B9A882222359E00C007A589B /* Projects.bundle */; };
 		B9A882D1235C985E007A589B /* TitanAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B9A882CF235C985E007A589B /* TitanAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B9A882D5235C9870007A589B /* ProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217BBBA8D41A5CEB752615 /* ProjectManager.swift */; };
-		B9A882D6235C9870007A589B /* XcodeProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21754931A8AC908D9077AB /* XcodeProjectManager.swift */; };
-		B9A882D7235C9870007A589B /* Group+PBXFileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217918530A0E006FDA07F4 /* Group+PBXFileElement.swift */; };
-		B9A882D8235C9870007A589B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21748DE783C62437BD46B3 /* Project.swift */; };
-		B9A882D9235C9870007A589B /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21716287945019086D1990 /* Group.swift */; };
-		B9A882DA235C9870007A589B /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217DCD560D0E82DB90E328 /* ProjectLoader.swift */; };
-		B9A882DB235C9870007A589B /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217AA3DFD7A43D94A8A0DA /* Target.swift */; };
 		B9A882DC235C989C007A589B /* TitanAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A882CD235C985E007A589B /* TitanAPI.framework */; };
 		B9A882DD235C989D007A589B /* TitanAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A882CD235C985E007A589B /* TitanAPI.framework */; };
 		B9A882DE235C992C007A589B /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A881D7235758A7007A589B /* AEXML.framework */; };
@@ -61,17 +61,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AB21716287945019086D1990 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		AB2172A03EB1954BD85476D1 /* Titan */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Titan; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB21748DE783C62437BD46B3 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		AB21754931A8AC908D9077AB /* XcodeProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeProjectManager.swift; sourceTree = "<group>"; };
+		AB21732FEA246C5A8A73E101 /* Group+PBXFileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+PBXFileElement.swift"; sourceTree = "<group>"; };
+		AB2174B5AB5F6FDDF53BB6C3 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		AB2175A48A2209F1F927A60A /* ProjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
+		AB2175D5659FB039F788D126 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		AB217692389A8610A12D2FAB /* LoadProjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadProjectTests.swift; sourceTree = "<group>"; };
 		AB2177A4378BB7E8E9E67682 /* XcodeProjectManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeProjectManagerTests.swift; sourceTree = "<group>"; };
-		AB217918530A0E006FDA07F4 /* Group+PBXFileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+PBXFileElement.swift"; sourceTree = "<group>"; };
-		AB217AA3DFD7A43D94A8A0DA /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
-		AB217B9DE57CB72A64A32308 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		AB217BBBA8D41A5CEB752615 /* ProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectManager.swift; sourceTree = "<group>"; };
-		AB217DCD560D0E82DB90E328 /* ProjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
+		AB2177AAC627DD6329E1DF11 /* XcodeProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeProjectManager.swift; sourceTree = "<group>"; };
+		AB217919BA1C930157B6092D /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		AB217E117D887ECE7BF0472C /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		AB217E19C9082ADBC063A73A /* ProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectManager.swift; sourceTree = "<group>"; };
 		AB217E80F7D4AA5768012798 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B9A881C623575655007A589B /* TitanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TitanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A881CA23575655007A589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +130,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AB217117B0B90D98C0F9C193 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				AB2177AAC627DD6329E1DF11 /* XcodeProjectManager.swift */,
+				AB21732FEA246C5A8A73E101 /* Group+PBXFileElement.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		AB2174B68BB8257BA7B1C855 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AB2175A48A2209F1F927A60A /* ProjectLoader.swift */,
+				AB217E19C9082ADBC063A73A /* ProjectManager.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		AB217503447807C4AC063EBA /* Titan */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +171,17 @@
 			);
 			sourceTree = "<group>";
 		};
+		AB217FAF0B1D3C1D8FE81C9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AB217919BA1C930157B6092D /* File.swift */,
+				AB2175D5659FB039F788D126 /* Group.swift */,
+				AB217E117D887ECE7BF0472C /* Target.swift */,
+				AB2174B5AB5F6FDDF53BB6C3 /* Project.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B9A881C723575655007A589B /* TitanTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,15 +203,10 @@
 			isa = PBXGroup;
 			children = (
 				B9A882CF235C985E007A589B /* TitanAPI.h */,
-				AB217DCD560D0E82DB90E328 /* ProjectLoader.swift */,
-				AB21748DE783C62437BD46B3 /* Project.swift */,
-				AB217BBBA8D41A5CEB752615 /* ProjectManager.swift */,
-				AB21754931A8AC908D9077AB /* XcodeProjectManager.swift */,
-				AB21716287945019086D1990 /* Group.swift */,
-				AB217AA3DFD7A43D94A8A0DA /* Target.swift */,
-				AB217918530A0E006FDA07F4 /* Group+PBXFileElement.swift */,
 				B9A882D0235C985E007A589B /* Info.plist */,
-				AB217B9DE57CB72A64A32308 /* File.swift */,
+				AB2174B68BB8257BA7B1C855 /* Domain */,
+				AB217FAF0B1D3C1D8FE81C9A /* Models */,
+				AB217117B0B90D98C0F9C193 /* Dependencies */,
 			);
 			path = TitanAPI;
 			sourceTree = "<group>";
@@ -333,14 +357,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9A882DA235C9870007A589B /* ProjectLoader.swift in Sources */,
-				B9A882D5235C9870007A589B /* ProjectManager.swift in Sources */,
-				B9A882DB235C9870007A589B /* Target.swift in Sources */,
-				B9A882D6235C9870007A589B /* XcodeProjectManager.swift in Sources */,
-				B9A882D7235C9870007A589B /* Group+PBXFileElement.swift in Sources */,
-				B9A882D9235C9870007A589B /* Group.swift in Sources */,
-				B9A882D8235C9870007A589B /* Project.swift in Sources */,
-				AB21738362D94BCE44BCD701 /* File.swift in Sources */,
+				AB21731E9B0F86B5CE7A7AC6 /* ProjectLoader.swift in Sources */,
+				AB2172E748B3E24029C402DA /* ProjectManager.swift in Sources */,
+				AB21768471054B1E1536B583 /* File.swift in Sources */,
+				AB217AD92D516B74D67642E2 /* Group.swift in Sources */,
+				AB21784EC1E87B8B51ED9E56 /* Target.swift in Sources */,
+				AB217726A3411B82BBAB175E /* Project.swift in Sources */,
+				AB2172FC491AE76C407BDF9B /* XcodeProjectManager.swift in Sources */,
+				AB2170D8053F9688807EEAAC /* Group+PBXFileElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
