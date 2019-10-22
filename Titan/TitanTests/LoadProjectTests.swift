@@ -6,7 +6,7 @@
 import TitanAPI
 import XCTest
 
-class ProjectManagerSpy: ProjectManager {
+class ProjectGatewaySpy: ProjectGateway {
     var requestedURL: URL?
     var invokedOpenCount = 0
 
@@ -22,19 +22,19 @@ class LoadProjectFromXCodeTests: XCTestCase {
 
     func testLoadProject_InvokesOpenWithURL() {
         let url = URL(string: "https://some-url.com")!
-        let (sut, projectManagerSpy) = makeSUT(url: url)
+        let (sut, projectGatewaySpy) = makeSUT(url: url)
         
         _ = try? sut.load()
         
-        XCTAssertEqual(url, projectManagerSpy.requestedURL)
+        XCTAssertEqual(url, projectGatewaySpy.requestedURL)
     }
 
     func testLoadProject_InvokesOpenURLOnce() {
-        let (sut, projectManagerSpy) = makeSUT()
+        let (sut, projectGatewaySpy) = makeSUT()
 
         _ = try? sut.load()
 
-        XCTAssertEqual(1, projectManagerSpy.invokedOpenCount)
+        XCTAssertEqual(1, projectGatewaySpy.invokedOpenCount)
     }
 
     func testLoadProjectAtInavlidURL_ThrowsError() {
@@ -43,9 +43,9 @@ class LoadProjectFromXCodeTests: XCTestCase {
         XCTAssertThrowsError(try sut.load())
     }
 
-    private func makeSUT(url: URL = URL(string: "www.any-url.com")!) -> (ProjectLoader, ProjectManagerSpy) {
-        let projectManagerSpy = ProjectManagerSpy()
-        sut = .init(url: url, projectManager: projectManagerSpy)
-        return (sut, projectManagerSpy)
+    private func makeSUT(url: URL = URL(string: "www.any-url.com")!) -> (ProjectLoader, ProjectGatewaySpy) {
+        let spy = ProjectGatewaySpy()
+        sut = .init(url: url, projectGateway: spy)
+        return (sut, spy)
     }
 }

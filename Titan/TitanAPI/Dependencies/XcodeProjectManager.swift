@@ -6,7 +6,7 @@
 import Foundation
 import XcodeProj
 
-public class XcodeProjectManager: ProjectManager {
+public class XcodeProjectManager: ProjectGateway {
     public init() {}
     
     public func open(from url: URL) -> Project? {

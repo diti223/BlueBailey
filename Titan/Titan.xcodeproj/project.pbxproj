@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB2170D8053F9688807EEAAC /* Group+PBXFileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21732FEA246C5A8A73E101 /* Group+PBXFileElement.swift */; };
-		AB2172E748B3E24029C402DA /* ProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217E19C9082ADBC063A73A /* ProjectManager.swift */; };
+		AB2172E748B3E24029C402DA /* ProjectGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217E19C9082ADBC063A73A /* ProjectGateway.swift */; };
 		AB2172FC491AE76C407BDF9B /* XcodeProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2177AAC627DD6329E1DF11 /* XcodeProjectManager.swift */; };
 		AB21731E9B0F86B5CE7A7AC6 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2175A48A2209F1F927A60A /* ProjectLoader.swift */; };
 		AB21768471054B1E1536B583 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217919BA1C930157B6092D /* File.swift */; };
@@ -71,7 +71,7 @@
 		AB2177AAC627DD6329E1DF11 /* XcodeProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeProjectManager.swift; sourceTree = "<group>"; };
 		AB217919BA1C930157B6092D /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		AB217E117D887ECE7BF0472C /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
-		AB217E19C9082ADBC063A73A /* ProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectManager.swift; sourceTree = "<group>"; };
+		AB217E19C9082ADBC063A73A /* ProjectGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectGateway.swift; sourceTree = "<group>"; };
 		AB217E80F7D4AA5768012798 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B9A881C623575655007A589B /* TitanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TitanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A881CA23575655007A589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				AB2175A48A2209F1F927A60A /* ProjectLoader.swift */,
-				AB217E19C9082ADBC063A73A /* ProjectManager.swift */,
+				AB217E19C9082ADBC063A73A /* ProjectGateway.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -358,7 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB21731E9B0F86B5CE7A7AC6 /* ProjectLoader.swift in Sources */,
-				AB2172E748B3E24029C402DA /* ProjectManager.swift in Sources */,
+				AB2172E748B3E24029C402DA /* ProjectGateway.swift in Sources */,
 				AB21768471054B1E1536B583 /* File.swift in Sources */,
 				AB217AD92D516B74D67642E2 /* Group.swift in Sources */,
 				AB21784EC1E87B8B51ED9E56 /* Target.swift in Sources */,

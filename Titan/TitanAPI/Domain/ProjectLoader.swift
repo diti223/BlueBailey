@@ -7,15 +7,15 @@ import Foundation
 
 public class ProjectLoader {
     public let url: URL
-    public let projectManager: ProjectManager
+    public let prejectGateway: ProjectGateway
 
-    public init(url: URL, projectManager: ProjectManager) {
+    public init(url: URL, projectGateway: ProjectGateway) {
         self.url = url
-        self.projectManager = projectManager
+        self.prejectGateway = projectGateway
     }
 
-    public  func load() throws -> Project {
-        guard let project = projectManager.open(from: url) else {
+    public func load() throws -> Project {
+        guard let project = prejectGateway.open(from: url) else {
             throw NSError(domain: "com.titan", code: 0)
         }
         return  project

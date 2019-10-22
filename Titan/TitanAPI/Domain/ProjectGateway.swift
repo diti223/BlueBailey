@@ -5,6 +5,6 @@
 
 import Foundation
 
-public protocol ProjectManager {
+public protocol ProjectGateway {
     func open(from url: URL) -> Project?
 }
