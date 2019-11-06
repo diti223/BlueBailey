@@ -124,12 +124,24 @@ private extension URL {
     }
 
     static func url(ofProjectNamed projectName: String) -> URL {
-        return Bundle.testBundle.resourceURL!.appendingPathComponent("Projects.bundle/\(projectName).xcodeproj")
+        return .url(ofFile: projectName, extension: "xcodeproj")
     }
 }
+
+
+extension URL {
+    static func url(ofFile name: String, `extesion`: String? = "swift") -> URL {
+        return Bundle.testableFilesURL.appendingPathComponent("\(projectName).xcodeproj")
+    }
+}
+
 private extension Bundle {
     static var testBundle: Bundle {
         return Bundle(for: XcodeProjectManagerTests.self)
+    }
+
+    static var testableFilesURL: URL {
+        return Bundle.testBundle.resourceURL!.appendingPathComponent("Projects.bundle")
     }
 }
 

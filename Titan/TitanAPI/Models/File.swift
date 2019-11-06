@@ -8,6 +8,11 @@ import Foundation
 public struct File: Equatable, Hashable {
     let name: String
     let path: String
+
+    public init(path: URL) {
+        self.path = path.path
+        self.name = path.lastPathComponent
+    }
 }
 
 public extension Collection where Iterator.Element == File {

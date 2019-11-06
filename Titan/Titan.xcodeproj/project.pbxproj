@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EF75F352362EF7F0070707F /* ReadFileUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5056D60C937B09A1CBACCC /* ReadFileUseCaseTests.swift */; };
 		AB2170D8053F9688807EEAAC /* Group+PBXFileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21732FEA246C5A8A73E101 /* Group+PBXFileElement.swift */; };
-		AB2172E748B3E24029C402DA /* ProjectGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217E19C9082ADBC063A73A /* ProjectGateway.swift */; };
 		AB2172FC491AE76C407BDF9B /* XcodeProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2177AAC627DD6329E1DF11 /* XcodeProjectManager.swift */; };
-		AB21731E9B0F86B5CE7A7AC6 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2175A48A2209F1F927A60A /* ProjectLoader.swift */; };
 		AB21768471054B1E1536B583 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217919BA1C930157B6092D /* File.swift */; };
 		AB217726A3411B82BBAB175E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2174B5AB5F6FDDF53BB6C3 /* Project.swift */; };
 		AB21784EC1E87B8B51ED9E56 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB217E117D887ECE7BF0472C /* Target.swift */; };
@@ -34,6 +33,10 @@
 		B9A882DE235C992C007A589B /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A881D7235758A7007A589B /* AEXML.framework */; };
 		B9A882DF235C992C007A589B /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A881D6235758A7007A589B /* PathKit.framework */; };
 		B9A882E0235C992C007A589B /* XcodeProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A881D8235758A7007A589B /* XcodeProj.framework */; };
+		FF50516D0AB54D59BBA5AACE /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF50554BCAF115946A74ECDE /* FileReader.swift */; };
+		FF5055B9003823D26162F7B0 /* ReadFileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5052D59C0CFF806612CE12 /* ReadFileUseCase.swift */; };
+		FF50576F262E72093074A959 /* ProjectGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF505E18E341277B8533B105 /* ProjectGateway.swift */; };
+		FF505998A071245E264604F0 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF50567A9D231B2C9903B9F4 /* ProjectLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,14 +67,12 @@
 		AB2172A03EB1954BD85476D1 /* Titan */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Titan; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB21732FEA246C5A8A73E101 /* Group+PBXFileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+PBXFileElement.swift"; sourceTree = "<group>"; };
 		AB2174B5AB5F6FDDF53BB6C3 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		AB2175A48A2209F1F927A60A /* ProjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
 		AB2175D5659FB039F788D126 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		AB217692389A8610A12D2FAB /* LoadProjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadProjectTests.swift; sourceTree = "<group>"; };
 		AB2177A4378BB7E8E9E67682 /* XcodeProjectManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeProjectManagerTests.swift; sourceTree = "<group>"; };
 		AB2177AAC627DD6329E1DF11 /* XcodeProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeProjectManager.swift; sourceTree = "<group>"; };
 		AB217919BA1C930157B6092D /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		AB217E117D887ECE7BF0472C /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
-		AB217E19C9082ADBC063A73A /* ProjectGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectGateway.swift; sourceTree = "<group>"; };
 		AB217E80F7D4AA5768012798 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B9A881C623575655007A589B /* TitanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TitanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A881CA23575655007A589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +83,11 @@
 		B9A882CD235C985E007A589B /* TitanAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TitanAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A882CF235C985E007A589B /* TitanAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitanAPI.h; sourceTree = "<group>"; };
 		B9A882D0235C985E007A589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF5052D59C0CFF806612CE12 /* ReadFileUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadFileUseCase.swift; sourceTree = "<group>"; };
+		FF50554BCAF115946A74ECDE /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
+		FF50567A9D231B2C9903B9F4 /* ProjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
+		FF5056D60C937B09A1CBACCC /* ReadFileUseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadFileUseCaseTests.swift; sourceTree = "<group>"; };
+		FF505E18E341277B8533B105 /* ProjectGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectGateway.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +148,8 @@
 		AB2174B68BB8257BA7B1C855 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				AB2175A48A2209F1F927A60A /* ProjectLoader.swift */,
-				AB217E19C9082ADBC063A73A /* ProjectGateway.swift */,
+				FF5056AE05BE690754C6E30D /* Protocols */,
+				FF5052D59C0CFF806612CE12 /* ReadFileUseCase.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -188,6 +194,8 @@
 				B9A881CA23575655007A589B /* Info.plist */,
 				AB217692389A8610A12D2FAB /* LoadProjectTests.swift */,
 				AB2177A4378BB7E8E9E67682 /* XcodeProjectManagerTests.swift */,
+				FF5056D60C937B09A1CBACCC /* ReadFileUseCaseTests.swift */,
+				FF5051AAE2842AEBD37F1518 /* Test Helpers */,
 			);
 			path = TitanTests;
 			sourceTree = "<group>";
@@ -209,6 +217,23 @@
 				AB217117B0B90D98C0F9C193 /* Dependencies */,
 			);
 			path = TitanAPI;
+			sourceTree = "<group>";
+		};
+		FF5051AAE2842AEBD37F1518 /* Test Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Test Helpers";
+			sourceTree = "<group>";
+		};
+		FF5056AE05BE690754C6E30D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FF50554BCAF115946A74ECDE /* FileReader.swift */,
+				FF505E18E341277B8533B105 /* ProjectGateway.swift */,
+				FF50567A9D231B2C9903B9F4 /* ProjectLoader.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB217AE76E438DD6DD7FC8BD /* LoadProjectTests.swift in Sources */,
+				2EF75F352362EF7F0070707F /* ReadFileUseCaseTests.swift in Sources */,
 				AB217C990EED0676F7987BF7 /* XcodeProjectManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,14 +383,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB21731E9B0F86B5CE7A7AC6 /* ProjectLoader.swift in Sources */,
-				AB2172E748B3E24029C402DA /* ProjectGateway.swift in Sources */,
 				AB21768471054B1E1536B583 /* File.swift in Sources */,
 				AB217AD92D516B74D67642E2 /* Group.swift in Sources */,
 				AB21784EC1E87B8B51ED9E56 /* Target.swift in Sources */,
 				AB217726A3411B82BBAB175E /* Project.swift in Sources */,
 				AB2172FC491AE76C407BDF9B /* XcodeProjectManager.swift in Sources */,
 				AB2170D8053F9688807EEAAC /* Group+PBXFileElement.swift in Sources */,
+				FF50516D0AB54D59BBA5AACE /* FileReader.swift in Sources */,
+				FF50576F262E72093074A959 /* ProjectGateway.swift in Sources */,
+				FF505998A071245E264604F0 /* ProjectLoader.swift in Sources */,
+				FF5055B9003823D26162F7B0 /* ReadFileUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
